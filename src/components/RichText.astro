@@ -1,0 +1,40 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type RichTextStyle =
+  | "inherit"
+  | "display"
+  | "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "h5"
+  | "h6"
+  | "large"
+  | "main"
+  | "small";
+
+interface Props extends HTMLAttributes<"div"> {
+  variant?: RichTextStyle;
+  maxWidth?: number;
+}
+
+const {
+  variant = "inherit",
+  maxWidth,
+  class: className,
+  ...rest
+} = Astro.props;
+---
+
+<div
+  class:list={[
+    "text",
+    variant !== "inherit" && `text-style-${variant}`,
+    className,
+  ]}
+  style={maxWidth ? `--_max-width: ${maxWidth}ch;` : undefined}
+  {...rest}
+>
+  <slot />
+</div>

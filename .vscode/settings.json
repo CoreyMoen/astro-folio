@@ -1,0 +1,4 @@
+{
+  "css.styleSheets": ["**/src/styles/global.css"],
+  "css.enabledLanguages": ["html", "astro"]
+}

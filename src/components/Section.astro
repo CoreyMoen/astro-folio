@@ -1,0 +1,80 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type SectionSpace =
+  | "none"
+  | "even"
+  | "small"
+  | "medium"
+  | "large"
+  | "navoverlap";
+
+type ContainerGap =
+  | "0"
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "small"
+  | "medium"
+  | "large";
+
+interface Props extends HTMLAttributes<"section"> {
+  paddingTop?: SectionSpace;
+  paddingBottom?: SectionSpace;
+  theme?: "inherit" | "light" | "dark" | "brand";
+  gap?: ContainerGap;
+  align?: "start" | "center" | "end";
+  containerClass?: string;
+  containerAttrs?: HTMLAttributes<"div">;
+}
+
+const {
+  paddingTop = "medium",
+  paddingBottom = "medium",
+  theme = "inherit",
+  gap = "8",
+  align,
+  containerClass,
+  containerAttrs = {},
+  class: className,
+  ...rest
+} = Astro.props;
+
+const { class: containerAttrsClass, ...containerRest } = containerAttrs;
+
+const padClass = (side: "top" | "bottom", value: SectionSpace) =>
+  !!value &&
+  value !== "medium" &&
+  `padding-${side}-${value === "even" ? "sitemargin" : value}`;
+---
+
+<section
+  class:list={[
+    "section",
+    padClass("top", paddingTop),
+    padClass("bottom", paddingBottom),
+    theme !== "inherit" && `theme-${theme}`,
+    align && `alignment-${align}`,
+    className,
+  ]}
+  {...rest}
+>
+  <slot name="background" />
+  <div
+    class:list={[
+      "container",
+      gap !== "8" && `gap-${gap}`,
+      containerClass,
+      containerAttrsClass,
+    ]}
+    {...containerRest}
+  >
+    <slot />
+  </div>
+</section>
+
