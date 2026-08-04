@@ -9,6 +9,14 @@ Before your first pull request can be merged, you need to sign the
 [Contributor License Agreement](CLA.md). This is a one-time step — once signed,
 it covers all of your future contributions.
 
+Signing happens on the pull request itself. A bot will comment when you open
+one; read [CLA.md](CLA.md) and then reply with exactly:
+
+> I have read the CLA Document and I hereby sign the CLA
+
+The bot records your signature and marks the check as passed. If the check is
+still failing afterwards, comment `recheck` to run it again.
+
 **Why:** Lumos For Astro is MIT licensed, and there is a paid commercial tier.
 Under MIT alone, contributors retain copyright over their own contributions,
 which would prevent that code from being used in the commercial tier. The CLA
