@@ -51,5 +51,5 @@ npm run build
 
 ## Commit messages
 
-Write a short imperative summary line, then a body explaining *why* the change
+Write a short imperative summary line, then a body explaining _why_ the change
 is needed if it isn't obvious from the diff.

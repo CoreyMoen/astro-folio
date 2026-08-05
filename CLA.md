@@ -84,5 +84,5 @@ respect.
 
 ---
 
-*This agreement is adapted from the Apache Software Foundation Individual
-Contributor License Agreement v2.0.*
+_This agreement is adapted from the Apache Software Foundation Individual
+Contributor License Agreement v2.0._
