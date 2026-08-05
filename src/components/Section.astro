@@ -2,12 +2,7 @@
 import type { HTMLAttributes } from "astro/types";
 
 type SectionSpace =
-  | "none"
-  | "even"
-  | "small"
-  | "medium"
-  | "large"
-  | "navoverlap";
+  "none" | "even" | "small" | "medium" | "large" | "navoverlap";
 
 type ContainerGap =
   | "0"
@@ -77,4 +72,3 @@ const padClass = (side: "top" | "bottom", value: SectionSpace) =>
     <slot />
   </div>
 </section>
-
