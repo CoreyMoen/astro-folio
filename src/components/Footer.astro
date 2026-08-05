@@ -3,5 +3,15 @@ import { SITE_NAME } from "@/consts.ts";
 ---
 
 <footer>
-  <p>&copy; {new Date().getFullYear()} {SITE_NAME}</p>
+  <p>&copy; <span id="year">{new Date().getFullYear()}</span> {SITE_NAME}</p>
 </footer>
+
+<!-- The span renders the build-time year; this keeps it correct on a site that
+     hasn't been rebuilt since the year changed. -->
+<script>
+  const year = document.querySelector<HTMLSpanElement>("#year");
+
+  if (year) {
+    year.textContent = new Date().getFullYear().toString();
+  }
+</script>
