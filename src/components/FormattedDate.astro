@@ -22,10 +22,20 @@ const {
   format = { dateStyle: "long" },
 } = Astro.props;
 
-const formatted = new Intl.DateTimeFormat(locale, {
-  ...format,
-  timeZone,
-}).format(date);
+// `date` is required by the prop types, but a visual editor can mount this
+// before one is set. An unparseable value is also still a Date instance — it
+// only throws when read — so check the time value, not just the type.
+const isValid = date instanceof Date && !Number.isNaN(date.getTime());
+
+if (import.meta.env.DEV && !isValid) {
+  console.warn(
+    "[lumos] <FormattedDate> rendered without a valid `date`; nothing was output.",
+  );
+}
+
+const formatted = isValid
+  ? new Intl.DateTimeFormat(locale, { ...format, timeZone }).format(date)
+  : "";
 ---
 
-<time datetime={date.toISOString()}>{formatted}</time>
+{isValid && <time datetime={date.toISOString()}>{formatted}</time>}
