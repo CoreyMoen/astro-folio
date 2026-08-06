@@ -9,18 +9,37 @@ interface Props extends Omit<
   HTMLAttributes<"img">,
   "src" | "width" | "height"
 > {
+  /** An imported asset, or a URL for a remote image. Nothing is output if it is missing. */
   src: ImageMetadata | string;
+  /** Leave unset on decorative images — renders `alt=""`. */
   alt?: string;
+  /** Render `<picture>` with multiple formats instead of a single `<img>`. Ignored for SVG sources. */
   picture?: boolean;
+  /**
+   * How the browser chooses a source.
+   *
+   * - `responsive` — one source per screen width (default)
+   * - `densities` — one source per pixel density, for fixed-size art
+   * - `fixed` — a single source, no `srcset`
+   */
   variant?: ImageVariant;
+  /** Overrides the size Astro infers from the source. */
   width?: number;
+  /** Overrides the size Astro infers from the source. */
   height?: number;
+  /** Widths to generate for `variant="responsive"`. Astro picks sensible ones by default. */
   widths?: number[];
+  /** Densities to generate for `variant="densities"`. Defaults to `[1, 2]`. */
   densities?: (number | `${number}x`)[];
+  /** `sizes` attribute, paired with `widths`. */
   sizes?: string;
+  /** Output quality — a preset such as `"high"`, or a number from 0 to 100. */
   quality?: LocalImageProps["quality"];
+  /** Output format. Defaults to `webp`, or `svg` passthrough for SVG sources. */
   format?: LocalImageProps["format"];
+  /** Formats to offer when `picture` is set. */
   formats?: NonNullable<LocalImageProps["format"]>[];
+  /** For logos and cutouts: never crop, and drop the skeleton tint. */
   transparent?: boolean;
 }
 
