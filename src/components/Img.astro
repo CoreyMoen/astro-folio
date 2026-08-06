@@ -38,11 +38,17 @@ type Props = Base &
         /**
          * How the browser chooses a source.
          *
-         * - `responsive` — one source per screen width (default)
+         * - `fixed` — a single source, no `srcset` (default)
+         * - `responsive` — one source per screen width
          * - `densities` — one source per pixel density, for fixed-size art
-         * - `fixed` — a single source, no `srcset`
          */
-        variant?: "responsive";
+        variant?: "fixed";
+        widths?: never;
+        sizes?: never;
+        densities?: never;
+      }
+    | {
+        variant: "responsive";
         /** Widths to generate. Astro picks sensible ones by default. */
         widths?: number[];
         /** `sizes` attribute, paired with `widths`. */
@@ -55,12 +61,6 @@ type Props = Base &
         densities?: (number | `${number}x`)[];
         widths?: never;
         sizes?: never;
-      }
-    | {
-        variant: "fixed";
-        widths?: never;
-        sizes?: never;
-        densities?: never;
       }
   );
 
@@ -75,7 +75,7 @@ const {
   src,
   alt: altProp,
   picture = false,
-  variant = "responsive",
+  variant = "fixed",
   width,
   height,
   widths,
