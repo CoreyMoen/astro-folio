@@ -25,8 +25,6 @@ type Rest = {
   height?: number;
   /** Output quality — a preset such as `"high"`, or a number from 0 to 100. */
   quality?: LocalImageProps["quality"];
-  /** Output format. Defaults to `webp`, or `svg` passthrough for SVG sources. */
-  format?: LocalImageProps["format"];
   /** For logos and cutouts: never crop, and drop the skeleton tint. */
   transparent?: boolean;
 };
@@ -37,10 +35,13 @@ type PictureProps =
       picture: true;
       /** Formats to offer. Astro adds a fallback of the source's own format. */
       formats?: NonNullable<LocalImageProps["format"]>[];
+      format?: never;
     }
   | {
       picture?: false;
       formats?: never;
+      /** Output format. Defaults to `webp`, or `svg` passthrough for SVG sources. */
+      format?: LocalImageProps["format"];
     };
 
 type Props = Base &
@@ -81,6 +82,7 @@ type AllProps = Base &
   Rest & {
     picture?: boolean;
     formats?: NonNullable<LocalImageProps["format"]>[];
+    format?: LocalImageProps["format"];
     variant?: ImageVariant;
     widths?: number[];
     sizes?: string;
