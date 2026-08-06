@@ -42,7 +42,7 @@ interface Props extends Omit<
 
 const {
   src,
-  alt = "",
+  alt: altProp,
   picture = false,
   variant = "responsive",
   width,
@@ -57,6 +57,20 @@ const {
   class: className,
   ...attrs
 } = Astro.props;
+
+// Astro throws when alt is undefined *or* null, and a destructuring default
+// only covers undefined.
+const alt = altProp ?? "";
+
+// Astro refuses to rasterize SVGs unless format="svg" passes them through.
+// Detect them so an imported .svg doesn't fail with UnsupportedImageFormat.
+const isSvg =
+  typeof src === "string" ? /\.svg(\?|#|$)/i.test(src) : src.format === "svg";
+const resolvedFormat = format ?? (isSvg ? "svg" : undefined);
+
+// <Picture> exists to offer raster alternatives, which an SVG has no use for —
+// and its `formats` would override the passthrough above and fail the build.
+const usePicture = picture && !isSvg;
 
 // `inferSize` is only valid for remote sources; imported assets already carry
 // their dimensions. An explicit width or height always wins over both.
@@ -77,7 +91,7 @@ const shared = {
   src,
   alt,
   quality,
-  format,
+  format: resolvedFormat,
   ...sizing,
   ...srcset,
   ...attrs,
@@ -96,7 +110,7 @@ const shared = {
 ---
 
 {
-  picture ? (
+  usePicture ? (
     <AstroPicture {...shared} formats={formats} />
   ) : (
     <AstroImage {...shared} />
