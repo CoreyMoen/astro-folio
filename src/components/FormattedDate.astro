@@ -1,0 +1,31 @@
+---
+import { SITE_LOCALE } from "@/consts.ts";
+
+interface Props {
+  /** The date to render. */
+  date: Date;
+  /** BCP 47 locale tag. Defaults to `SITE_LOCALE`. */
+  locale?: string;
+  /**
+   * IANA time zone. Defaults to UTC so a date-only value never shifts by a day
+   * depending on the machine that built the site.
+   */
+  timeZone?: string;
+  /** Formatting options passed to `Intl.DateTimeFormat`. */
+  format?: Intl.DateTimeFormatOptions;
+}
+
+const {
+  date,
+  locale = SITE_LOCALE,
+  timeZone = "UTC",
+  format = { dateStyle: "long" },
+} = Astro.props;
+
+const formatted = new Intl.DateTimeFormat(locale, {
+  ...format,
+  timeZone,
+}).format(date);
+---
+
+<time datetime={date.toISOString()}>{formatted}</time>
