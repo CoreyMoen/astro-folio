@@ -14,6 +14,13 @@ export interface SeoProps {
   image?: string;
   /** Open Graph type. Use `"article"` for posts and news pages. */
   type?: "website" | "article";
-  /** Emit `robots: noindex, nofollow` for this page. */
+  /**
+   * Force `robots: noindex, nofollow` on or off for this page.
+   *
+   * Leave it unset to inherit from `NOINDEX_ROUTES`, which also drives sitemap
+   * exclusion. Setting it here only affects the robots tag — a page kept out of
+   * search results should be listed in `NOINDEX_ROUTES` so it leaves the
+   * sitemap too.
+   */
   noindex?: boolean;
 }
