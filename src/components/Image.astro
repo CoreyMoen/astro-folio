@@ -1,0 +1,104 @@
+---
+import { Image as AstroImage, Picture as AstroPicture } from "astro:assets";
+import type { LocalImageProps, RemoteImageProps } from "astro:assets";
+import type { HTMLAttributes } from "astro/types";
+
+/** How the browser chooses a source. */
+type ImageVariant = "responsive" | "densities" | "fixed";
+
+interface Props extends Omit<
+  HTMLAttributes<"img">,
+  "src" | "width" | "height"
+> {
+  /** An imported asset, or a URL for a remote image. */
+  src: ImageMetadata | string;
+  /** Leave unset on decorative images — renders `alt=""`. */
+  alt?: string;
+  /** Render `<picture>` with multiple formats instead of a single `<img>`. */
+  picture?: boolean;
+  /**
+   * - `responsive` — one source per screen width (default)
+   * - `densities` — one source per pixel density, for fixed-size art
+   * - `fixed` — a single source, no `srcset`
+   */
+  variant?: ImageVariant;
+  /** Overrides the size Astro infers from the source. */
+  width?: number;
+  /** Overrides the size Astro infers from the source. */
+  height?: number;
+  /** Widths to generate for `variant="responsive"`. Astro picks sensible ones by default. */
+  widths?: number[];
+  /** Densities to generate for `variant="densities"`. Defaults to `[1, 2]`. */
+  densities?: (number | `${number}x`)[];
+  /** `sizes` attribute, paired with `widths`. */
+  sizes?: string;
+  quality?: LocalImageProps["quality"];
+  format?: LocalImageProps["format"];
+  /** Formats to offer when `picture` is set. */
+  formats?: NonNullable<LocalImageProps["format"]>[];
+  /** For logos and cutouts: never crop, and drop the skeleton tint. */
+  transparent?: boolean;
+}
+
+const {
+  src,
+  alt = "",
+  picture = false,
+  variant = "responsive",
+  width,
+  height,
+  widths,
+  densities,
+  sizes,
+  quality,
+  format,
+  formats,
+  transparent = false,
+  class: className,
+  ...attrs
+} = Astro.props;
+
+// `inferSize` is only valid for remote sources; imported assets already carry
+// their dimensions. An explicit width or height always wins over both.
+const hasExplicitSize = width !== undefined || height !== undefined;
+const sizing =
+  typeof src === "string" && !hasExplicitSize
+    ? { inferSize: true as const }
+    : { width, height };
+
+// `densities` and `layout` are mutually exclusive in Astro's prop types, so the
+// densities variant is the one case that sets no layout.
+const srcset =
+  variant === "densities"
+    ? { densities: densities ?? [1, 2] }
+    : { widths, sizes, layout: variant === "fixed" ? "none" : "constrained" };
+
+const shared = {
+  src,
+  alt,
+  quality,
+  format,
+  ...sizing,
+  ...srcset,
+  ...attrs,
+  // Object-fit lives in global.css rather than Astro's `fit` prop: Astro emits
+  // those rules inside `@layer astro.images`, and global.css is unlayered, so
+  // the `.image` class would silently win anyway.
+  "class:list": [
+    "image",
+    transparent && "image--transparent",
+    variant === "fixed" && "image--fixed",
+    className,
+  ],
+  // Astro's prop union is discriminated on the type of `src`, and which branch
+  // applies is only known at runtime here.
+} as unknown as LocalImageProps | RemoteImageProps;
+---
+
+{
+  picture ? (
+    <AstroPicture {...shared} formats={formats} />
+  ) : (
+    <AstroImage {...shared} />
+  )
+}
