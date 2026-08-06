@@ -1,5 +1,5 @@
 ---
-import { Image as AstroImage, Picture as AstroPicture } from "astro:assets";
+import { Image, Picture } from "astro:assets";
 import type { LocalImageProps, RemoteImageProps } from "astro:assets";
 import type { HTMLAttributes } from "astro/types";
 
@@ -9,7 +9,13 @@ interface Props extends Omit<
   HTMLAttributes<"img">,
   "src" | "width" | "height"
 > {
-  /** An imported asset, or a URL for a remote image. Nothing is output if it is missing. */
+  /**
+   * An imported asset, a remote `http(s)` URL, or a path to a file in `public/`.
+   *
+   * Imports and remote URLs are optimized. Files in `public/` are served as-is —
+   * Astro never reads them — so they render as a plain `<img>` at their natural
+   * size. Nothing is output if `src` is missing.
+   */
   src: ImageMetadata | string;
   /** Leave unset on decorative images — renders `alt=""`. */
   alt?: string;
@@ -64,7 +70,7 @@ const {
 const alt = altProp ?? "";
 
 if (import.meta.env.DEV && !src) {
-  console.warn("[lumos] <Image> rendered without a `src`; nothing was output.");
+  console.warn("[lumos] <Img> rendered without a `src`; nothing was output.");
 }
 
 const isSvg =
@@ -80,19 +86,19 @@ const sizing =
     ? { inferSize: true as const, width, height }
     : { width, height };
 
-const unsizedPublicPath =
-  typeof src === "string" && !isFetchable && !hasBothDimensions;
-
-if (import.meta.env.DEV && unsizedPublicPath) {
-  console.warn(
-    `[lumos] <Image src="${src}"> needs both width and height. Astro cannot read the dimensions of a file in public/ — import it from src/assets instead, or set both.`,
-  );
-}
+const isPublicPath = typeof src === "string" && !isFetchable;
 
 const srcset =
   variant === "densities"
     ? { densities: densities ?? [1, 2] }
     : { widths, sizes, layout: variant === "fixed" ? "none" : "constrained" };
+
+const classes = [
+  "image",
+  transparent && "image--transparent",
+  variant === "fixed" && "image--fixed",
+  className,
+];
 
 const shared = {
   src,
@@ -102,21 +108,22 @@ const shared = {
   ...sizing,
   ...srcset,
   ...attrs,
-  "class:list": [
-    "image",
-    transparent && "image--transparent",
-    variant === "fixed" && "image--fixed",
-    className,
-  ],
+  "class:list": classes,
 } as unknown as LocalImageProps | RemoteImageProps;
 ---
 
 {
   src &&
-    !unsizedPublicPath &&
-    (usePicture ? (
-      <AstroPicture {...shared} formats={formats} />
+    (isPublicPath ? (
+      <img
+        src={src as string}
+        {...{ alt, width, height }}
+        {...attrs}
+        class:list={classes}
+      />
+    ) : usePicture ? (
+      <Picture {...shared} formats={formats} />
     ) : (
-      <AstroImage {...shared} />
+      <Image {...shared} />
     ))
 }
