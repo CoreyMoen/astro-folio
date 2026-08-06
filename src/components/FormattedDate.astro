@@ -2,16 +2,9 @@
 import { SITE_LOCALE } from "@/consts.ts";
 
 interface Props {
-  /** The date to render. */
   date: Date;
-  /** BCP 47 locale tag. Defaults to `SITE_LOCALE`. */
   locale?: string;
-  /**
-   * IANA time zone. Defaults to UTC so a date-only value never shifts by a day
-   * depending on the machine that built the site.
-   */
   timeZone?: string;
-  /** Formatting options passed to `Intl.DateTimeFormat`. */
   format?: Intl.DateTimeFormatOptions;
 }
 
@@ -22,9 +15,6 @@ const {
   format = { dateStyle: "long" },
 } = Astro.props;
 
-// `date` is required by the prop types, but a visual editor can mount this
-// before one is set. An unparseable value is also still a Date instance — it
-// only throws when read — so check the time value, not just the type.
 const isValid = date instanceof Date && !Number.isNaN(date.getTime());
 
 if (import.meta.env.DEV && !isValid) {

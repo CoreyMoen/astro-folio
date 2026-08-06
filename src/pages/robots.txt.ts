@@ -1,9 +1,5 @@
 import type { APIRoute } from "astro";
 
-/**
- * Serves /robots.txt with a Sitemap line derived from `site` in
- * astro.config.mjs, so the two never drift when the domain changes.
- */
 export const GET: APIRoute = ({ site }) => {
   const lines = ["User-agent: *", "Allow: /"];
 
