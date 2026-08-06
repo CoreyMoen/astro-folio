@@ -5,10 +5,7 @@ import type { HTMLAttributes } from "astro/types";
 
 type ImageVariant = "responsive" | "densities" | "fixed";
 
-interface Props extends Omit<
-  HTMLAttributes<"img">,
-  "src" | "width" | "height"
-> {
+type Base = Omit<HTMLAttributes<"img">, "src" | "width" | "height"> & {
   /**
    * An imported asset, a remote `http(s)` URL, or a path to a file in `public/`.
    *
@@ -21,24 +18,10 @@ interface Props extends Omit<
   alt?: string;
   /** Render `<picture>` with multiple formats instead of a single `<img>`. Ignored for SVG sources. */
   picture?: boolean;
-  /**
-   * How the browser chooses a source.
-   *
-   * - `responsive` — one source per screen width (default)
-   * - `densities` — one source per pixel density, for fixed-size art
-   * - `fixed` — a single source, no `srcset`
-   */
-  variant?: ImageVariant;
   /** Overrides the width Astro reads from the source. Omit either dimension and it is inferred. */
   width?: number;
   /** Overrides the height Astro reads from the source. Omit either dimension and it is inferred. */
   height?: number;
-  /** Widths to generate for `variant="responsive"`. Astro picks sensible ones by default. */
-  widths?: number[];
-  /** Densities to generate for `variant="densities"`. Defaults to `[1, 2]`. */
-  densities?: (number | `${number}x`)[];
-  /** `sizes` attribute, paired with `widths`. */
-  sizes?: string;
   /** Output quality — a preset such as `"high"`, or a number from 0 to 100. */
   quality?: LocalImageProps["quality"];
   /** Output format. Defaults to `webp`, or `svg` passthrough for SVG sources. */
@@ -47,7 +30,42 @@ interface Props extends Omit<
   formats?: NonNullable<LocalImageProps["format"]>[];
   /** For logos and cutouts: never crop, and drop the skeleton tint. */
   transparent?: boolean;
-}
+};
+
+type Props = Base &
+  (
+    | {
+        /** One source per screen width. The default. */
+        variant?: "responsive";
+        /** Widths to generate. Astro picks sensible ones by default. */
+        widths?: number[];
+        /** `sizes` attribute, paired with `widths`. */
+        sizes?: string;
+        densities?: never;
+      }
+    | {
+        /** One source per pixel density, for fixed-size art. */
+        variant: "densities";
+        /** Densities to generate. Defaults to `[1, 2]`. */
+        densities?: (number | `${number}x`)[];
+        widths?: never;
+        sizes?: never;
+      }
+    | {
+        /** A single source, no `srcset`. */
+        variant: "fixed";
+        widths?: never;
+        sizes?: never;
+        densities?: never;
+      }
+  );
+
+type AllProps = Base & {
+  variant?: ImageVariant;
+  widths?: number[];
+  sizes?: string;
+  densities?: (number | `${number}x`)[];
+};
 
 const {
   src,
@@ -65,7 +83,7 @@ const {
   transparent = false,
   class: className,
   ...attrs
-} = Astro.props;
+} = Astro.props as AllProps;
 
 const alt = altProp ?? "";
 
