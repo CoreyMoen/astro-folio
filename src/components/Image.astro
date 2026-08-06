@@ -62,10 +62,16 @@ const {
 // only covers undefined.
 const alt = altProp ?? "";
 
+// `src` is required by the prop types, but a visual editor can mount this
+// before one is picked. Render nothing rather than taking the page down.
+if (import.meta.env.DEV && !src) {
+  console.warn("[lumos] <Image> rendered without a `src`; nothing was output.");
+}
+
 // Astro refuses to rasterize SVGs unless format="svg" passes them through.
 // Detect them so an imported .svg doesn't fail with UnsupportedImageFormat.
 const isSvg =
-  typeof src === "string" ? /\.svg(\?|#|$)/i.test(src) : src.format === "svg";
+  typeof src === "string" ? /\.svg(\?|#|$)/i.test(src) : src?.format === "svg";
 const resolvedFormat = format ?? (isSvg ? "svg" : undefined);
 
 // <Picture> exists to offer raster alternatives, which an SVG has no use for —
@@ -110,9 +116,10 @@ const shared = {
 ---
 
 {
-  usePicture ? (
-    <AstroPicture {...shared} formats={formats} />
-  ) : (
-    <AstroImage {...shared} />
-  )
+  src &&
+    (usePicture ? (
+      <AstroPicture {...shared} formats={formats} />
+    ) : (
+      <AstroImage {...shared} />
+    ))
 }
