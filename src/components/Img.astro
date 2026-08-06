@@ -16,8 +16,9 @@ type Base = Omit<HTMLAttributes<"img">, "src" | "width" | "height"> & {
   src: ImageMetadata | string;
   /** Leave unset on decorative images — renders `alt=""`. */
   alt?: string;
-  /** Render `<picture>` with multiple formats instead of a single `<img>`. Ignored for SVG sources. */
-  picture?: boolean;
+};
+
+type Rest = {
   /** Overrides the width Astro reads from the source. Omit either dimension and it is inferred. */
   width?: number;
   /** Overrides the height Astro reads from the source. Omit either dimension and it is inferred. */
@@ -26,13 +27,25 @@ type Base = Omit<HTMLAttributes<"img">, "src" | "width" | "height"> & {
   quality?: LocalImageProps["quality"];
   /** Output format. Defaults to `webp`, or `svg` passthrough for SVG sources. */
   format?: LocalImageProps["format"];
-  /** Formats to offer when `picture` is set. */
-  formats?: NonNullable<LocalImageProps["format"]>[];
   /** For logos and cutouts: never crop, and drop the skeleton tint. */
   transparent?: boolean;
 };
 
+type PictureProps =
+  | {
+      /** Render `<picture>` with multiple formats instead of a single `<img>`. Ignored for SVG sources. */
+      picture: true;
+      /** Formats to offer. Astro adds a fallback of the source's own format. */
+      formats?: NonNullable<LocalImageProps["format"]>[];
+    }
+  | {
+      picture?: false;
+      formats?: never;
+    };
+
 type Props = Base &
+  PictureProps &
+  Rest &
   (
     | {
         /**
@@ -64,12 +77,15 @@ type Props = Base &
       }
   );
 
-type AllProps = Base & {
-  variant?: ImageVariant;
-  widths?: number[];
-  sizes?: string;
-  densities?: (number | `${number}x`)[];
-};
+type AllProps = Base &
+  Rest & {
+    picture?: boolean;
+    formats?: NonNullable<LocalImageProps["format"]>[];
+    variant?: ImageVariant;
+    widths?: number[];
+    sizes?: string;
+    densities?: (number | `${number}x`)[];
+  };
 
 const {
   src,
