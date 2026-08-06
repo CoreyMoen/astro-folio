@@ -35,7 +35,13 @@ type Base = Omit<HTMLAttributes<"img">, "src" | "width" | "height"> & {
 type Props = Base &
   (
     | {
-        /** One source per screen width. The default. */
+        /**
+         * How the browser chooses a source.
+         *
+         * - `responsive` — one source per screen width (default)
+         * - `densities` — one source per pixel density, for fixed-size art
+         * - `fixed` — a single source, no `srcset`
+         */
         variant?: "responsive";
         /** Widths to generate. Astro picks sensible ones by default. */
         widths?: number[];
@@ -44,7 +50,6 @@ type Props = Base &
         densities?: never;
       }
     | {
-        /** One source per pixel density, for fixed-size art. */
         variant: "densities";
         /** Densities to generate. Defaults to `[1, 2]`. */
         densities?: (number | `${number}x`)[];
@@ -52,7 +57,6 @@ type Props = Base &
         sizes?: never;
       }
     | {
-        /** A single source, no `srcset`. */
         variant: "fixed";
         widths?: never;
         sizes?: never;
