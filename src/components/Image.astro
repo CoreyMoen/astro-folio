@@ -23,9 +23,9 @@ interface Props extends Omit<
    * - `fixed` — a single source, no `srcset`
    */
   variant?: ImageVariant;
-  /** Overrides the size Astro infers from the source. */
+  /** Overrides the width Astro reads from the source. Omit either dimension and it is inferred. */
   width?: number;
-  /** Overrides the size Astro infers from the source. */
+  /** Overrides the height Astro reads from the source. Omit either dimension and it is inferred. */
   height?: number;
   /** Widths to generate for `variant="responsive"`. Astro picks sensible ones by default. */
   widths?: number[];
@@ -73,11 +73,21 @@ const resolvedFormat = format ?? (isSvg ? "svg" : undefined);
 
 const usePicture = picture && !isSvg;
 
-const hasExplicitSize = width !== undefined || height !== undefined;
+const isFetchable = typeof src === "string" && /^https?:\/\//i.test(src);
+const hasBothDimensions = width !== undefined && height !== undefined;
 const sizing =
-  typeof src === "string" && !hasExplicitSize
-    ? { inferSize: true as const }
+  isFetchable && !hasBothDimensions
+    ? { inferSize: true as const, width, height }
     : { width, height };
+
+const unsizedPublicPath =
+  typeof src === "string" && !isFetchable && !hasBothDimensions;
+
+if (import.meta.env.DEV && unsizedPublicPath) {
+  console.warn(
+    `[lumos] <Image src="${src}"> needs both width and height. Astro cannot read the dimensions of a file in public/ — import it from src/assets instead, or set both.`,
+  );
+}
 
 const srcset =
   variant === "densities"
@@ -103,6 +113,7 @@ const shared = {
 
 {
   src &&
+    !unsizedPublicPath &&
     (usePicture ? (
       <AstroPicture {...shared} formats={formats} />
     ) : (
