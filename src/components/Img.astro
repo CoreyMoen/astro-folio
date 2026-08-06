@@ -128,6 +128,26 @@ const sizing =
 
 const isPublicPath = typeof src === "string" && !isFetchable;
 
+if (import.meta.env.DEV && src && (isPublicPath || isSvg)) {
+  const inert: string[] = [];
+  if (quality !== undefined) inert.push("quality");
+  if (format !== undefined) inert.push("format");
+  if (picture) inert.push("picture");
+  if (isPublicPath) {
+    if (formats !== undefined) inert.push("formats");
+    if (widths !== undefined) inert.push("widths");
+    if (sizes !== undefined) inert.push("sizes");
+    if (densities !== undefined) inert.push("densities");
+    if (variant !== "fixed") inert.push(`variant="${variant}"`);
+  }
+  if (inert.length) {
+    const why = isPublicPath
+      ? `files in public/ are served as-is — import from src/assets to optimize`
+      : `SVG sources are passed through unoptimized`;
+    console.warn(`[lumos] <Img> ignores ${inert.join(", ")}: ${why}.`);
+  }
+}
+
 const srcset =
   variant === "densities"
     ? { densities: densities ?? [1, 2] }
