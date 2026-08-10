@@ -103,6 +103,7 @@ const resolvedFormat = format ?? (isSvg ? "svg" : undefined);
 
 const isFetchable = typeof src === "string" && /^https?:\/\//i.test(src);
 const hasBothDimensions = width !== undefined && height !== undefined;
+const hasEitherDimension = width !== undefined || height !== undefined;
 const sizing =
   isFetchable && !hasBothDimensions
     ? { inferSize: true as const, width, height }
@@ -126,6 +127,18 @@ if (import.meta.env.DEV && src && (isPublicPath || isSvg)) {
       : `SVG sources are passed through unoptimized`;
     console.warn(`[lumos] <Img> ignores ${inert.join(", ")}: ${why}.`);
   }
+}
+
+if (
+  import.meta.env.DEV &&
+  src &&
+  !isPublicPath &&
+  variant === "densities" &&
+  !hasEitherDimension
+) {
+  console.warn(
+    `[lumos] <Img variant="densities"> has no width or height, so every density resolves to the source's own size and each srcset entry points at the same file. Set the size it displays at.`,
+  );
 }
 
 const srcset =
