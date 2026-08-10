@@ -7,6 +7,8 @@ type ImageVariant = "responsive" | "densities" | "fixed";
 
 type ImageQuality = "low" | "mid" | "high" | "max";
 
+type ImageFormat = "avif" | "webp" | "png" | "jpeg" | "jpg";
+
 type Base = Omit<HTMLAttributes<"img">, "src" | "width" | "height"> & {
   /**
    * An imported asset, a remote `http(s)` URL, or a path to a file in `public/`.
@@ -40,9 +42,9 @@ type PictureProps =
       /** Render `<picture>` with multiple formats instead of a single `<img>`. Ignored for SVG sources. */
       picture: true;
       /** Formats to offer. Astro adds a fallback of the source's own format. */
-      formats?: NonNullable<LocalImageProps["format"]>[];
+      formats?: ImageFormat[];
       /** Format of the fallback `<img>`. Defaults to `png`, or the source's own format for GIF, SVG and JPEG. */
-      fallbackFormat?: NonNullable<LocalImageProps["format"]>;
+      fallbackFormat?: ImageFormat;
       /** Attributes for the wrapping `<picture>` element. */
       pictureAttributes?: HTMLAttributes<"picture">;
       format?: never;
@@ -53,7 +55,7 @@ type PictureProps =
       fallbackFormat?: never;
       pictureAttributes?: never;
       /** Output format. Defaults to `webp`, or `svg` passthrough for SVG sources. */
-      format?: LocalImageProps["format"];
+      format?: ImageFormat;
     };
 
 type Props = Base &
@@ -93,10 +95,10 @@ type Props = Base &
 type AllProps = Base &
   Rest & {
     picture?: boolean;
-    formats?: NonNullable<LocalImageProps["format"]>[];
-    fallbackFormat?: NonNullable<LocalImageProps["format"]>;
+    formats?: ImageFormat[];
+    fallbackFormat?: ImageFormat;
     pictureAttributes?: HTMLAttributes<"picture">;
-    format?: LocalImageProps["format"];
+    format?: ImageFormat;
     variant?: ImageVariant;
     widths?: number[];
     sizes?: string;
