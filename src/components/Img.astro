@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import type { LocalImageProps, RemoteImageProps } from "astro:assets";
 import type { HTMLAttributes } from "astro/types";
 
-type ImageVariant = "background" | "contained" | "logo";
+type ImageVariant = "full-width" | "constrained" | "fixed";
 
 type ImageQuality = "low" | "mid" | "high" | "max";
 
@@ -35,7 +35,7 @@ type Base = Omit<
   quality?: ImageQuality;
   /** Output format. Defaults to `webp`, or `svg` passthrough for SVG sources. */
   format?: ImageFormat;
-  /** For cutouts on any variant: never crop, and drop the skeleton tint. */
+  /** For logos and cutouts: fit the whole image in rather than cropping, and drop the skeleton tint. */
   transparent?: boolean;
   /** Defer loading until the image nears the viewport. Set `eager` for anything above the fold. */
   loading?: "lazy" | "eager";
@@ -47,18 +47,18 @@ type Props = Base &
   (
     | {
         /**
-         * What the image is for.
+         * How much space the image takes, matching Astro's `image.layout` values.
          *
-         * - `contained` — scales within its container, for cards and grids (default)
-         * - `background` — fills the section behind it
-         * - `logo` — natural size, never cropped, no skeleton tint
+         * - `constrained` — scales with its container, capped at the source width (default)
+         * - `full-width` — fills its container in both dimensions
+         * - `fixed` — its own size, with a 2x source for retina
          */
-        variant?: "contained";
+        variant?: "constrained";
         /** How much of the viewport the image covers, when it isn't the full width. */
         sizes?: string;
       }
-    | { variant: "background"; sizes?: never }
-    | { variant: "logo"; sizes?: never }
+    | { variant: "full-width"; sizes?: never }
+    | { variant: "fixed"; sizes?: never }
   );
 
 type AllProps = Base & {
@@ -69,7 +69,7 @@ type AllProps = Base & {
 const {
   src,
   alt: altProp,
-  variant = "contained",
+  variant = "constrained",
   width,
   height,
   sizes,
@@ -119,21 +119,16 @@ if (
   import.meta.env.DEV &&
   src &&
   !isPublicPath &&
-  variant === "logo" &&
+  variant === "fixed" &&
   !hasEitherDimension
 ) {
   console.warn(
-    `[lumos] <Img variant="logo"> has no width or height, so both densities resolve to the source's own size and each srcset entry points at the same file. Set the size it displays at.`,
+    `[lumos] <Img variant="fixed"> has no width or height, so both densities resolve to the source's own size and each srcset entry points at the same file. Set the size it displays at.`,
   );
 }
 
 const srcset =
-  variant === "logo"
-    ? { densities: [1, 2] }
-    : {
-        sizes,
-        layout: variant === "background" ? "full-width" : "constrained",
-      };
+  variant === "fixed" ? { densities: [1, 2] } : { sizes, layout: variant };
 
 const classes = ["image", variant, transparent && "transparent", className];
 
