@@ -683,14 +683,20 @@ h6,
   overflow: clip;
   object-fit: cover;
 
+  &.background {
+    height: 100%;
+  }
+
+  &.logo {
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    background-color: transparent;
+  }
+
   &.transparent {
     background-color: transparent;
     object-fit: contain;
-  }
-
-  &.fixed {
-    width: auto;
-    max-width: 100%;
   }
 }
 

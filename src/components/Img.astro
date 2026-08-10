@@ -3,13 +3,16 @@ import { Image } from "astro:assets";
 import type { LocalImageProps, RemoteImageProps } from "astro:assets";
 import type { HTMLAttributes } from "astro/types";
 
-type ImageVariant = "responsive" | "densities" | "fixed";
+type ImageVariant = "background" | "contained" | "logo";
 
 type ImageQuality = "low" | "mid" | "high" | "max";
 
 type ImageFormat = "avif" | "webp" | "png" | "jpeg";
 
-type Base = Omit<HTMLAttributes<"img">, "src" | "width" | "height"> & {
+type Base = Omit<
+  HTMLAttributes<"img">,
+  "src" | "width" | "height" | "loading" | "fetchpriority"
+> & {
   /**
    * An imported asset, a remote `http(s)` URL, or a path to a file in `public/`.
    *
@@ -32,61 +35,49 @@ type Base = Omit<HTMLAttributes<"img">, "src" | "width" | "height"> & {
   quality?: ImageQuality;
   /** Output format. Defaults to `webp`, or `svg` passthrough for SVG sources. */
   format?: ImageFormat;
-  /** For logos and cutouts: never crop, and drop the skeleton tint. */
+  /** For cutouts on any variant: never crop, and drop the skeleton tint. */
   transparent?: boolean;
+  /** Defer loading until the image nears the viewport. Set `eager` for anything above the fold. */
+  loading?: "lazy" | "eager";
+  /** Raise fetch priority. Use on the page's largest above-the-fold image, and only that one. */
+  priority?: boolean;
 };
 
 type Props = Base &
   (
     | {
         /**
-         * How the browser chooses a source.
+         * What the image is for.
          *
-         * - `fixed` — a single source, no `srcset` (default)
-         * - `responsive` — one source per screen width
-         * - `densities` — one source per pixel density, for fixed-size art
+         * - `contained` — scales within its container, for cards and grids (default)
+         * - `background` — fills the section behind it
+         * - `logo` — natural size, never cropped, no skeleton tint
          */
-        variant?: "fixed";
-        widths?: never;
-        sizes?: never;
-        densities?: never;
-      }
-    | {
-        variant: "responsive";
-        /** Widths to generate. Astro picks sensible ones by default. */
-        widths?: number[];
-        /** `sizes` attribute, paired with `widths`. */
+        variant?: "contained";
+        /** How much of the viewport the image covers, when it isn't the full width. */
         sizes?: string;
-        densities?: never;
       }
-    | {
-        variant: "densities";
-        /** Densities to generate. Defaults to `[1, 2]`. */
-        densities?: (number | `${number}x`)[];
-        widths?: never;
-        sizes?: never;
-      }
+    | { variant: "background"; sizes?: never }
+    | { variant: "logo"; sizes?: never }
   );
 
 type AllProps = Base & {
   variant?: ImageVariant;
-  widths?: number[];
   sizes?: string;
-  densities?: (number | `${number}x`)[];
 };
 
 const {
   src,
   alt: altProp,
-  variant = "fixed",
+  variant = "contained",
   width,
   height,
-  widths,
-  densities,
   sizes,
   quality,
   format,
   transparent = false,
+  loading = "lazy",
+  priority = false,
   class: className,
   ...attrs
 } = Astro.props as AllProps;
@@ -115,12 +106,7 @@ if (import.meta.env.DEV && src && (isPublicPath || isSvg)) {
   const inert: string[] = [];
   if (quality !== undefined) inert.push("quality");
   if (format !== undefined) inert.push("format");
-  if (isPublicPath) {
-    if (widths !== undefined) inert.push("widths");
-    if (sizes !== undefined) inert.push("sizes");
-    if (densities !== undefined) inert.push("densities");
-    if (variant !== "fixed") inert.push(`variant="${variant}"`);
-  }
+  if (isPublicPath && sizes !== undefined) inert.push("sizes");
   if (inert.length) {
     const why = isPublicPath
       ? `files in public/ are served as-is — import from src/assets to optimize`
@@ -133,31 +119,31 @@ if (
   import.meta.env.DEV &&
   src &&
   !isPublicPath &&
-  variant === "densities" &&
+  variant === "logo" &&
   !hasEitherDimension
 ) {
   console.warn(
-    `[lumos] <Img variant="densities"> has no width or height, so every density resolves to the source's own size and each srcset entry points at the same file. Set the size it displays at.`,
+    `[lumos] <Img variant="logo"> has no width or height, so both densities resolve to the source's own size and each srcset entry points at the same file. Set the size it displays at.`,
   );
 }
 
 const srcset =
-  variant === "densities"
-    ? { densities: densities ?? [1, 2] }
-    : { widths, sizes, layout: variant === "fixed" ? "none" : "constrained" };
+  variant === "logo"
+    ? { densities: [1, 2] }
+    : {
+        sizes,
+        layout: variant === "background" ? "full-width" : "constrained",
+      };
 
-const classes = [
-  "image",
-  transparent && "transparent",
-  variant === "fixed" && "fixed",
-  className,
-];
+const classes = ["image", variant, transparent && "transparent", className];
 
 const shared = {
   src,
   alt,
   quality,
+  loading,
   format: resolvedFormat,
+  ...(priority ? { fetchpriority: "high" as const } : {}),
   ...sizing,
   ...srcset,
   ...attrs,
@@ -170,7 +156,8 @@ const shared = {
     (isPublicPath ? (
       <img
         src={src as string}
-        {...{ alt, width, height }}
+        {...{ alt, width, height, loading }}
+        fetchpriority={priority ? "high" : undefined}
         {...attrs}
         class:list={classes}
       />
