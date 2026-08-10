@@ -1,5 +1,5 @@
 ---
-import { Image, Picture } from "astro:assets";
+import { Image } from "astro:assets";
 import type { LocalImageProps, RemoteImageProps } from "astro:assets";
 import type { HTMLAttributes } from "astro/types";
 
@@ -14,15 +14,12 @@ type Base = Omit<HTMLAttributes<"img">, "src" | "width" | "height"> & {
    * An imported asset, a remote `http(s)` URL, or a path to a file in `public/`.
    *
    * Imports and remote URLs are optimized. Files in `public/` are served as-is —
-   * Astro never reads them — so they render as a plain `<img>` at their natural
-   * size. Nothing is output if `src` is missing.
+   * Astro never reads them — so they render at their natural size. Nothing is
+   * output if `src` is missing.
    */
   src: ImageMetadata | string;
   /** Leave unset on decorative images — renders `alt=""`. */
   alt?: string;
-};
-
-type Rest = {
   /** Overrides the width Astro reads from the source. Omit either dimension and it is inferred. */
   width?: number;
   /** Overrides the height Astro reads from the source. Omit either dimension and it is inferred. */
@@ -33,34 +30,13 @@ type Rest = {
    * With Astro's default sharp service: `low` is 25, `mid` 50, `high` 80, `max` 100.
    */
   quality?: ImageQuality;
+  /** Output format. Defaults to `webp`, or `svg` passthrough for SVG sources. */
+  format?: ImageFormat;
   /** For logos and cutouts: never crop, and drop the skeleton tint. */
   transparent?: boolean;
 };
 
-type PictureProps =
-  | {
-      /** Render `<picture>` with multiple formats instead of a single `<img>`. Ignored for SVG sources. */
-      picture: true;
-      /** Formats to offer. Astro adds a fallback of the source's own format. */
-      formats?: ImageFormat[];
-      /** Format of the fallback `<img>`. Defaults to `png`, or the source's own format for GIF, SVG and JPEG. */
-      fallbackFormat?: ImageFormat;
-      /** Attributes for the wrapping `<picture>` element. */
-      pictureAttributes?: HTMLAttributes<"picture">;
-      format?: never;
-    }
-  | {
-      picture?: false;
-      formats?: never;
-      fallbackFormat?: never;
-      pictureAttributes?: never;
-      /** Output format. Defaults to `webp`, or `svg` passthrough for SVG sources. */
-      format?: ImageFormat;
-    };
-
 type Props = Base &
-  PictureProps &
-  Rest &
   (
     | {
         /**
@@ -92,23 +68,16 @@ type Props = Base &
       }
   );
 
-type AllProps = Base &
-  Rest & {
-    picture?: boolean;
-    formats?: ImageFormat[];
-    fallbackFormat?: ImageFormat;
-    pictureAttributes?: HTMLAttributes<"picture">;
-    format?: ImageFormat;
-    variant?: ImageVariant;
-    widths?: number[];
-    sizes?: string;
-    densities?: (number | `${number}x`)[];
-  };
+type AllProps = Base & {
+  variant?: ImageVariant;
+  widths?: number[];
+  sizes?: string;
+  densities?: (number | `${number}x`)[];
+};
 
 const {
   src,
   alt: altProp,
-  picture = false,
   variant = "fixed",
   width,
   height,
@@ -117,9 +86,6 @@ const {
   sizes,
   quality,
   format,
-  formats,
-  fallbackFormat,
-  pictureAttributes,
   transparent = false,
   class: className,
   ...attrs
@@ -135,8 +101,6 @@ const isSvg =
   typeof src === "string" ? /\.svg(\?|#|$)/i.test(src) : src?.format === "svg";
 const resolvedFormat = format ?? (isSvg ? "svg" : undefined);
 
-const usePicture = picture && !isSvg;
-
 const isFetchable = typeof src === "string" && /^https?:\/\//i.test(src);
 const hasBothDimensions = width !== undefined && height !== undefined;
 const sizing =
@@ -150,9 +114,7 @@ if (import.meta.env.DEV && src && (isPublicPath || isSvg)) {
   const inert: string[] = [];
   if (quality !== undefined) inert.push("quality");
   if (format !== undefined) inert.push("format");
-  if (picture) inert.push("picture");
   if (isPublicPath) {
-    if (formats !== undefined) inert.push("formats");
     if (widths !== undefined) inert.push("widths");
     if (sizes !== undefined) inert.push("sizes");
     if (densities !== undefined) inert.push("densities");
@@ -198,13 +160,6 @@ const shared = {
         {...{ alt, width, height }}
         {...attrs}
         class:list={classes}
-      />
-    ) : usePicture ? (
-      <Picture
-        {...shared}
-        formats={formats}
-        fallbackFormat={fallbackFormat}
-        pictureAttributes={pictureAttributes}
       />
     ) : (
       <Image {...shared} />
