@@ -16,9 +16,12 @@ type Base = Omit<
   /**
    * An imported asset, a remote `http(s)` URL, or a path to a file in `public/`.
    *
-   * Imports and remote URLs are optimized. Files in `public/` are served as-is —
-   * Astro never reads them — so they render at their natural size. Nothing is
-   * output if `src` is missing.
+   * Imports are optimized. Files in `public/` are served as-is — Astro never
+   * reads them — so they render at their natural size.
+   *
+   * A remote URL gets no `srcset` unless you set `variant` explicitly, since
+   * Astro can only generate real variants for a host listed in
+   * `image.remotePatterns`. Nothing is output if `src` is missing.
    */
   src: ImageMetadata | string;
   /** Leave unset on decorative images — renders `alt=""`. */
@@ -127,8 +130,20 @@ if (
   );
 }
 
-const srcset =
-  variant === "fixed" ? { densities: [1, 2] } : { sizes, layout: variant };
+const variantSpecified = (Astro.props as AllProps).variant !== undefined;
+const unoptimizedRemote = isFetchable && !variantSpecified;
+
+if (import.meta.env.DEV && isFetchable && variantSpecified) {
+  console.warn(
+    `[lumos] <Img src="${src}"> generates a srcset for a remote host. Every entry repeats the original URL unless the host is listed in image.remotePatterns or image.domains.`,
+  );
+}
+
+const srcset = unoptimizedRemote
+  ? { layout: "none" as const }
+  : variant === "fixed"
+    ? { densities: [1, 2] }
+    : { sizes, layout: variant };
 
 const classes = ["image", variant, transparent && "transparent", className];
 
