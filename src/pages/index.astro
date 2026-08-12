@@ -1,29 +1,24 @@
 ---
-import Layout from "@/layouts/BaseLayout.astro";
-import Section from "@/components/Section.astro";
-import Button from "@/components/Button.astro";
-import ButtonWrapper from "@/components/ButtonWrapper.astro";
-import Heading from "@/components/Heading.astro";
-import Paragraph from "@/components/Paragraph.astro";
-import background from "@/assets/background.svg";
+import Layout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/Section.astro';
+import Button from '@/components/Button.astro';
+import ButtonWrapper from '@/components/ButtonWrapper.astro';
+import Heading from '@/components/Heading.astro';
+import Paragraph from '@/components/Paragraph.astro';
+import background from '@/assets/background.svg';
+import astro from '@/assets/astro.svg';
+import leaves from '@/assets/leaves.png';
+import Img from '@/components/Img.astro';
 ---
-
 <Layout>
-  <Section
-    align="center"
-    paddingTop="navoverlap"
-    theme="dark"
-    class="min-height-screen"
-  >
-    <img slot="background" src={background.src} alt="" />
-    <Heading tag="h2" variant="display" maxWidth={12}>Home</Heading>
-    <Paragraph tag="p" variant="large" maxWidth={45}>
-      We build things that help people work smarter, move faster, and grow
-      further.
-    </Paragraph>
+  <Section fullHeight={true} align="center" theme="dark" paddingBottom="large" paddingTop="large">
+    <img src={background.src} slot="background" />
+    <Heading variant="display" tag="h1">Home</Heading>
+    <Paragraph variant="large" maxWidth={36}>We build things that help people work smarter, move faster, and grow further.</Paragraph>
     <ButtonWrapper>
-      <Button href="/about">Learn more</Button>
-      <Button variant="secondary" type="button">Send</Button>
+      <Button tag="a" href="/about">Learn more</Button>
+      <Button variant="secondary">Send</Button>
     </ButtonWrapper>
+    <Img src={leaves} />
   </Section>
 </Layout>
