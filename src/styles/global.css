@@ -382,6 +382,11 @@ video {
   object-fit: cover;
 }
 
+img {
+  height: auto;
+  overflow: clip;
+}
+
 button {
   background: none;
   text-align: inherit;
@@ -678,20 +683,6 @@ h6,
 
 .image {
   background-color: var(--background-skeleton);
-  width: 100%;
-  height: auto;
-  display: block;
-  overflow: clip;
-  object-fit: cover;
-
-  &.full-width {
-    height: 100%;
-  }
-
-  &.fixed {
-    width: auto;
-    max-width: 100%;
-  }
 
   &.transparent {
     background-color: transparent;

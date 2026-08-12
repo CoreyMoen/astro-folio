@@ -3,11 +3,9 @@ import { Image } from "astro:assets";
 import type { LocalImageProps, RemoteImageProps } from "astro:assets";
 import type { HTMLAttributes } from "astro/types";
 
-type ImageVariant = "full-width" | "constrained" | "fixed";
+type ImageVariant = "full-width" | "constrained" | "densities";
 
 type ImageQuality = "low" | "mid" | "high" | "max";
-
-type ImageFormat = "avif" | "webp" | "png" | "jpeg";
 
 type Base = Omit<
   HTMLAttributes<"img">,
@@ -30,57 +28,64 @@ type Base = Omit<
   width?: number;
   /** Overrides the height Astro reads from the source. Omit either dimension and it is inferred. */
   height?: number;
-  /**
-   * Output quality preset. Defaults to the image service's own default.
-   *
-   * With Astro's default sharp service: `low` is 25, `mid` 50, `high` 80, `max` 100.
-   */
-  quality?: ImageQuality;
-  /** Output format. Defaults to `webp`, or `svg` passthrough for SVG sources. */
-  format?: ImageFormat;
   /** For logos and cutouts: fit the whole image in rather than cropping, and drop the skeleton tint. */
   transparent?: boolean;
   /** Defer loading until the image nears the viewport. Set `eager` for anything above the fold. */
   loading?: "lazy" | "eager";
-  /** Raise fetch priority. Use on the page's largest above-the-fold image, and only that one. */
-  priority?: boolean;
+  /**
+   * Hint at how urgently to fetch this image, relative to others on the page.
+   *
+   * Use `high` on the page's largest above-the-fold image, and only that one.
+   * `auto` leaves the decision to the browser.
+   */
+  fetchPriority?: "auto" | "high" | "low";
 };
 
 type Props = Base &
   (
     | {
         /**
-         * How much space the image takes, matching Astro's `image.layout` values.
+         * How the srcset is generated.
          *
-         * - `constrained` — scales with its container, capped at the source width (default)
-         * - `full-width` — fills its container in both dimensions
-         * - `fixed` — its own size, with a 2x source for retina
+         * - `full-width` — widths up to the source width, tracking the viewport (default)
+         * - `constrained` — widths up to the source width, capped by `sizes`
+         * - `densities` — the display size at 1x and 2x, for a fixed-size image
          */
-        variant?: "constrained";
+        variant?: "full-width";
+        sizes?: never;
+      }
+    | {
+        variant: "constrained";
         /** How much of the viewport the image covers, when it isn't the full width. */
         sizes?: string;
       }
-    | { variant: "full-width"; sizes?: never }
-    | { variant: "fixed"; sizes?: never }
-  );
+    | { variant: "densities"; sizes?: never }
+  ) & {
+    /**
+     * Output quality preset. Defaults to `high`.
+     *
+     * With Astro's default sharp service: `low` is 25, `mid` 50, `high` 80, `max` 100.
+     */
+    quality?: ImageQuality;
+  };
 
 type AllProps = Base & {
   variant?: ImageVariant;
   sizes?: string;
+  quality?: ImageQuality;
 };
 
 const {
   src,
   alt: altProp,
-  variant = "constrained",
+  variant = "full-width",
   width,
   height,
   sizes,
-  quality,
-  format,
+  quality = "high",
   transparent = false,
   loading = "lazy",
-  priority = false,
+  fetchPriority = "auto",
   class: className,
   ...attrs
 } = Astro.props as AllProps;
@@ -93,7 +98,7 @@ if (import.meta.env.DEV && !src) {
 
 const isSvg =
   typeof src === "string" ? /\.svg(\?|#|$)/i.test(src) : src?.format === "svg";
-const resolvedFormat = format ?? (isSvg ? "svg" : undefined);
+const resolvedFormat = isSvg ? "svg" : undefined;
 
 const isFetchable = typeof src === "string" && /^https?:\/\//i.test(src);
 const hasBothDimensions = width !== undefined && height !== undefined;
@@ -107,9 +112,8 @@ const isPublicPath = typeof src === "string" && !isFetchable;
 
 if (import.meta.env.DEV && src && (isPublicPath || isSvg)) {
   const inert: string[] = [];
-  if (quality !== undefined) inert.push("quality");
-  if (format !== undefined) inert.push("format");
-  if (isPublicPath && sizes !== undefined) inert.push("sizes");
+  if ((Astro.props as AllProps).quality !== undefined) inert.push("quality");
+  if (sizes !== undefined) inert.push("sizes");
   if (inert.length) {
     const why = isPublicPath
       ? `files in public/ are served as-is — import from src/assets to optimize`
@@ -122,11 +126,12 @@ if (
   import.meta.env.DEV &&
   src &&
   !isPublicPath &&
-  variant === "fixed" &&
+  !isSvg &&
+  variant === "densities" &&
   !hasEitherDimension
 ) {
   console.warn(
-    `[lumos] <Img variant="fixed"> has no width or height, so both densities resolve to the source's own size and each srcset entry points at the same file. Set the size it displays at.`,
+    `[lumos] <Img variant="densities"> has no width or height, so both densities resolve to the source's own size and each srcset entry points at the same file. Set the size it displays at.`,
   );
 }
 
@@ -139,21 +144,30 @@ if (import.meta.env.DEV && isFetchable && variantSpecified) {
   );
 }
 
-const srcset = unoptimizedRemote
-  ? { layout: "none" as const }
-  : variant === "fixed"
-    ? { densities: [1, 2] }
-    : { sizes, layout: variant };
+const VIEWPORT_MAX = 1440;
 
-const classes = ["image", variant, transparent && "transparent", className];
+const displayWidth = (width ?? VIEWPORT_MAX) / 16;
+
+const defaultSizes = `(min-width: ${displayWidth}rem) ${displayWidth}rem, 100vw`;
+
+const srcset =
+  unoptimizedRemote || isSvg
+    ? { layout: "none" as const }
+    : variant === "densities"
+      ? { densities: [1, 2] }
+      : variant === "full-width"
+        ? { layout: variant, ...(loading === "lazy" ? { sizes: "auto" } : {}) }
+        : { sizes: sizes ?? defaultSizes, layout: variant };
+
+const classes = ["image", transparent && "transparent", className];
 
 const shared = {
   src,
   alt,
-  quality,
+  quality: quality === "high" ? undefined : quality,
   loading,
   format: resolvedFormat,
-  ...(priority ? { fetchpriority: "high" as const } : {}),
+  ...(fetchPriority !== "auto" ? { fetchpriority: fetchPriority } : {}),
   ...sizing,
   ...srcset,
   ...attrs,
@@ -167,7 +181,7 @@ const shared = {
       <img
         src={src as string}
         {...{ alt, width, height, loading }}
-        fetchpriority={priority ? "high" : undefined}
+        fetchpriority={fetchPriority === "auto" ? undefined : fetchPriority}
         {...attrs}
         class:list={classes}
       />
