@@ -4,7 +4,6 @@ import sitemap from "@astrojs/sitemap";
 import { SITE_URL } from "./src/consts.ts";
 import { isNoindexRoute } from "./src/utils/seo.ts";
 
-// https://astro.build/config
 export default defineConfig({
   site: SITE_URL,
   integrations: [
