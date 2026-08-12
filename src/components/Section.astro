@@ -19,21 +19,23 @@ type ContainerGap =
   | "large";
 
 interface Props extends HTMLAttributes<"section"> {
+  theme?: "inherit" | "light" | "dark" | "brand";
   paddingTop?: SectionSpace;
   paddingBottom?: SectionSpace;
-  theme?: "inherit" | "light" | "dark" | "brand";
   gap?: ContainerGap;
   align?: "start" | "center" | "end";
+  fullHeight?: boolean;
   containerClass?: string;
   containerAttrs?: HTMLAttributes<"div">;
 }
 
 const {
+  theme = "inherit",
   paddingTop = "medium",
   paddingBottom = "medium",
-  theme = "inherit",
   gap = "8",
   align,
+  fullHeight = false,
   containerClass,
   containerAttrs = {},
   class: className,
@@ -53,6 +55,7 @@ const padClass = (side: "top" | "bottom", value: SectionSpace) =>
     "section",
     padClass("top", paddingTop),
     padClass("bottom", paddingBottom),
+    fullHeight && "min-height-screen",
     theme !== "inherit" && `theme-${theme}`,
     align && `alignment-${align}`,
     className,
