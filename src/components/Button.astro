@@ -1,28 +1,35 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 
-/** Rendered as <button>: no href, but type and disabled are available. */
 type ButtonProps = HTMLAttributes<"button"> & {
   variant?: "primary" | "secondary";
-  href?: never;
+  tag?: "button";
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
+  href?: never;
 };
 
-/** Rendered as <a>: href is required, and type and disabled are not valid. */
 type LinkProps = Omit<HTMLAttributes<"a">, "type"> & {
   variant?: "primary" | "secondary";
-  href: string;
+  tag: "a";
+  href?: string;
   type?: never;
   disabled?: never;
 };
 
 type Props = ButtonProps | LinkProps;
 
-const { href, variant = "primary", type = "button", ...rest } = Astro.props;
-const Tag = href ? "a" : "button";
-const tagAttrs = href
-  ? { href }
+const {
+  variant = "primary",
+  tag = "button",
+  href,
+  type = "button",
+  ...rest
+} = Astro.props;
+const isLink = tag === "a";
+const Tag = isLink ? "a" : "button";
+const tagAttrs = isLink
+  ? { href: href || "#" }
   : { type: type === "submit" ? undefined : type };
 ---
 
