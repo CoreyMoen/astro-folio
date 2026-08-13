@@ -2,8 +2,6 @@
 import type { HTMLAttributes } from "astro/types";
 import { slotContent } from "@/utils/slots.ts";
 
-type GridColumns = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
-
 type Base = HTMLAttributes<"div"> & {
   /** Set to `false` to skip rendering this component and its children. */
   render?: boolean;
@@ -17,23 +15,54 @@ type Props = Base &
          *
          * - `columns` — a count you set per breakpoint (default)
          * - `autofit` — as many columns as fit, from a minimum width
+         * - `autofill` — same, but empty columns keep their space
          */
         variant?: "columns";
-        /** Columns below 30rem. The base every larger size falls back to. */
-        xsmall?: GridColumns;
-        /** Columns from 30rem up. Inherits xsmall when unset. */
-        small?: GridColumns;
-        /** Columns from 48rem up. Inherits small when unset. */
-        medium?: GridColumns;
-        /** Columns from 64rem up. Inherits medium when unset. */
-        large?: GridColumns;
+        /**
+         * Columns below 30rem. The base every larger size falls back to.
+         *
+         * @min 1
+         * @max 12
+         * @int
+         */
+        xsmall?: number;
+        /**
+         * Columns from 30rem up. Inherits xsmall when unset.
+         *
+         * @min 1
+         * @max 12
+         * @int
+         */
+        small?: number;
+        /**
+         * Columns from 48rem up. Inherits small when unset.
+         *
+         * @min 1
+         * @max 12
+         * @int
+         */
+        medium?: number;
+        /**
+         * Columns from 64rem up. Inherits medium when unset.
+         *
+         * @min 1
+         * @max 12
+         * @int
+         */
+        large?: number;
         maxColumnCount?: never;
         minColumnWidth?: never;
       }
     | {
-        variant: "autofit";
-        /** Never exceed this many columns, however wide the grid gets. Defaults to 12. */
-        maxColumnCount?: GridColumns;
+        variant: "autofit" | "autofill";
+        /**
+         * Never exceed this many columns, however wide the grid gets. Defaults to 12.
+         *
+         * @min 1
+         * @max 12
+         * @int
+         */
+        maxColumnCount?: number;
         /** Smallest a column may get, in rem, before the count drops. Must be greater than 0. Defaults to 12. */
         minColumnWidth?: number;
         xsmall?: never;
@@ -44,12 +73,12 @@ type Props = Base &
   );
 
 type AllProps = Base & {
-  variant?: "columns" | "autofit";
-  xsmall?: GridColumns;
-  small?: GridColumns;
-  medium?: GridColumns;
-  large?: GridColumns;
-  maxColumnCount?: GridColumns;
+  variant?: "columns" | "autofit" | "autofill";
+  xsmall?: number;
+  small?: number;
+  medium?: number;
+  large?: number;
+  maxColumnCount?: number;
   minColumnWidth?: number;
 };
 
@@ -84,7 +113,7 @@ if (
 }
 
 const columns =
-  (variant === "autofit"
+  (variant !== "columns"
     ? [
         maxColumnCount !== undefined && `--_max-cols: ${maxColumnCount}`,
         validMinColumnWidth && `--_min-col: ${minColumnWidth}`,
@@ -103,7 +132,7 @@ const columns =
 {
   render && content && (
     <div
-      class:list={["grid", variant === "autofit" && "autofit", className]}
+      class:list={["grid", variant !== "columns" && variant, className]}
       style={columns}
       {...rest}
     >
@@ -135,25 +164,19 @@ const columns =
       @media (width >= 64rem) {
         --_cols: var(--_cols-lg);
       }
-    }
-
-    .grid.autofit {
-      --_max-cols: 12;
-      --_min-col: 12;
-      grid-template-columns: repeat(
-        auto-fit,
-        minmax(
-          min(
-            max(
-              calc(var(--_min-col) * 1rem),
-              (100% - ((var(--_max-cols) - 1) * var(--_gap-size))) /
-                var(--_max-cols)
-            ),
-            100%
-          ),
-          1fr
-        )
-      );
+      &:is(.autofit, .autofill) {
+        --_max-cols: 12;
+        --_min-col: 12;
+        --_fit: (100% - (var(--_max-cols) - 1) * var(--_gap-size)) /
+          var(--_max-cols);
+        --_track: min(max(calc(var(--_min-col) * 1rem), var(--_fit)), 100%);
+      }
+      &.autofit {
+        grid-template-columns: repeat(auto-fit, minmax(var(--_track), 1fr));
+      }
+      &.autofill {
+        grid-template-columns: repeat(auto-fill, minmax(var(--_track), 1fr));
+      }
     }
   }
 </style>
