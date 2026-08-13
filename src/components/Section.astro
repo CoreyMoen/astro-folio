@@ -1,5 +1,6 @@
 ---
 import type { HTMLAttributes } from "astro/types";
+import { slotContent } from "@/utils/slots.ts";
 
 type SectionSpace =
   "none" | "even" | "small" | "medium" | "large" | "navoverlap";
@@ -48,30 +49,39 @@ const padClass = (side: "top" | "bottom", value: SectionSpace) =>
   !!value &&
   value !== "medium" &&
   `padding-${side}-${value === "even" ? "sitemargin" : value}`;
+
+const content = await slotContent(Astro.slots);
+const background = await slotContent(Astro.slots, "background");
 ---
 
-<section
-  class:list={[
-    "section",
-    padClass("top", paddingTop),
-    padClass("bottom", paddingBottom),
-    fullHeight && "min-height-screen",
-    theme !== "inherit" && `theme-${theme}`,
-    align && `alignment-${align}`,
-    className,
-  ]}
-  {...rest}
->
-  <slot name="background" />
-  <div
-    class:list={[
-      "container",
-      gap !== "8" && `gap-${gap}`,
-      containerClass,
-      containerAttrsClass,
-    ]}
-    {...containerRest}
-  >
-    <slot />
-  </div>
-</section>
+{
+  (content || background) && (
+    <section
+      class:list={[
+        "section",
+        padClass("top", paddingTop),
+        padClass("bottom", paddingBottom),
+        fullHeight && "min-height-screen",
+        theme !== "inherit" && `theme-${theme}`,
+        align && `alignment-${align}`,
+        className,
+      ]}
+      {...rest}
+    >
+      <slot name="background" />
+      {content && (
+        <div
+          class:list={[
+            "container",
+            gap !== "8" && `gap-${gap}`,
+            containerClass,
+            containerAttrsClass,
+          ]}
+          {...containerRest}
+        >
+          <slot />
+        </div>
+      )}
+    </section>
+  )
+}
