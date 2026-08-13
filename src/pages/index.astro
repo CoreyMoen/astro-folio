@@ -13,12 +13,17 @@ import pause from '@/assets/icons/pause.svg';
 import play from '@/assets/icons/play.svg';
 import Img from '@/components/Img.astro';
 import lumos_background from '@/assets/lumos-background.svg';
+import Icon from '@/components/Icon.astro';
+import logo_icon from '@/assets/logo-icon.svg';
+import ContentWrapper from '@/components/ContentWrapper.astro';
 ---
-<Layout overlap={true}>
-  <Section fullHeight={true} align="center" paddingBottom="large" paddingTop="large">
-    <Img src={lumos_background} slot="background" />
-    <Eyebrow>Lumos Framework</Eyebrow>
-    <Heading variant="display" tag="h1">Style Guide</Heading>
-    <Eyebrow variant="tag">v0.01</Eyebrow>
+<Layout theme="dark">
+  <Section paddingBottom="even" containerClass="flex-grow" paddingTop="even" class="flex-grow" style="min-height: calc(100svh - var(--nav-height));">
+    <ContentWrapper class="flex-grow theme-brand" variant="card" mediaOpacity={100}>
+      <Icon src={logo_icon} variant="large" />
+      <Heading variant="display" tag="h1" class="margin-block-8">Style Guide</Heading>
+      <Eyebrow variant="tag">v0.01</Eyebrow>
+      <Img slot="column2" src={lumos_background} width={1920} height={1080} />
+    </ContentWrapper>
   </Section>
 </Layout>
