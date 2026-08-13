@@ -3,6 +3,8 @@ import type { HTMLAttributes } from "astro/types";
 import { slotContent } from "@/utils/slots.ts";
 
 type ButtonProps = HTMLAttributes<"button"> & {
+  /** Set to `false` to skip rendering this component and its children. */
+  render?: boolean;
   variant?: "primary" | "secondary";
   tag?: "button";
   type?: "button" | "submit" | "reset";
@@ -11,6 +13,7 @@ type ButtonProps = HTMLAttributes<"button"> & {
 };
 
 type LinkProps = Omit<HTMLAttributes<"a">, "type"> & {
+  render?: boolean;
   variant?: "primary" | "secondary";
   tag: "a";
   href?: string;
@@ -21,6 +24,7 @@ type LinkProps = Omit<HTMLAttributes<"a">, "type"> & {
 type Props = ButtonProps | LinkProps;
 
 const {
+  render = true,
   variant = "primary",
   tag = "button",
   href,
@@ -37,7 +41,7 @@ const content = await slotContent(Astro.slots);
 ---
 
 {
-  content && (
+  render && content && (
     <Tag
       class:list={["button", variant !== "primary" && variant]}
       {...tagAttrs}
