@@ -8,6 +8,7 @@ type ContentWrapperVariant =
   | "auto-width"
   | "columns"
   | "columns-reversed"
+  | "full"
   | "sticky-content"
   | "sticky-visual";
 
@@ -15,13 +16,12 @@ interface Props extends HTMLAttributes<"div"> {
   /** Set to `false` to skip rendering this component and its children. */
   render?: boolean;
   /**
-   * How the two columns are arranged from 48rem up. All variants stack below it.
-   *
    * - `stack` — one column at every width (default)
    * - `stack-centered` — one column, contents centered
    * - `auto-width` — each column only as wide as its contents
    * - `columns` — equal halves
    * - `columns-reversed` — equal halves, second column first
+   * - `full` — equal halves spanning the viewport rather than the container
    * - `sticky-content` — the first column sticks while the second scrolls
    * - `sticky-visual` — the second column sticks while the first scrolls
    */
