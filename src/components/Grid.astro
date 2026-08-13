@@ -21,6 +21,10 @@ const {
   ...rest
 } = Astro.props;
 
+const slotContent = Astro.slots.has("default")
+  ? (await Astro.slots.render("default")).trim()
+  : "";
+
 const columns = [
   `--_cols-xs: ${xsmall}`,
   small !== undefined && `--_cols-sm: ${small}`,
@@ -31,9 +35,13 @@ const columns = [
   .join("; ");
 ---
 
-<div class:list={["grid", className]} style={columns} {...rest}>
-  <slot />
-</div>
+{
+  slotContent && (
+    <div class:list={["grid", className]} style={columns} {...rest}>
+      <slot />
+    </div>
+  )
+}
 
 <style is:global>
   @layer components {
@@ -44,11 +52,11 @@ const columns = [
       --_cols-md: var(--_cols-sm);
       --_cols-lg: var(--_cols-md);
       --_gap-size: var(--site-gutter);
+      width: 100%;
       display: grid;
       grid-column-gap: var(--_gap-size);
       grid-row-gap: var(--_gap-size);
       grid-template-columns: repeat(var(--_cols), minmax(0, 1fr));
-      width: 100%;
       @media (width >= 30rem) {
         --_cols: var(--_cols-sm);
       }
