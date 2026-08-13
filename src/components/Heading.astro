@@ -1,5 +1,6 @@
 ---
 import type { HTMLAttributes } from "astro/types";
+import { slotContent } from "@/utils/slots.ts";
 
 type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 type HeadingStyle =
@@ -30,18 +31,22 @@ const {
 } = Astro.props;
 
 const Tag = tag;
+
+const content = await slotContent(Astro.slots);
 ---
 
-<div
-  class:list={[
-    "heading",
-    variant !== "inherit" && `text-style-${variant}`,
-    className,
-  ]}
-  style={maxWidth ? `--_max-width: ${maxWidth}ch;` : undefined}
-  {...rest}
->
-  <Tag>
-    <slot />
-  </Tag>
-</div>
+{
+  content && (
+    <Tag
+      class:list={[
+        "heading",
+        variant !== "inherit" && `text-style-${variant}`,
+        className,
+      ]}
+      style={maxWidth ? `--_mw: ${maxWidth}ch;` : undefined}
+      {...rest}
+    >
+      <slot />
+    </Tag>
+  )
+}

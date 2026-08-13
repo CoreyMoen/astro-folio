@@ -1,5 +1,6 @@
 ---
 import type { HTMLAttributes } from "astro/types";
+import { slotContent } from "@/utils/slots.ts";
 
 type WrapperMargin =
   "none" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "auto";
@@ -9,15 +10,21 @@ interface Props extends HTMLAttributes<"div"> {
 }
 
 const { marginTop = "6", class: className, ...rest } = Astro.props;
+
+const content = await slotContent(Astro.slots);
 ---
 
-<div
-  class:list={[
-    "button-wrapper",
-    marginTop !== "6" && `margin-top-${marginTop}`,
-    className,
-  ]}
-  {...rest}
->
-  <slot />
-</div>
+{
+  content && (
+    <div
+      class:list={[
+        "button-wrapper",
+        marginTop !== "6" && `margin-top-${marginTop}`,
+        className,
+      ]}
+      {...rest}
+    >
+      <slot />
+    </div>
+  )
+}
