@@ -1,8 +1,7 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 
-type VideoRatio =
-  "auto" | "1-1" | "16-9" | "3-2" | "2-3" | "2-1" | "5-4" | "4-5";
+type VideoRatio = "2-1" | "16-9" | "3-2" | "5-4" | "1-1" | "4-5" | "2-3";
 
 type Head = Omit<
   HTMLAttributes<"video">,
@@ -31,10 +30,12 @@ type Props = Head &
   (
     | {
         /**
-         * Aspect ratio, applied with the matching `ratio-*` utility.
+         * Aspect ratio, applied with the matching `ratio-*` utility. Presets
+         * run from widest to tallest. Defaults to `16-9`.
          *
-         * `auto` keeps the file's own ratio. Choose `custom` to type a ratio
-         * of your own instead.
+         * `custom` takes a ratio of your own. `auto` matches the file, but its
+         * height is unknown until the file's metadata arrives, so the page
+         * shifts once it loads.
          */
         variant?: VideoRatio;
         ratio?: never;
@@ -44,21 +45,25 @@ type Props = Head &
         /** Any CSS `aspect-ratio` value, such as `21 / 9` or `1.85`. */
         ratio?: string;
       }
+    | {
+        variant: "auto";
+        ratio?: never;
+      }
   ) &
   Tail;
 
 type AllProps = Head &
   Tail & {
     variant?:
-      | "auto"
-      | "1-1"
+      | "2-1"
       | "16-9"
       | "3-2"
-      | "2-3"
-      | "2-1"
       | "5-4"
+      | "1-1"
       | "4-5"
-      | "custom";
+      | "2-3"
+      | "custom"
+      | "auto";
     ratio?: string;
   };
 
@@ -66,7 +71,7 @@ const {
   render = true,
   src,
   poster,
-  variant = "auto",
+  variant = "16-9",
   ratio,
   loop = true,
   autoplay = true,
