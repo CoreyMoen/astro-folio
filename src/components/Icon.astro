@@ -3,7 +3,7 @@ import type { HTMLAttributes, SvgComponent } from "astro/types";
 
 type IconVariant = "small" | "medium" | "large" | "full-width";
 
-interface Props extends Omit<HTMLAttributes<"svg">, "aria-hidden"> {
+interface Props extends HTMLAttributes<"svg"> {
   /** Set to `false` to skip rendering this component and its children. */
   render?: boolean;
   /** An SVG imported from `src/assets`, rendered inline. Nothing is output if it is missing. */
@@ -17,31 +17,22 @@ interface Props extends Omit<HTMLAttributes<"svg">, "aria-hidden"> {
    * - `full-width` — fills its container, height follows the artwork
    */
   variant?: IconVariant;
-  /**
-   * Hide from assistive technology. Leave on for decoration; set `false` when
-   * the icon carries meaning, and give it an `aria-label`.
-   */
-  ariaHidden?: boolean;
 }
 
 const {
   render = true,
   src: Svg,
   variant = "medium",
-  ariaHidden = true,
   class: className,
   ...rest
 } = Astro.props;
+
+const labelled = Boolean(rest["aria-label"] ?? rest["aria-labelledby"]);
 
 if (import.meta.env.DEV && render) {
   if (!Svg) {
     console.warn(
       "[lumos] <Icon> rendered without a `src`; nothing was output.",
-    );
-  }
-  if (!ariaHidden && !rest["aria-label"] && !rest["aria-labelledby"]) {
-    console.warn(
-      "[lumos] <Icon ariaHidden={false}> has no `aria-label`, so it is exposed to screen readers with no name. Add one, or leave ariaHidden on.",
     );
   }
 }
@@ -51,7 +42,7 @@ if (import.meta.env.DEV && render) {
   render && Svg && (
     <Svg
       class:list={["icon", variant !== "medium" && variant, className]}
-      aria-hidden={ariaHidden ? "true" : undefined}
+      aria-hidden={labelled ? undefined : "true"}
       {...rest}
     />
   )
