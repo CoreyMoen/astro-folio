@@ -1,46 +1,75 @@
-# Astro Starter Kit: Basics
+# Lumos For Astro
+
+A component and styling framework for building Astro sites, designed around
+efficiency, scalability and accessibility.
+
+> **Beta.** `v0.0.1` is the first tagged release. The component API is still
+> settling, so expect prop names to move before `v0.1.0`.
+
+## Getting started
 
 ```sh
-npm create astro@latest -- --template basics
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+| Script            | What it does                      |
+| ----------------- | --------------------------------- |
+| `npm run dev`     | Starts the dev server             |
+| `npm run build`   | Builds the site to `dist/`        |
+| `npm run preview` | Serves the built site             |
+| `npm run check`   | Type-checks every `.astro` file   |
+| `npm run format`  | Formats the project with Prettier |
 
-## 🚀 Project Structure
+Node 22.12 or newer is required.
 
-Inside of your Astro project, you'll see the following folders and files:
+## How it is put together
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+### The cascade
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Styles are split across four cascade layers, declared in
+[`global.css`](src/styles/global.css) in this order:
 
-## 🧞 Commands
+| Layer        | File                                      | Holds                                               |
+| ------------ | ----------------------------------------- | --------------------------------------------------- |
+| `base`       | [base.css](src/styles/base.css)           | Design tokens, color themes, the reset, text styles |
+| `patterns`   | [patterns.css](src/styles/patterns.css)   | Multi-property patterns shared across components    |
+| `components` | Each component's own `<style>` block      | The component itself                                |
+| `utilities`  | [utilities.css](src/styles/utilities.css) | Single-property classes                             |
 
-All commands are run from the root of the project, from a terminal:
+A later layer beats an earlier one whatever the selectors say, so components
+override patterns and utilities override components.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+### Theming
 
-## 👀 Want to learn more?
+Four theme classes — `theme-light`, `theme-dark`, `theme-brand` and
+`theme-invert` — each redeclare the same set of custom properties, so anything
+inside them picks up the right colors without knowing where it sits. `Section`,
+`BaseLayout` and `Card` all take a `theme` prop that applies one.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### Components
+
+Layout: `Section`, `ContentWrapper`, `Grid`, `ButtonWrapper`
+Content: `Heading`, `Paragraph`, `RichText`, `Eyebrow`, `Card`, `Button`
+Media: `Img`, `Video`, `Icon`, `Overlay`
+Chrome: `Nav`, `Footer`, `SkipLink`, `BaseHead`, `FormattedDate`
+
+Every component takes a `render` prop; pass `false` to skip it and its children.
+Components that would render nothing skip themselves.
+
+See [example-components](src/pages/example-components.astro) for each one in
+context.
+
+### Site configuration
+
+Site name, description, canonical origin, locale and the routes kept out of
+search live in [`src/consts.ts`](src/consts.ts).
+
+## Contributing
+
+Read [CONTRIBUTING.md](CONTRIBUTING.md) first — a pull request needs the
+[CLA](CLA.md) signed before it can be merged.
+
+## License
+
+[MIT](LICENSE)
