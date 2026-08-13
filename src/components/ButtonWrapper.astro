@@ -6,16 +6,23 @@ type WrapperMargin =
   "none" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "auto";
 
 interface Props extends HTMLAttributes<"div"> {
+  /** Set to `hidden` to skip rendering this component and its children. */
+  visibility?: "visible" | "hidden";
   marginTop?: WrapperMargin;
 }
 
-const { marginTop = "6", class: className, ...rest } = Astro.props;
+const {
+  visibility = "visible",
+  marginTop = "6",
+  class: className,
+  ...rest
+} = Astro.props;
 
 const content = await slotContent(Astro.slots);
 ---
 
 {
-  content && (
+  visibility === "visible" && content && (
     <div
       class:list={[
         "button-wrapper",

@@ -2,20 +2,20 @@
 import type { HTMLAttributes } from "astro/types";
 import { slotContent } from "@/utils/slots.ts";
 
-interface Props extends HTMLAttributes<"div"> {
-  /** Show the marker before the text. */
-  marker?: boolean;
-}
+type Props = HTMLAttributes<"div"> & {
+  /** Set to `hidden` to skip rendering this component and its children. */
+  visibility?: "visible" | "hidden";
+};
 
-const { marker = true, class: className, ...rest } = Astro.props;
+const { visibility = "visible", class: className, ...rest } = Astro.props;
 
 const content = await slotContent(Astro.slots);
 ---
 
 {
-  content && (
+  visibility === "visible" && content && (
     <div class:list={["eyebrow_wrap", className]} {...rest}>
-      {marker && <span class="eyebrow_marker" aria-hidden="true" />}
+      <span class="eyebrow_marker" aria-hidden="true" />
       <p class="eyebrow_text text-style-small">
         <slot />
       </p>

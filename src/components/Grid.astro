@@ -2,18 +2,23 @@
 import type { HTMLAttributes } from "astro/types";
 import { slotContent } from "@/utils/slots.ts";
 
+type GridColumns = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+
 interface Props extends HTMLAttributes<"div"> {
+  /** Set to `hidden` to skip rendering this component and its children. */
+  visibility?: "visible" | "hidden";
   /** Columns below 30rem. The base every larger size falls back to. */
-  xsmall?: number;
+  xsmall?: GridColumns;
   /** Columns from 30rem up. Inherits xsmall when unset. */
-  small?: number;
+  small?: GridColumns;
   /** Columns from 48rem up. Inherits small when unset. */
-  medium?: number;
+  medium?: GridColumns;
   /** Columns from 64rem up. Inherits medium when unset. */
-  large?: number;
+  large?: GridColumns;
 }
 
 const {
+  visibility = "visible",
   xsmall = 1,
   small,
   medium,
@@ -24,18 +29,19 @@ const {
 
 const content = await slotContent(Astro.slots);
 
-const columns = [
-  `--_cols-xs: ${xsmall}`,
-  small !== undefined && `--_cols-sm: ${small}`,
-  medium !== undefined && `--_cols-md: ${medium}`,
-  large !== undefined && `--_cols-lg: ${large}`,
-]
-  .filter(Boolean)
-  .join("; ");
+const columns =
+  [
+    xsmall !== 1 && `--_cols-xs: ${xsmall}`,
+    small !== undefined && `--_cols-sm: ${small}`,
+    medium !== undefined && `--_cols-md: ${medium}`,
+    large !== undefined && `--_cols-lg: ${large}`,
+  ]
+    .filter(Boolean)
+    .join("; ") || undefined;
 ---
 
 {
-  content && (
+  visibility === "visible" && content && (
     <div class:list={["grid", className]} style={columns} {...rest}>
       <slot />
     </div>
