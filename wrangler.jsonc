@@ -14,7 +14,7 @@
   // and manage the DNS record for it, so the zone needs to be in this account.
   "routes": [
     {
-      "pattern": "lumos-lite.timothyricks.com",
+      "pattern": "lumosframework.timothyricks.com",
       "custom_domain": true
     }
   ],
