@@ -23,7 +23,7 @@ import ContentWrapper from '@/components/ContentWrapper.astro';
       <Icon src={logo_icon} variant="large" />
       <Heading variant="display" tag="h1" class="margin-block-8">Style Guide</Heading>
       <Eyebrow variant="tag">v0.01</Eyebrow>
-      <Img slot="column2" src={lumos_background} width={1920} height={1080} />
+      <Img slot="column2" src={lumos_background} width={1920} height={1080} loading="eager" fetchPriority="high" />
     </ContentWrapper>
   </Section>
 </Layout>
