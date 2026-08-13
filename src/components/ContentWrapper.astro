@@ -54,7 +54,7 @@ const column2 = await slotContent(Astro.slots, "column2");
 
 {
   render && (column1 || column2) && (
-    <div class:list={["content_wrap", variantClasses, className]} {...rest}>
+    <div class:list={["layout", variantClasses, className]} {...rest}>
       {column1 && (
         <div class:list={[column1Class]}>
           <slot />
@@ -71,7 +71,7 @@ const column2 = await slotContent(Astro.slots, "column2");
 
 <style is:global>
   @layer components {
-    .content_wrap {
+    .layout {
       /* layout defaults */
       --_visual-ratio: 3 / 2;
       --_alignment: start;
@@ -79,10 +79,10 @@ const column2 = await slotContent(Astro.slots, "column2");
       width: 100%;
       display: flex;
       flex-direction: column;
-      grid-column-gap: var(--site-gutter);
-      grid-row-gap: var(--space-8);
+      column-gap: var(--site-gutter);
+      row-gap: var(--space-8);
       align-items: stretch;
-      grid-template-columns: repeat(--_column-count, minmax(0, 1fr));
+      grid-template-columns: repeat(var(--_column-count), minmax(0, 1fr));
 
       /* column defaults */
       & > * {
@@ -117,7 +117,7 @@ const column2 = await slotContent(Astro.slots, "column2");
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: end;
-        grid-row-gap: var(--space-6);
+        row-gap: var(--space-6);
         & > * {
           width: auto;
         }
@@ -127,6 +127,7 @@ const column2 = await slotContent(Astro.slots, "column2");
       }
       &.columns {
         display: grid;
+        column-gap: var(--section-space-small);
         & > :first-child {
           align-self: center;
         }
@@ -166,14 +167,10 @@ const column2 = await slotContent(Astro.slots, "column2");
       }
       &.full {
         display: grid;
+        width: 100vw;
+
         @media (width >= 64rem) {
           --_column-count: 2;
-          & > :last-child {
-            align-self: start;
-            position: sticky;
-            top: var(--site-margin);
-            max-height: calc(100svh - var(--site-margin) * 2);
-          }
         }
       }
     }

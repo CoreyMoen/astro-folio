@@ -146,7 +146,7 @@
   overflow: hidden;
 }
 
-:is(.margin-trim, .heading, .text, .content_wrap > *) {
+:is(.margin-trim, .heading, .text, .layout > *) {
   & > :first-child {
     margin-top: 0;
   }
