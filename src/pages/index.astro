@@ -1,24 +1,24 @@
 ---
 import Layout from '@/layouts/BaseLayout.astro';
 import Section from '@/components/Section.astro';
-import Button from '@/components/Button.astro';
-import ButtonWrapper from '@/components/ButtonWrapper.astro';
 import Heading from '@/components/Heading.astro';
-import Paragraph from '@/components/Paragraph.astro';
 import background from '@/assets/background.svg';
-import astro from '@/assets/astro.svg';
 import leaves from '@/assets/leaves.png';
+import Eyebrow from '@/components/Eyebrow.astro';
+import logo from '@/assets/logo.svg';
+import arrow_full from '@/assets/icons/arrow-full.svg';
+import arrow from '@/assets/icons/arrow.svg';
+import close from '@/assets/icons/close.svg';
+import pause from '@/assets/icons/pause.svg';
+import play from '@/assets/icons/play.svg';
 import Img from '@/components/Img.astro';
+import lumos_background from '@/assets/lumos-background.svg';
 ---
-<Layout>
-  <Section fullHeight={true} align="center" theme="dark" paddingBottom="large" paddingTop="large">
-    <img src={background.src} slot="background" />
-    <Heading variant="display" tag="h1">Home</Heading>
-    <Paragraph variant="large" maxWidth={36}>We build things that help people work smarter, move faster, and grow further.</Paragraph>
-    <ButtonWrapper>
-      <Button tag="a" href="/about">Learn more</Button>
-      <Button variant="secondary">Send</Button>
-    </ButtonWrapper>
-    <Img src={leaves} />
+<Layout overlap={true}>
+  <Section fullHeight={true} align="center" paddingBottom="large" paddingTop="large">
+    <Img src={lumos_background} slot="background" />
+    <Eyebrow>Lumos Framework</Eyebrow>
+    <Heading variant="display" tag="h1">Style Guide</Heading>
+    <Eyebrow variant="tag">v0.01</Eyebrow>
   </Section>
 </Layout>

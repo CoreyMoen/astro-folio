@@ -21,6 +21,9 @@ const socialImage = new URL(image, Astro.site);
 ---
 
 <meta charset="utf-8" />
+<style is:inline>
+  @layer base, patterns, components, utilities;
+</style>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{pageTitle}</title>
 <meta name="description" content={description} />

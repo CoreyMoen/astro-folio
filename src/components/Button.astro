@@ -5,8 +5,8 @@ import { slotContent } from "@/utils/slots.ts";
 type ButtonProps = HTMLAttributes<"button"> & {
   /** Set to `false` to skip rendering this component and its children. */
   render?: boolean;
-  variant?: "primary" | "secondary";
-  tag?: "button";
+  variant?: "primary" | "secondary" | "link";
+  element?: "button";
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
   href?: never;
@@ -14,8 +14,8 @@ type ButtonProps = HTMLAttributes<"button"> & {
 
 type LinkProps = Omit<HTMLAttributes<"a">, "type"> & {
   render?: boolean;
-  variant?: "primary" | "secondary";
-  tag: "a";
+  variant?: "primary" | "secondary" | "link";
+  element: "link";
   href?: string;
   type?: never;
   disabled?: never;
@@ -26,12 +26,12 @@ type Props = ButtonProps | LinkProps;
 const {
   render = true,
   variant = "primary",
-  tag = "button",
+  element = "button",
   href,
   type = "button",
   ...rest
 } = Astro.props;
-const isLink = tag === "a";
+const isLink = element === "link";
 const Tag = isLink ? "a" : "button";
 const tagAttrs = isLink
   ? { href: href || "#" }
@@ -43,18 +43,20 @@ const content = await slotContent(Astro.slots);
 {
   render && content && (
     <Tag
-      class:list={["button", variant !== "primary" && variant]}
+      class:list={["button_wrap", variant !== "primary" && variant]}
       {...tagAttrs}
       {...rest}
     >
-      <slot />
+      <span class="button_text text-style-trim">
+        <slot />
+      </span>
     </Tag>
   )
 }
 
 <style is:global>
   @layer components {
-    .button {
+    .button_wrap {
       display: inline-flex;
       justify-content: center;
       align-items: center;
@@ -85,6 +87,43 @@ const content = await slotContent(Astro.slots);
         --button-background-hover: var(--button-2-background-hover);
         --button-text-hover: var(--button-2-text-hover);
         --button-border-hover: var(--button-2-border-hover);
+      }
+      &.link {
+        --button-background: transparent;
+        --button-text: var(--link-text);
+        --button-border: var(--link-border);
+        --button-background-hover: transparent;
+        --button-text-hover: var(--link-text-hover);
+        /* The border itself holds still — the sliding line carries the hover color. */
+        --button-border-hover: var(--link-border);
+
+        position: relative;
+        padding: 0 0 0.4em;
+        border: 0;
+        border-bottom: var(--border-width) solid var(--button-border);
+        border-radius: 0;
+        /*
+         * The sliding line sits on top of the resting border. It grows from
+         * the left on hover, then collapses to the right on hover out, which
+         * reads as one line travelling left to right in both directions.
+         */
+        &::after {
+          content: "";
+          position: absolute;
+          inset-inline: 0;
+          bottom: calc(var(--border-width) * -1);
+          height: var(--border-width);
+          background-color: var(--link-border-hover);
+          transform: scaleX(0);
+          transform-origin: right;
+          transition: transform 400ms;
+        }
+        @media (hover: hover) {
+          &:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+          }
+        }
       }
       &:disabled {
         cursor: not-allowed;

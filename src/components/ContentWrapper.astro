@@ -2,50 +2,76 @@
 import type { HTMLAttributes } from "astro/types";
 import { slotContent } from "@/utils/slots.ts";
 
-type ContentWrapperVariant =
-  | "stack"
-  | "stack-centered"
-  | "auto-width"
-  | "columns"
-  | "columns-reversed"
-  | "full"
-  | "sticky-content"
-  | "sticky-visual";
-
-interface Props extends HTMLAttributes<"div"> {
+type Base = HTMLAttributes<"div"> & {
   /** Set to `false` to skip rendering this component and its children. */
   render?: boolean;
-  /**
-   * - `stack` — one column at every width (default)
-   * - `stack-centered` — one column, contents centered
-   * - `auto-width` — each column only as wide as its contents
-   * - `columns` — equal halves
-   * - `columns-reversed` — equal halves, second column first
-   * - `full` — equal halves spanning the viewport rather than the container
-   * - `sticky-content` — the first column sticks while the second scrolls
-   * - `sticky-visual` — the second column sticks while the first scrolls
-   */
-  variant?: ContentWrapperVariant;
+};
+
+type ColumnClasses = {
   /** Classes for the first column, which holds the default slot. */
   column1Class?: string;
   /** Classes for the second column. */
   column2Class?: string;
-}
+};
+
+type Props = Base &
+  (
+    | {
+        variant?: "stack";
+        reverse?: never;
+        /** Center the contents of each column. */
+        centered?: boolean;
+      }
+    | {
+        variant: "auto-width";
+        reverse?: never;
+        centered?: never;
+      }
+    | {
+        variant: "columns" | "breakout" | "contain";
+        /** Show the second column first. */
+        reverse?: boolean;
+        centered?: never;
+      }
+    | {
+        variant: "sticky-content" | "sticky-visual" | "card";
+        reverse?: never;
+        centered?: never;
+      }
+  ) &
+  ColumnClasses;
+
+type AllProps = Base &
+  ColumnClasses & {
+    variant?:
+      | "stack"
+      | "auto-width"
+      | "columns"
+      | "breakout"
+      | "contain"
+      | "sticky-content"
+      | "sticky-visual"
+      | "card";
+    reverse?: boolean;
+    centered?: boolean;
+  };
 
 const {
   render = true,
   variant = "stack",
+  reverse = false,
+  centered = false,
   column1Class,
   column2Class,
   class: className,
   ...rest
-} = Astro.props;
+} = Astro.props as AllProps;
 
 const variantClasses =
   variant === "stack"
     ? []
-    : variant === "columns-reversed"
-      ? ["columns", "reversed"]
+    : variant === "card"
+      ? ["card", "theme-dark"]
       : [variant];
 
 const column1 = await slotContent(Astro.slots);
@@ -54,7 +80,16 @@ const column2 = await slotContent(Astro.slots, "column2");
 
 {
   render && (column1 || column2) && (
-    <div class:list={["layout", variantClasses, className]} {...rest}>
+    <div
+      class:list={[
+        "layout",
+        variantClasses,
+        reverse && "reversed",
+        centered && "centered",
+        className,
+      ]}
+      {...rest}
+    >
       {column1 && (
         <div class:list={[column1Class]}>
           <slot />
@@ -93,13 +128,16 @@ const column2 = await slotContent(Astro.slots, "column2");
         width: 100%;
         max-width: 100%;
       }
+      & > :first-child {
+        align-self: center;
+      }
 
       /* visual ratio lock */
-      & > :last-child:not(:has(> :not(.image, .video))) {
+      & > :last-child:not(:has(> :not(.image, .video, .overlay))) {
         position: relative;
         border-radius: var(--radius-small);
         aspect-ratio: var(--_visual-ratio);
-        & > :is(.image, .video) {
+        & > :is(.image, .video, .overlay) {
           border-radius: inherit;
           position: absolute;
           inset: 0;
@@ -109,7 +147,7 @@ const column2 = await slotContent(Astro.slots, "column2");
       }
 
       /* variant overrides */
-      &.stack-centered {
+      &.centered {
         --_alignment: center;
       }
       &.auto-width {
@@ -120,6 +158,7 @@ const column2 = await slotContent(Astro.slots, "column2");
         row-gap: var(--space-6);
         & > * {
           width: auto;
+          align-self: unset;
         }
         & > :last-child {
           min-width: min(4rem, 100%);
@@ -128,9 +167,6 @@ const column2 = await slotContent(Astro.slots, "column2");
       &.columns {
         display: grid;
         column-gap: var(--section-space-small);
-        & > :first-child {
-          align-self: center;
-        }
         @media (width >= 64rem) {
           --_column-count: 2;
           &.reversed {
@@ -148,7 +184,7 @@ const column2 = await slotContent(Astro.slots, "column2");
           & > :first-child {
             align-self: start;
             position: sticky;
-            top: var(--site-margin);
+            top: calc(var(--site-margin) + var(--nav-height));
           }
         }
       }
@@ -157,20 +193,101 @@ const column2 = await slotContent(Astro.slots, "column2");
         display: grid;
         @media (width >= 64rem) {
           --_column-count: 2;
+          & > :first-child {
+            align-self: start;
+          }
           & > :last-child {
             align-self: start;
             position: sticky;
-            top: var(--site-margin);
-            max-height: calc(100svh - var(--site-margin) * 2);
+            top: calc(var(--site-margin) + var(--nav-height));
+            max-height: calc(
+              100svh - var(--nav-height) - var(--site-margin) * 2
+            );
           }
         }
       }
-      &.full {
+      &.breakout {
         display: grid;
         width: 100vw;
-
+        flex-shrink: 0;
+        align-self: center;
+        column-gap: 0;
+        row-gap: 0;
+        & > :first-child {
+          margin-inline: auto;
+          width: var(--site-width);
+          padding-block: var(--section-space-medium);
+        }
+        & > :last-child {
+          border-radius: 0;
+        }
         @media (width >= 64rem) {
           --_column-count: 2;
+          & > :first-child {
+            max-width: calc(var(--max-width-main) / 2);
+          }
+          & > :last-child {
+            border-top-left-radius: var(--radius-small);
+            border-bottom-left-radius: var(--radius-small);
+          }
+          &.reversed {
+            & > :last-child {
+              order: -1;
+              border-top-left-radius: 0;
+              border-bottom-left-radius: 0;
+              border-top-right-radius: var(--radius-small);
+              border-bottom-right-radius: var(--radius-small);
+            }
+          }
+        }
+      }
+      &.contain {
+        display: grid;
+        column-gap: 0;
+        row-gap: 0;
+        background-color: var(--background-2);
+        border-radius: var(--radius-main);
+        position: relative;
+        overflow: clip;
+        & > :first-child {
+          padding: var(--space-6);
+        }
+        & > :last-child {
+          border-radius: 0;
+        }
+        @media (width >= 64rem) {
+          --_column-count: 2;
+          &.reversed {
+            & > :last-child {
+              order: -1;
+            }
+          }
+        }
+      }
+      &.card {
+        border-radius: var(--radius-main);
+        position: relative;
+        overflow: clip;
+        min-height: 26rem;
+        justify-content: center;
+        & > :first-child {
+          padding: var(--space-6);
+        }
+        & > :first-child {
+          padding-block: var(--section-space-medium);
+          padding-inline: var(--space-5);
+          position: relative;
+          z-index: 1;
+          --_alignment: center;
+        }
+        & > :last-child {
+          position: absolute;
+          inset: 0;
+          border-radius: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0.7;
+          pointer-events: none;
         }
       }
     }
