@@ -1,0 +1,97 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type GridVariant = "default" | "contained";
+
+interface Props extends HTMLAttributes<"div"> {
+  /**
+   * Which width the column counts respond to.
+   *
+   * - `default` — the viewport width
+   * - `contained` — the grid's own width, for grids inside a narrower column
+   */
+  variant?: GridVariant;
+  /** Columns below 30rem. The base every larger size falls back to. */
+  xsmall?: number;
+  /** Columns from 30rem up. Inherits xsmall when unset. */
+  small?: number;
+  /** Columns from 48rem up. Inherits small when unset. */
+  medium?: number;
+  /** Columns from 64rem up. Inherits medium when unset. */
+  large?: number;
+}
+
+const {
+  variant = "default",
+  xsmall = 1,
+  small,
+  medium,
+  large,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const columns = [
+  `--_cols-xs: ${xsmall}`,
+  small !== undefined && `--_cols-sm: ${small}`,
+  medium !== undefined && `--_cols-md: ${medium}`,
+  large !== undefined && `--_cols-lg: ${large}`,
+]
+  .filter(Boolean)
+  .join("; ");
+---
+
+<div class:list={["grid", variant, className]} style={columns} {...rest}>
+  <slot />
+</div>
+
+<style is:global>
+  @layer components {
+    .grid {
+      --_cols: var(--_cols-xs);
+      --_cols-xs: 1;
+      --_cols-sm: var(--_cols-xs);
+      --_cols-md: var(--_cols-sm);
+      --_cols-lg: var(--_cols-md);
+      --_gap-size: var(--site-gutter);
+      display: grid;
+      grid-column-gap: var(--_gap-size);
+      grid-row-gap: var(--_gap-size);
+      grid-template-columns: repeat(var(--_cols), minmax(0, 1fr));
+      width: 100%;
+      @media (width >= 30rem) {
+        &.default {
+          --_cols: var(--_cols-sm);
+        }
+      }
+      @media (width >= 48rem) {
+        &.default {
+          --_cols: var(--_cols-md);
+        }
+      }
+      @media (width >= 64rem) {
+        &.default {
+          --_cols: var(--_cols-lg);
+        }
+      }
+      :has(> &.contained) {
+        container-type: inline-size;
+      }
+      @container (width >= 30rem) {
+        &.contained {
+          --_cols: var(--_cols-sm);
+        }
+      }
+      @container (width >= 48rem) {
+        &.contained {
+          --_cols: var(--_cols-md);
+        }
+      }
+      @container (width >= 64rem) {
+        &.contained {
+          --_cols: var(--_cols-lg);
+        }
+      }
+    }
+  }
+</style>
