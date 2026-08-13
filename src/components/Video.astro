@@ -1,0 +1,128 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type VideoRatio =
+  "auto" | "1-1" | "16-9" | "3-2" | "2-3" | "2-1" | "5-4" | "4-5";
+
+type Head = Omit<
+  HTMLAttributes<"video">,
+  "src" | "poster" | "loop" | "autoplay" | "muted" | "controls"
+> & {
+  /** Set to `false` to skip rendering this component and its children. */
+  render?: boolean;
+  /** Video file URL. Nothing is output if it is missing. */
+  src?: string;
+  /** Still frame shown before playback starts. */
+  poster?: string;
+};
+
+type Tail = {
+  /** Restart from the beginning on reaching the end. */
+  loop?: boolean;
+  /** Begin playing without interaction. Browsers only permit this while muted. */
+  autoplay?: boolean;
+  /** Play without sound. Required for autoplay to be allowed. */
+  muted?: boolean;
+  /** Show the browser's playback controls. */
+  controls?: boolean;
+};
+
+type Props = Head &
+  (
+    | {
+        /**
+         * Aspect ratio, applied with the matching `ratio-*` utility.
+         *
+         * `auto` keeps the file's own ratio. Choose `custom` to type a ratio
+         * of your own instead.
+         */
+        variant?: VideoRatio;
+        ratio?: never;
+      }
+    | {
+        variant: "custom";
+        /** Any CSS `aspect-ratio` value, such as `21 / 9` or `1.85`. */
+        ratio?: string;
+      }
+  ) &
+  Tail;
+
+type AllProps = Head &
+  Tail & {
+    variant?:
+      | "auto"
+      | "1-1"
+      | "16-9"
+      | "3-2"
+      | "2-3"
+      | "2-1"
+      | "5-4"
+      | "4-5"
+      | "custom";
+    ratio?: string;
+  };
+
+const {
+  render = true,
+  src,
+  poster,
+  variant = "auto",
+  ratio,
+  loop = true,
+  autoplay = true,
+  muted = true,
+  controls = false,
+  class: className,
+  ...rest
+} = Astro.props as AllProps;
+
+if (import.meta.env.DEV && render) {
+  if (!src) {
+    console.warn(
+      "[lumos] <Video> rendered without a `src`; nothing was output.",
+    );
+  }
+  if (autoplay && !muted) {
+    console.warn(
+      "[lumos] <Video autoplay> without `muted` is blocked by every major browser. Set muted, or drop autoplay and let the viewer start it.",
+    );
+  }
+  if (variant === "custom" && !ratio) {
+    console.warn(
+      '[lumos] <Video variant="custom"> has no `ratio`, so no aspect ratio is applied. Set one, or pick a preset variant.',
+    );
+  }
+}
+
+const isCustom = variant === "custom";
+---
+
+{
+  render && src && (
+    <video
+      src={src}
+      poster={poster}
+      class:list={["video", !isCustom && `ratio-${variant}`, className]}
+      style={isCustom && ratio ? `aspect-ratio: ${ratio};` : undefined}
+      loop={loop}
+      autoplay={autoplay}
+      muted={muted}
+      controls={controls}
+      playsinline
+      {...rest}
+    />
+  )
+}
+
+<style is:global>
+  @layer components {
+    .video {
+      background-color: var(--background-skeleton);
+      width: 100%;
+      height: auto;
+      display: block;
+      overflow: clip;
+      object-fit: cover;
+    }
+  }
+</style>
