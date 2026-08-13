@@ -56,12 +56,12 @@ const column2 = await slotContent(Astro.slots, "column2");
   render && (column1 || column2) && (
     <div class:list={["content_wrap", variantClasses, className]} {...rest}>
       {column1 && (
-        <div class:list={["content_column", column1Class]}>
+        <div class:list={[column1Class]}>
           <slot />
         </div>
       )}
       {column2 && (
-        <div class:list={["content_column", column2Class]}>
+        <div class:list={[column2Class]}>
           <slot name="column2" />
         </div>
       )}
@@ -72,27 +72,33 @@ const column2 = await slotContent(Astro.slots, "column2");
 <style is:global>
   @layer components {
     .content_wrap {
+      /* layout defaults */
+      --_visual-ratio: 3 / 2;
+      --_alignment: start;
+      --_column-count: 1;
       width: 100%;
       display: flex;
       flex-direction: column;
       grid-column-gap: var(--site-gutter);
       grid-row-gap: var(--space-8);
       align-items: stretch;
-      --_alignment: start;
+      grid-template-columns: repeat(--_column-count, minmax(0, 1fr));
 
+      /* column defaults */
       & > * {
         display: flex;
         flex-direction: column;
         align-items: var(--_alignment, start);
         text-align: var(--_alignment, start);
         width: 100%;
+        max-width: 100%;
       }
-      &:where(.columns, .sticky-content, .sticky-visual)
-        > :last-child:not(:has(> :not(.image, .video))) {
-        --_ratio: 1/1;
+
+      /* visual ratio lock */
+      & > :last-child:not(:has(> :not(.image, .video))) {
         position: relative;
         border-radius: var(--radius-small);
-        aspect-ratio: var(--_ratio);
+        aspect-ratio: var(--_visual-ratio);
         & > :is(.image, .video) {
           border-radius: inherit;
           position: absolute;
@@ -102,6 +108,7 @@ const column2 = await slotContent(Astro.slots, "column2");
         }
       }
 
+      /* variant overrides */
       &.stack-centered {
         --_alignment: center;
       }
@@ -113,20 +120,18 @@ const column2 = await slotContent(Astro.slots, "column2");
         grid-row-gap: var(--space-6);
         & > * {
           width: auto;
-          max-width: 100%;
+        }
+        & > :last-child {
+          min-width: min(4rem, 100%);
         }
       }
       &.columns {
         display: grid;
-        grid-template-columns: minmax(0, 1fr);
         & > :first-child {
           align-self: center;
         }
-        & > :last-child {
-          --_ratio: 3/2;
-        }
         @media (width >= 64rem) {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+          --_column-count: 2;
           &.reversed {
             & > :last-child {
               order: -1;
@@ -135,10 +140,10 @@ const column2 = await slotContent(Astro.slots, "column2");
         }
       }
       &.sticky-content {
+        --_visual-ratio: 1 / 1;
         display: grid;
-        grid-template-columns: minmax(0, 1fr);
         @media (width >= 64rem) {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+          --_column-count: 2;
           & > :first-child {
             align-self: start;
             position: sticky;
@@ -147,10 +152,22 @@ const column2 = await slotContent(Astro.slots, "column2");
         }
       }
       &.sticky-visual {
+        --_visual-ratio: 1 / 1;
         display: grid;
-        grid-template-columns: minmax(0, 1fr);
         @media (width >= 64rem) {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+          --_column-count: 2;
+          & > :last-child {
+            align-self: start;
+            position: sticky;
+            top: var(--site-margin);
+            max-height: calc(100svh - var(--site-margin) * 2);
+          }
+        }
+      }
+      &.full {
+        display: grid;
+        @media (width >= 64rem) {
+          --_column-count: 2;
           & > :last-child {
             align-self: start;
             position: sticky;
