@@ -1,16 +1,7 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 
-type GridVariant = "default" | "contained";
-
 interface Props extends HTMLAttributes<"div"> {
-  /**
-   * Which width the column counts respond to.
-   *
-   * - `default` — the viewport width
-   * - `contained` — the grid's own width, for grids inside a narrower column
-   */
-  variant?: GridVariant;
   /** Columns below 30rem. The base every larger size falls back to. */
   xsmall?: number;
   /** Columns from 30rem up. Inherits xsmall when unset. */
@@ -22,7 +13,6 @@ interface Props extends HTMLAttributes<"div"> {
 }
 
 const {
-  variant = "default",
   xsmall = 1,
   small,
   medium,
@@ -41,7 +31,7 @@ const columns = [
   .join("; ");
 ---
 
-<div class:list={["grid", variant, className]} style={columns} {...rest}>
+<div class:list={["grid", className]} style={columns} {...rest}>
   <slot />
 </div>
 
@@ -60,37 +50,13 @@ const columns = [
       grid-template-columns: repeat(var(--_cols), minmax(0, 1fr));
       width: 100%;
       @media (width >= 30rem) {
-        &.default {
-          --_cols: var(--_cols-sm);
-        }
+        --_cols: var(--_cols-sm);
       }
       @media (width >= 48rem) {
-        &.default {
-          --_cols: var(--_cols-md);
-        }
+        --_cols: var(--_cols-md);
       }
       @media (width >= 64rem) {
-        &.default {
-          --_cols: var(--_cols-lg);
-        }
-      }
-      :has(> &.contained) {
-        container-type: inline-size;
-      }
-      @container (width >= 30rem) {
-        &.contained {
-          --_cols: var(--_cols-sm);
-        }
-      }
-      @container (width >= 48rem) {
-        &.contained {
-          --_cols: var(--_cols-md);
-        }
-      }
-      @container (width >= 64rem) {
-        &.contained {
-          --_cols: var(--_cols-lg);
-        }
+        --_cols: var(--_cols-lg);
       }
     }
   }
