@@ -1,0 +1,164 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { slotContent } from "@/utils/slots.ts";
+
+type ContentWrapperVariant =
+  | "stack"
+  | "stack-centered"
+  | "auto-width"
+  | "columns"
+  | "columns-reversed"
+  | "sticky-content"
+  | "sticky-visual";
+
+interface Props extends HTMLAttributes<"div"> {
+  /** Set to `false` to skip rendering this component and its children. */
+  render?: boolean;
+  /**
+   * How the two columns are arranged from 48rem up. All variants stack below it.
+   *
+   * - `stack` — one column at every width (default)
+   * - `stack-centered` — one column, contents centered
+   * - `auto-width` — each column only as wide as its contents
+   * - `columns` — equal halves
+   * - `columns-reversed` — equal halves, second column first
+   * - `sticky-content` — the first column sticks while the second scrolls
+   * - `sticky-visual` — the second column sticks while the first scrolls
+   */
+  variant?: ContentWrapperVariant;
+  /** Classes for the first column, which holds the default slot. */
+  column1Class?: string;
+  /** Classes for the second column. */
+  column2Class?: string;
+}
+
+const {
+  render = true,
+  variant = "stack",
+  column1Class,
+  column2Class,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const variantClasses =
+  variant === "stack"
+    ? []
+    : variant === "columns-reversed"
+      ? ["columns", "reversed"]
+      : [variant];
+
+const column1 = await slotContent(Astro.slots);
+const column2 = await slotContent(Astro.slots, "column2");
+---
+
+{
+  render && (column1 || column2) && (
+    <div class:list={["content_wrap", variantClasses, className]} {...rest}>
+      {column1 && (
+        <div class:list={["content_column", column1Class]}>
+          <slot />
+        </div>
+      )}
+      {column2 && (
+        <div class:list={["content_column", column2Class]}>
+          <slot name="column2" />
+        </div>
+      )}
+    </div>
+  )
+}
+
+<style is:global>
+  @layer components {
+    .content_wrap {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      grid-column-gap: var(--site-gutter);
+      grid-row-gap: var(--space-8);
+      align-items: stretch;
+      --_alignment: start;
+
+      & > * {
+        display: flex;
+        flex-direction: column;
+        align-items: var(--_alignment, start);
+        text-align: var(--_alignment, start);
+        width: 100%;
+      }
+      &:where(.columns, .sticky-content, .sticky-visual)
+        > :last-child:not(:has(> :not(.image, .video))) {
+        --_ratio: 1/1;
+        position: relative;
+        border-radius: var(--radius-small);
+        aspect-ratio: var(--_ratio);
+        & > :is(.image, .video) {
+          border-radius: inherit;
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      &.stack-centered {
+        --_alignment: center;
+      }
+      &.auto-width {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: end;
+        grid-row-gap: var(--space-6);
+        & > * {
+          width: auto;
+          max-width: 100%;
+        }
+      }
+      &.columns {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        & > :first-child {
+          align-self: center;
+        }
+        & > :last-child {
+          --_ratio: 3/2;
+        }
+        @media (width >= 64rem) {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          &.reversed {
+            & > :last-child {
+              order: -1;
+            }
+          }
+        }
+      }
+      &.sticky-content {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        @media (width >= 64rem) {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          & > :first-child {
+            align-self: start;
+            position: sticky;
+            top: var(--site-margin);
+          }
+        }
+      }
+      &.sticky-visual {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        @media (width >= 64rem) {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          & > :last-child {
+            align-self: start;
+            position: sticky;
+            top: var(--site-margin);
+            max-height: calc(100svh - var(--site-margin) * 2);
+          }
+        }
+      }
+    }
+  }
+</style>
