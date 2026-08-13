@@ -5,7 +5,7 @@ type VideoRatio = "2-1" | "16-9" | "3-2" | "5-4" | "1-1" | "4-5" | "2-3";
 
 type Head = Omit<
   HTMLAttributes<"video">,
-  "src" | "poster" | "loop" | "autoplay" | "muted" | "controls"
+  "src" | "poster" | "loop" | "autoplay" | "muted"
 > & {
   /** Set to `false` to skip rendering this component and its children. */
   render?: boolean;
@@ -22,8 +22,8 @@ type Tail = {
   autoplay?: boolean;
   /** Play without sound. Required for autoplay to be allowed. */
   muted?: boolean;
-  /** Show the browser's playback controls. */
-  controls?: boolean;
+  /** For cutouts: fit the whole frame in rather than cropping, and drop the skeleton tint. */
+  transparent?: boolean;
 };
 
 type Props = Head &
@@ -76,7 +76,7 @@ const {
   loop = true,
   autoplay = true,
   muted = true,
-  controls = false,
+  transparent = false,
   class: className,
   ...rest
 } = Astro.props as AllProps;
@@ -107,27 +107,18 @@ const isCustom = variant === "custom";
     <video
       src={src}
       poster={poster}
-      class:list={["video", !isCustom && `ratio-${variant}`, className]}
+      class:list={[
+        "video",
+        !isCustom && `ratio-${variant}`,
+        transparent && "transparent",
+        className,
+      ]}
       style={isCustom && ratio ? `aspect-ratio: ${ratio};` : undefined}
       loop={loop}
       autoplay={autoplay}
       muted={muted}
-      controls={controls}
       playsinline
       {...rest}
     />
   )
 }
-
-<style is:global>
-  @layer components {
-    .video {
-      background-color: var(--background-skeleton);
-      width: 100%;
-      height: auto;
-      display: block;
-      overflow: clip;
-      object-fit: cover;
-    }
-  }
-</style>
