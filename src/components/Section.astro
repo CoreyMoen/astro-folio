@@ -20,8 +20,8 @@ type ContainerGap =
   | "large";
 
 interface Props extends HTMLAttributes<"section"> {
-  /** Skip rendering this component and its children entirely. */
-  noRender?: boolean;
+  /** Set to `false` to skip rendering this component and its children. */
+  render?: boolean;
   theme?: "inherit" | "light" | "dark" | "brand";
   paddingTop?: SectionSpace;
   paddingBottom?: SectionSpace;
@@ -33,7 +33,7 @@ interface Props extends HTMLAttributes<"section"> {
 }
 
 const {
-  noRender = false,
+  render = true,
   theme = "inherit",
   paddingTop = "medium",
   paddingBottom = "medium",
@@ -58,7 +58,7 @@ const background = await slotContent(Astro.slots, "background");
 ---
 
 {
-  !noRender && (content || background) && (
+  render && (content || background) && (
     <section
       class:list={[
         "section",

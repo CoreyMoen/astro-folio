@@ -3,17 +3,17 @@ import type { HTMLAttributes } from "astro/types";
 import { slotContent } from "@/utils/slots.ts";
 
 type Props = HTMLAttributes<"div"> & {
-  /** Skip rendering this component and its children entirely. */
-  noRender?: boolean;
+  /** Set to `false` to skip rendering this component and its children. */
+  render?: boolean;
 };
 
-const { noRender = false, class: className, ...rest } = Astro.props;
+const { render = true, class: className, ...rest } = Astro.props;
 
 const content = await slotContent(Astro.slots);
 ---
 
 {
-  !noRender && content && (
+  render && content && (
     <div class:list={["eyebrow_wrap", className]} {...rest}>
       <span class="eyebrow_marker" aria-hidden="true" />
       <p class="eyebrow_text text-style-small">

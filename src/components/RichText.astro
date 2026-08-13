@@ -16,14 +16,14 @@ type RichTextStyle =
   | "small";
 
 interface Props extends HTMLAttributes<"div"> {
-  /** Skip rendering this component and its children entirely. */
-  noRender?: boolean;
+  /** Set to `false` to skip rendering this component and its children. */
+  render?: boolean;
   variant?: RichTextStyle;
   maxWidth?: number;
 }
 
 const {
-  noRender = false,
+  render = true,
   variant = "inherit",
   maxWidth,
   class: className,
@@ -34,7 +34,7 @@ const content = await slotContent(Astro.slots);
 ---
 
 {
-  !noRender && content && (
+  render && content && (
     <div
       class:list={[
         "text",
