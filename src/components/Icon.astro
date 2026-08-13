@@ -21,14 +21,14 @@ interface Props extends Omit<HTMLAttributes<"svg">, "aria-hidden"> {
    * Hide from assistive technology. Leave on for decoration; set `false` when
    * the icon carries meaning, and give it an `aria-label`.
    */
-  "aria-hidden"?: boolean;
+  ariaHidden?: boolean;
 }
 
 const {
   render = true,
   src: Svg,
   variant = "medium",
-  "aria-hidden": ariaHidden = true,
+  ariaHidden = true,
   class: className,
   ...rest
 } = Astro.props;
@@ -41,7 +41,7 @@ if (import.meta.env.DEV && render) {
   }
   if (!ariaHidden && !rest["aria-label"] && !rest["aria-labelledby"]) {
     console.warn(
-      "[lumos] <Icon aria-hidden={false}> has no `aria-label`, so it is exposed to screen readers with no name. Add one, or leave aria-hidden on.",
+      "[lumos] <Icon ariaHidden={false}> has no `aria-label`, so it is exposed to screen readers with no name. Add one, or leave ariaHidden on.",
     );
   }
 }
