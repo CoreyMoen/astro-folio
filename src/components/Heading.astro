@@ -17,15 +17,15 @@ type HeadingStyle =
   | "small";
 
 interface Props extends HTMLAttributes<"div"> {
-  /** Set to `hidden` to skip rendering this component and its children. */
-  visibility?: "visible" | "hidden";
+  /** Skip rendering this component and its children entirely. */
+  noRender?: boolean;
   tag?: HeadingTag;
   variant?: HeadingStyle;
   maxWidth?: number;
 }
 
 const {
-  visibility = "visible",
+  noRender = false,
   tag = "h2",
   variant = tag,
   maxWidth,
@@ -39,7 +39,7 @@ const content = await slotContent(Astro.slots);
 ---
 
 {
-  visibility === "visible" && content && (
+  !noRender && content && (
     <Tag
       class:list={[
         "heading",

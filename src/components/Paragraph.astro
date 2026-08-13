@@ -17,15 +17,15 @@ type ParagraphStyle =
   | "small";
 
 interface Props extends HTMLAttributes<"p"> {
-  /** Set to `hidden` to skip rendering this component and its children. */
-  visibility?: "visible" | "hidden";
+  /** Skip rendering this component and its children entirely. */
+  noRender?: boolean;
   tag?: ParagraphTag;
   variant?: ParagraphStyle;
   maxWidth?: number;
 }
 
 const {
-  visibility = "visible",
+  noRender = false,
   tag = "p",
   variant = "inherit",
   maxWidth,
@@ -39,7 +39,7 @@ const content = await slotContent(Astro.slots);
 ---
 
 {
-  visibility === "visible" && content && (
+  !noRender && content && (
     <Tag
       class:list={[
         "text",
