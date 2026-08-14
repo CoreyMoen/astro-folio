@@ -1,0 +1,133 @@
+---
+/**
+ * The floating pill nav from coreymoen.com: memoji logo (animated on hover),
+ * mono uppercase links, and a yellow CTA. Below 30rem the links collapse into
+ * a drawer under the pill, toggled by a Menu button.
+ */
+const links = [
+  { label: "Work", href: "/work" },
+  { label: "Info", href: "/info" },
+  { label: "Words", href: "/words" },
+];
+
+/** Marks the link for the page being viewed. Trailing slashes are ignored. */
+const isCurrent = (href: string) =>
+  Astro.url.pathname.replace(/\/+$/, "") === href.replace(/\/+$/, "")
+    ? "page"
+    : undefined;
+---
+
+<div class="nav-wrapper">
+  <div role="banner" class="nav" data-nav>
+    <a id="skip-nav" href="#main" class="nav-skip-link">Skip to main content</a>
+    <div class="nav-container">
+      <a href="/" class="nav-logo_link" aria-current={isCurrent("/")}>
+        <img
+          src="/images/memoji-static.webp"
+          loading="eager"
+          alt="Memoji of Corey Moen"
+          class="nav-logo_img-top"
+          width="116"
+          height="128"
+        />
+        <img
+          src="/images/memoji-animate-final.gif"
+          loading="eager"
+          alt=""
+          aria-hidden="true"
+          class="nav-logo_img-gif"
+        />
+      </a>
+      <nav role="navigation" class="nav-menu" id="nav-menu" aria-label="Main">
+        <div class="nav-link_wrapper">
+          {
+            links.map((link) => (
+              <a
+                href={link.href}
+                class="nav-link"
+                aria-current={isCurrent(link.href)}
+              >
+                {link.label}
+              </a>
+            ))
+          }
+          <a
+            href="/chat"
+            class="nav-link cc-cta"
+            aria-current={isCurrent("/chat")}>Chat</a
+          >
+        </div>
+      </nav>
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+      >
+        <span>Menu</span>
+        <span class="nav-toggle_icon" aria-hidden="true">
+          <span class="nav-toggle_bar cc-top"></span>
+          <span class="nav-toggle_bar cc-btm"></span>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<noscript>
+  <style>
+    .nav-toggle {
+      display: none;
+    }
+    @media (width < 30rem) {
+      .nav-menu {
+        display: block;
+        position: static;
+      }
+    }
+  </style>
+</noscript>
+
+<script>
+  const nav = document.querySelector<HTMLElement>("[data-nav]");
+  const toggle = nav?.querySelector<HTMLButtonElement>(".nav-toggle");
+
+  if (nav && toggle) {
+    const setOpen = (open: boolean) => {
+      nav.toggleAttribute("data-open", open);
+      toggle.setAttribute("aria-expanded", String(open));
+    };
+
+    toggle.addEventListener("click", () => {
+      setOpen(toggle.getAttribute("aria-expanded") !== "true");
+    });
+
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => setOpen(false));
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && nav.hasAttribute("data-open")) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!nav.hasAttribute("data-open") || !(target instanceof Node)) return;
+      if (!nav.contains(target)) setOpen(false);
+    });
+  }
+
+  /* Jump moves focus to the content, not just the scroll position */
+  document.querySelector("#skip-nav")?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const main = document.querySelector<HTMLElement>("#main");
+    if (main) {
+      main.setAttribute("tabindex", "-1");
+      main.focus();
+      main.scrollIntoView();
+    }
+  });
+</script>

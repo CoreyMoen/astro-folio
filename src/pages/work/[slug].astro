@@ -1,0 +1,222 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import Section from "@/components/Section.astro";
+import RoleDots from "@/components/site/RoleDots.astro";
+import ProjectsGrid from "@/components/site/ProjectsGrid.astro";
+import { projects, yearOf, type Project } from "@/utils/cms.ts";
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+
+/* "More Work": the next few projects, newest-first order, wrapping around */
+const index = projects.findIndex((p) => p.slug === project.slug);
+const others = [...projects.slice(index + 1), ...projects.slice(0, index)]
+  .filter((p) => p.slug !== project.slug)
+  .slice(0, 4);
+
+/* "BG Type Color" names the title color to use over `bgColor`:
+   "Dark" → off-black type on light backgrounds, "Light" → default off-white. */
+const heroDark = project.bgType === "Dark";
+---
+
+<SiteLayout
+  title={project.name}
+  description={project.metaDescription ?? undefined}
+  image={project.ogImage ?? undefined}
+>
+  <Section
+    class="cc-header cc-work"
+    gap="0"
+    style={project.bgColor
+      ? `background-color: ${project.bgColor};`
+      : undefined}
+  >
+    <div class="work-hero_inner zindex-1 width-full">
+      <div class:list={[heroDark && "text-dark"]}>
+        <div class="work-hero_title">
+          <h1 class="text-caps margin-bottom-0">{project.name}</h1>
+        </div>
+      </div>
+      {
+        project.mainImage && (
+          <div class="work-hero_img-wrapper">
+            <img
+              src={project.mainImage}
+              loading="eager"
+              alt={project.mainImageAlt ?? ""}
+              class="work-hero_img"
+            />
+          </div>
+        )
+      }
+    </div>
+    <div slot="background" class="work-hero_overlay"></div>
+  </Section>
+
+  <Section gap="0">
+    <div class="work-detail width-full">
+      <div class="work-brief">
+        <div class="work-brief_summary">
+          <h2 class="eyebrow">Brief</h2>
+          {
+            project.summary && (
+              <div
+                class="text text-style-large work-summary"
+                set:html={project.summary}
+              />
+            )
+          }
+        </div>
+        <div class="work-brief_specs">
+          <h3 class="eyebrow">Employer</h3>
+          <p class="text-style-large margin-bottom-6">{project.type}</p>
+          <h3 class="eyebrow">Year</h3>
+          <p class="text-style-large margin-bottom-6">{yearOf(project.date)}</p>
+          {
+            project.link && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener"
+                class="button_wrap project-link"
+              >
+                <span>View Project</span>
+                {project.linkExplainer && (
+                  <span class="project-link-asterisk">*</span>
+                )}
+                <span class="btn-arrow cc-offset">↗</span>
+              </a>
+            )
+          }
+          {
+            project.linkExplainer && (
+              <div
+                class="project-link-explainer"
+                set:html={project.linkExplainer}
+              />
+            )
+          }
+        </div>
+      </div>
+
+      {
+        project.roles.length > 0 && (
+          <div class="padding-top-medium">
+            <h2 class="eyebrow">My Roles</h2>
+            <RoleDots roles={project.roles} />
+          </div>
+        )
+      }
+
+      <div class="padding-top-medium">
+        <div class="work-problem-solution">
+          <div>
+            <h2 class="eyebrow margin-bottom-8">Problem</h2>
+            {
+              project.problem && (
+                <div class="text margin-bottom-6" set:html={project.problem} />
+              )
+            }
+          </div>
+          <div>
+            <h2 class="eyebrow margin-bottom-8">Solution</h2>
+            {
+              project.solution && (
+                <div class="text" set:html={project.solution} />
+              )
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="splitter margin-top-8"></div>
+    </div>
+  </Section>
+
+  {
+    project.body && (
+      <Section gap="0" paddingTop="none">
+        <div class="work-richtext" set:html={project.body} />
+      </Section>
+    )
+  }
+
+  <Section paddingTop="none" gap="0" align="center">
+    <h2 class="margin-bottom-8 margin-top-4">More Work</h2>
+    <div class="alignment-start width-full">
+      <ProjectsGrid projects={others} />
+    </div>
+  </Section>
+</SiteLayout>
+
+<style is:global>
+  @layer site {
+    /* Everything under the hero sits in the original's 91.67% column */
+    .work-detail {
+      width: 91.67%;
+      margin-inline: auto;
+    }
+
+    .work-hero_inner {
+      width: 91.67%;
+      margin-inline: auto;
+    }
+
+    @media (width < 48rem) {
+      .work-detail,
+      .work-hero_inner {
+        width: 100%;
+      }
+    }
+
+    /* The gradient overlay stays under the title but over the bg color */
+    .section.cc-work > .work-hero_overlay {
+      pointer-events: none;
+    }
+
+    .work-brief {
+      display: grid;
+      grid-template-columns: minmax(0, 6fr) minmax(0, 4fr);
+      gap: var(--space-6) calc(var(--site-gutter) * 3);
+      align-items: start;
+    }
+
+    .work-brief_specs {
+      max-width: 26rem;
+    }
+
+    .work-problem-solution {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6) var(--site-gutter);
+    }
+
+    @media (width < 48rem) {
+      .work-brief,
+      .work-problem-solution {
+        grid-template-columns: 1fr;
+      }
+      .work-brief_specs {
+        max-width: none;
+      }
+    }
+
+    .work-summary {
+      margin-bottom: var(--space-6);
+    }
+
+    .project-link {
+      display: flex;
+    }
+  }
+</style>

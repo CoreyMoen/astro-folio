@@ -1,0 +1,646 @@
+[
+  {
+    "slug": "webflow-on-webflow",
+    "name": "Webflow on Webflow",
+    "altCardTitle": "Webflow",
+    "featured": true,
+    "date": "2025-09-17T00:00:00.000Z",
+    "type": "Webflow",
+    "link": "https://webflow.com/?r=0",
+    "linkExplainer": null,
+    "ogImage": "/images/cms/webflow-on-webflow-og-webflow-on-webflow.jpg",
+    "mainImage": "/images/cms/webflow-on-webflow-webflow-on-webflow.webp",
+    "mainImageAlt": null,
+    "bgColor": "#146ef5",
+    "bgType": "Light",
+    "metaDescription": "Webflow is a powerful platform that puts its money where its mouth is by using its own tool in every way it sells to customers. After over 10 years of natural growth of the marketing end of Webflow.com, we set out on an ambitious project to redesign and rebuild the entire site using all of the latest features, strategies, and best practices recommended to customers every day.",
+    "summary": "<p>Webflow is a powerful platform that puts its money where its mouth is by using its own tool in every way it sells to customers. After over 10 years of natural growth of the marketing end of Webflow.com, we set out on an ambitious project to redesign and rebuild the entire site using all of the latest features, strategies, and best practices recommended to customers every day.</p><p>‍</p>",
+    "roles": [
+      {
+        "title": "Discover",
+        "active": true
+      },
+      {
+        "title": "Define",
+        "active": true
+      },
+      {
+        "title": "Concept",
+        "active": true
+      },
+      {
+        "title": "Design",
+        "active": true
+      },
+      {
+        "title": "Develop",
+        "active": true
+      },
+      {
+        "title": "Optimize",
+        "active": true
+      }
+    ],
+    "problem": "<p>The old site was managed from a spider web of 15+ separate Webflow projects, all reverse-proxied together for a semi-consistent final output. Years ago, there were many reasons the site was built this way—to aid in collaboration, enable specific integrations, and more—but as of 2025, the platform has every native capability needed to manage all of this from a single Webflow project to rule them all.</p>",
+    "solution": "<p>We consolidated 15+ separate projects into one, reduced 155 CMS collections down to 46, and migrated nearly 200 pages—all in less than 10 weeks. In collaboration with <a href=\"https://www.metalab.com/\">Metalab</a> and <a href=\"https://www.n4.studio/\">N4 Studio</a>, we also evolved the entire web design system as an opportunity to advance Webflow's brand expression on the web and implement many new ways for the entire marketing team to benefit from a net-new project.</p>",
+    "body": "<p>Full case study coming soon...</p><p>‍</p><p>‍</p><div data-rt-embed-type='true'><div class=\"row justify-center\"><div class=\"col col-lg-11 col-md-12 col-sm-11 mb-0\"><div class=\"splitter bg-dark-gray-2\"></div></div></div></div>"
+  },
+  {
+    "slug": "whalesync",
+    "name": "Whalesync",
+    "altCardTitle": null,
+    "featured": true,
+    "date": "2024-11-19T00:00:00.000Z",
+    "type": "Freelance",
+    "link": "https://whalesync-2025-backup.webflow.io/",
+    "linkExplainer": "<p>* Backup link represents site at time of this case study. The <a rel=\"noopener noreferrer\" href=\"https://www.whalesync.com/\" target=\"_blank\">live site</a> is now operated by the client.</p>",
+    "ogImage": "/images/cms/whalesync-og-whalesync--1-.jpg",
+    "mainImage": "/images/cms/whalesync-whalesync.webp",
+    "mainImageAlt": null,
+    "bgColor": "#01a2f2",
+    "bgType": "Dark",
+    "metaDescription": "Whalesync is a powerful two-way sync tool that I partnered with to refresh their brand and website. The full extent of my skills was put to work across identity design, illustration, web design, web development, and animation to support a major launch of their updated product.",
+    "summary": "<p>Whalesync is a powerful two-way sync tool that I partnered with to refresh their brand and website. The full extent of my skills was put to work across identity design, illustration, web design, web development, and animation to support a major launch of their updated product.</p>",
+    "roles": [
+      {
+        "title": "Discover",
+        "active": true
+      },
+      {
+        "title": "Define",
+        "active": true
+      },
+      {
+        "title": "Concept",
+        "active": true
+      },
+      {
+        "title": "Design",
+        "active": true
+      },
+      {
+        "title": "Develop",
+        "active": true
+      },
+      {
+        "title": "Optimize",
+        "active": true
+      }
+    ],
+    "problem": "<p>After two years of steady growth and testing market fit, Whalesync was embarking on a product refresh and redefining its mission to make two-way data syncing simple, scalable, and secure. To ensure this next phase of growth would be a success, one of the founders reached out to me to collaborate on the foundations of their marketing engine—their brand and website.</p>",
+    "solution": "<p>We first conducted a thorough audit of their current brand, competitor landscape, ideals their new brand and mission should strive for, and the final deliverables needed to make their relaunch a success. From there, I refined their logo, color, type, and artifacts into a refreshed brand that aligned more closely with their future vision, then designed and developed the entire site, as well as creating animations and marketing templates to help their small, agile team scale with ease.</p>",
+    "body": "<p>Full case study coming soon...</p><p>‍</p><p>‍</p><div data-rt-embed-type='true'><div class=\"row justify-center\"><div class=\"col col-lg-11 col-md-12 col-sm-11 mb-0\"><div class=\"splitter bg-dark-gray-2\"></div></div></div></div>"
+  },
+  {
+    "slug": "webflow-conf",
+    "name": "Webflow Conf",
+    "altCardTitle": null,
+    "featured": true,
+    "date": "2023-10-05T00:00:00.000Z",
+    "type": "Webflow",
+    "link": "https://webflow.com/webflowconf/2023",
+    "linkExplainer": null,
+    "ogImage": "/images/cms/webflow-conf-og-conf23.webp",
+    "mainImage": "/images/cms/webflow-conf-webflow-conf.webp",
+    "mainImageAlt": null,
+    "bgColor": "#e7ff50",
+    "bgType": "Dark",
+    "metaDescription": "Webflow’s annual conference went big in 2023 by taking their user conference on the road to 4 different cities and virtually to engage with almost 30,000 passionate community members from around the world.",
+    "summary": "<p>Webflow’s annual conference went big in 2023 by taking their user conference on the road to 4 different cities and virtually to engage with almost 30,000 passionate community members from around the world. This year was a special one for the team I was apart of in bringing it to life as it was the launch of several major new features, a refreshed brand, and a virtual event platform built in-house using our own product.</p>",
+    "roles": [
+      {
+        "title": "Discover",
+        "active": true
+      },
+      {
+        "title": "Define",
+        "active": true
+      },
+      {
+        "title": "Concept",
+        "active": true
+      },
+      {
+        "title": "Design",
+        "active": true
+      },
+      {
+        "title": "Develop",
+        "active": true
+      },
+      {
+        "title": "Optimize",
+        "active": true
+      }
+    ],
+    "problem": "<p>In years prior to 2023, Webflow managed its annual user conference with typical event registration platforms which typically underperformed and came with both internal frustration, and a less then ideal brand experience for attendees. Following Webflow Conf 2022, we pitched the idea of building our own registration platform in 2023 using Webflow and a couple other powerful no-code tools in order to optimize internal workflows, and create a world class brand and UX that we could fully control.</p>",
+    "solution": "<p>We strategically outlined a flexible user journey and content strategy, then aligned it with the best tools in the space that could all integrate for a powerful, custom event management solution. Of course the entire front-end was built in Webflow, and then we combined Airtable, Memberstack, and Whalesync, along with a couple other secondary services to build a platform that was both scalable for up to 50k attendees, and agile enough to quickly change to on-going requirement shifts.</p>",
+    "body": "<h2 id=\"\">Brand evolution</h2><p id=\"\">At kickoff of the Webflow Conf 2023 work for the Brand team, we were already at capacity across many other work streams like the entire brand refresh work that would also launch at Conf that year, so we were given the direction to start from the 2022 Conf brand as a baseline to evolve the 2023 brand from, instead of starting from net new.</p><p id=\"\">Many aspects of the general positioning and messaging of the Conf in 2022 carried through to 2023 and we also didn’t want to overthink the 2023 brand knowing we would be launching the new core Webflow brand and product UI that needed to be the primary focus, with the brand of the conference taking a supporting back seat. I jammed with two other designers on the Brand team across a weeks time of exploration and iteration to define the path we felt worked well as a related, yet unique and scalable visual expression to support all brand and marketing collateral for Conf 2023. This first image below outlines some of the early exploration work I found interesting, and which informed the final direction as seen in the second image.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/webflow-conf-case-1---img-1-2.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/webflow-conf-case-1---img-2.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><h2 id=\"\">Plan, build, launch, repeat</h2><p id=\"\">The end-to-end attendee experience of Webflow Conf 2023 was the top focal point for our team, so we started from the highest level possible by mapping out the user journey (shown above) across both the digital experience and how that would even inform the in-person experience. By having control over both functionality and aesthetics of the Webflow Conf experience, we were able to iterate quickly and find systematic ways to create a familiar, refined user flow through the entire journey.</p><p id=\"\">I led the development strategy and tool vetting process, as well as implemented a large variety of workflows, automations, and custom code which were the backbone of the entire platform. The core tools used were Webflow(front-end), Memberstack(authentication), Whalesync(data syncing), and Airtable(database + reporting), plus several secondary tools like Zapier (automation), Iterable (email), Marketo and Salesforce (CRMs). From the time of approval to move forward with new tools like Memberstack, we designed and developed out the platform from most critical aspects to least, and launched the public registration functionality only 3 weeks after kickoff.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/webflow-conf-case-1---img-3.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><figure class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div><img src=\"/images/cms/webflow-conf-case-1---img-4-2.webp\" loading=\"lazy\"></div></figure><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/webflow-conf-case-1---img-5.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><h2 id=\"\">Intention in every pixel</h2><p id=\"\">Knowing we would have full control over the platform functionality, I worked closely with a fellow designer/dev internally to define and design every page and layout from scratch. With the tight timeline of the overall project, we continuously iterated on the overall design system we were creating as the site grew, and functional requirements continued to evolve.</p><p id=\"\">The underlying development approach on the project utilized our in-house CSS Framework called Boilerplate, but we iterated on it a bit to align with unique aspects of the Webflow Conf 2023 brand. One example of this is found in the 32 column grid used to define both the contained layouts, as well as the background grid line accents throughout the site.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/webflow-conf-case-1---img-6.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/webflow-conf-case-1---img-7.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/webflow-conf-case-1---img-8.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><h2 id=\"\">Digital agility</h2><p id=\"\">Since we were late out of the gate in building and launching the brand and platform for 2023, naturally later timelines became more and more condensed as we marched towards an October 5th go live. Thankfully, with the configuration of tools we were working with, we were able to utilize the fundamental building blocks of each one to quickly build new capabilities within days, compared to weeks/months for traditional approaches.</p><p id=\"\">For example, to support high demand for in-person attendance, an extra day of Workshops were added to the schedule after registration had already launched, so we had to build out net new functionality to support a secondary registration workflow that attendees could go through once they registered for the main event. Also, as an experiment to drive registration closer to the event, I built out custom referral functionality allowing existing attendees to share a referral link for friends to register with.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/webflow-conf-case-1---img-9.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><h2 id=\"\">The numbers count</h2><p id=\"\">At the end of the day, value is hard to prove without hard numbers to prove it. This is where Airtable and Whalesync were vital tools to defining and refining the marketing and growth levers throughout the lifecycle of the conference. More specifically, we used Airtable Interfaces to create custom dashboards of attendee data that was synced from Memberstack in real-time via Whalesync.</p><p id=\"\">To extend attendee engagement analytics further we also used things like the Memberstack DOM package to write custom javascript that would store attendee data back to their profile as they interacted with the website and main event livestream.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/webflow-conf-case-1---img-10.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure>"
+  },
+  {
+    "slug": "wrapbook",
+    "name": "Wrapbook",
+    "altCardTitle": null,
+    "featured": true,
+    "date": "2023-06-20T00:00:00.000Z",
+    "type": "Freelance",
+    "link": "https://www.wrapbook.com/",
+    "linkExplainer": null,
+    "ogImage": "/images/cms/wrapbook-og-wrapbook.webp",
+    "mainImage": "/images/cms/wrapbook-wrapbook.webp",
+    "mainImageAlt": null,
+    "bgColor": "#6733ff",
+    "bgType": "Light",
+    "metaDescription": "Wrapbook is a smart production payroll and accounting platform built by industry veterans. I partnered with their in-house Brand team to bring their brand refresh and growth strategies to life on the web.",
+    "summary": "<p>Wrapbook is a smart production payroll and accounting platform built by industry veterans. I partnered with their Creative Director and Brand Designer to bring their brand refresh to life on the web.</p>",
+    "roles": [
+      {
+        "title": "Discover",
+        "active": false
+      },
+      {
+        "title": "Define",
+        "active": true
+      },
+      {
+        "title": "Concept",
+        "active": true
+      },
+      {
+        "title": "Design",
+        "active": true
+      },
+      {
+        "title": "Develop",
+        "active": true
+      },
+      {
+        "title": "Optimize",
+        "active": true
+      }
+    ],
+    "problem": "<p id=\"\">The Wrapbook team created a stellar refreshed brand that needed support in translating and scaling a system for use on the web. Shortly after we launched the new brand, they needed additional support on building out new growth driving sections of wrapbook.com.</p>",
+    "solution": "<p id=\"\">We first collaborated on visual concepts and web design systems as a foundation for their updated site, followed by a full refactor of their 50+ page Webflow project, and finally built a fully automated, CMS driven production incentive portal to align data with customer value.</p>",
+    "body": "<h2 id=\"\">Brand to web at scale</h2><p id=\"\">After first seeing the new brand the team was creating, I was very excited to support translating the fresh aesthetic into a system for their main dot com that would scale and perform with efficiency far into the future. We first jammed on a variety of type systems, key UI elements, and layout compositions until we found alignment across the large number of components and pages they would need to define.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/wrapbook-case-1---img-1.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/wrapbook-case-1---img-2.jpg\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><h2 id=\"\">Refresh and refactor</h2><p id=\"\">Once we consolidated the early explorations, we refined the web design system and they used it to design all of the different page types for the main dot com. Leading up to development I reviewed designs and offered technical insight on some of the more complex pages, and then led development alongside their in-house Webflow developer to refactor and build over 50 pages in only 3 weeks — using my beloved <a id=\"\" href=\"https://www.nocodesupply.co/mast\" target=\"_blank\">Mast framework</a>.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/wrapbook-case-2---img-1.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/wrapbook-case-2---img-2.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><h2 id=\"\">CMS and component architecture</h2><p id=\"\">With the <a id=\"\" href=\"https://www.wrapbook.com/\" target=\"_blank\">wrapbook.com</a> site being anything but small, it was critical that we refined the way the CMS was structured, as well as take a more component driven approach to the entire design system in order to build a consistent and solid brand-driven site. I led the re-architecture of the CMS, as well as built several custom javascript based components to align with their unique use cases.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/wrapbook-case-3---img-1.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/wrapbook-case-3---img-2.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><h2 id=\"\">Production incentive center</h2><p id=\"\">Following the launch of the refreshed brand and site, I partnered with another team at Wrapbook to build an <a id=\"\" href=\"https://www.wrapbook.com/production-incentive-center\" target=\"_blank\">entirely new section</a> of the site centered on helping potential customers quickly discover where to get the best production incentives across the US. I designed and developed a custom CMS based, <a id=\"\" href=\"https://www.wrapbook.com/production-incentive-center/state-map\" target=\"_blank\">interactive state map</a> with real-time search functionality, a <a id=\"\" href=\"https://www.wrapbook.com/production-incentive-center/compare-states\" target=\"_blank\">state comparison tool</a>, and a multi-step <a id=\"\" href=\"https://www.wrapbook.com/production-incentive-center/incentive-finder\" target=\"_blank\">incentive finder</a>. All underlying production incentive data was setup to live sync from their database in Notion to the Webflow CMS for easy management and scalability.</p><figure class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div><img src=\"/images/cms/wrapbook-case-4---img-1.jpg\" loading=\"lazy\"></div></figure><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/wrapbook-case-4---img-2.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure>"
+  },
+  {
+    "slug": "no-code-supply-co",
+    "name": "No-Code Supply Co.",
+    "altCardTitle": null,
+    "featured": false,
+    "date": "2023-01-13T00:00:00.000Z",
+    "type": "Personal",
+    "link": "https://www.nocodesupply.co/",
+    "linkExplainer": null,
+    "ogImage": "/images/cms/no-code-supply-co-og-ncsc.jpg",
+    "mainImage": "/images/cms/no-code-supply-co-ncsc.webp",
+    "mainImageAlt": null,
+    "bgColor": "#d04526",
+    "bgType": "Light",
+    "metaDescription": "No-Code Supply Co. is a personal side project I branded and built as a resource for helping people explore what’s possible with no-code tools.",
+    "summary": "<p>No-Code Supply Co. is a personal side project I branded and built as a resource for helping people explore what’s possible with no-code tools. It’s a vast directory with a variety of inspiring websites, useful apps, delightful code snippets, and much more.</p>",
+    "roles": [
+      {
+        "title": "Discover",
+        "active": true
+      },
+      {
+        "title": "Define",
+        "active": true
+      },
+      {
+        "title": "Concept",
+        "active": true
+      },
+      {
+        "title": "Design",
+        "active": true
+      },
+      {
+        "title": "Develop",
+        "active": true
+      },
+      {
+        "title": "Optimize",
+        "active": true
+      }
+    ],
+    "problem": "<p>In 2018, I started collecting inspiring sites built in Webflow, resources and code snippets I discovered along the way of advocating for the power and value Webflow can bring to businesses. Years later, with over 1,000 items in a Notion database I was eager to get them indexed for others in the community to discover and possibly benefit from.</p>",
+    "solution": "<p>Not only did I want to get all of the content organized and live on the web, but I also wanted to ensure I built things in a way they could be easily maintained into the future. Using the power combo of Webflow and Airtable, I built a highly automated, easily iterated, top quality directory along with a roadmap to continue adding more features to it going forward.</p>",
+    "body": "<h2 id=\"\">Content-first</h2><p id=\"\">My absolute preferred way to work is with a content-first approach, which prioritizes content strategy, outline and organization before the majority of other work begins. I started this with the directory data itself, spending any spare time I had over a few months cleaning up the data and migrating it to Airtable. From there, I started collaborating with a friend and colleague, Max Lind, to define a strategy around how everything would be positioned on the final size and in marketing it after launch.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" src=\"/images/cms/no-code-supply-co-63e016ec11b873ff47b6555a_case-201-20--20img-201.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><h2 id=\"\">Brand to build</h2><p id=\"\">Leveraging the full depth of my skills, from early brand identity designs, to the website design and custom Webflow development, to the large and strategically automated database in Airtable that is essential to allowing us to easily continue curating NCSC everyday.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" src=\"/images/cms/no-code-supply-co-63e017052ae9b02ffbe037a9_case-201-20--20img-201-1.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><h2 id=\"\">Optimized to browse and search</h2><p id=\"\">After a few rounds of research, inspiration gathering, and mockup iterations I landed on an overall design that is intended to be simple, but interesting enough that it encourages free browsing, well a filter/search experience that is intuitive, streamlined and efficient to help people find what they are looking for quickly.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" src=\"/images/cms/no-code-supply-co-63e017193f8612b62d7b8483_case-201-20--20img-201-2.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><h2 id=\"\">Automate all the things</h2><p id=\"\">Both Max and I are parents and balance a full-time job and occasional side gigs, so from the moment we began work on NCSC, we set the goal to ensure every aspect of curation and content creation could be as automated and efficient as possible. Some of the most powerful tools that allow us to accomplish this are Airtable automations, scripting, web clipper, and event the mobile app for curating on the go!</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" src=\"/images/cms/no-code-supply-co-63e0172c3f86125f5f7b85f3_case-201-20--20img-201-3.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><h2 id=\"\">Mast</h2><p id=\"\">Mast is a lightweight, developer-first framework of essential classes and strategies to help you build efficiently for any brand and scale. It was the first product we launched under the No-Code Supply Co. brand and is a framework that is an evolution of the way I have built in Webflow and front-end development over the course of my career. We defined a name and marketing strategy, user tested the style guide, wrote (and re-wrote) all of the documentation, in order to official launch what we feel is one of the best ways to develop in Webflow.</p><figure class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div><img src=\"/images/cms/no-code-supply-co-64496b2a618707417d50192d_case-201-20--20mast.webp\" loading=\"lazy\"></div></figure>"
+  },
+  {
+    "slug": "partytrick",
+    "name": "Partytrick",
+    "altCardTitle": null,
+    "featured": true,
+    "date": "2022-10-26T00:00:00.000Z",
+    "type": "Shapemaker",
+    "link": "https://partytrick-backup-11-19-22.webflow.io/",
+    "linkExplainer": "<p id=\"\">* Backup link represents site at time of this case study. The <a id=\"\" rel=\"noopener noreferrer\" href=\"https://www.partytrick.com/\" target=\"_blank\">live site</a> is now operated by the client.</p>",
+    "ogImage": "/images/cms/partytrick-og-partytrick.jpg",
+    "mainImage": "/images/cms/partytrick-partytrick.webp",
+    "mainImageAlt": null,
+    "bgColor": "#ffd8d7",
+    "bgType": "Dark",
+    "metaDescription": "Partytrick provides hosts with tools to make elevating gatherings easier, including party concepts, styled and shoppable decor, customized guidelines, with timelines and checklists curated by the pros. Founded by one of the world's most sought-after event planners, we worked as their in-house brand and product team to help define a new category, and to build-up a robust and meaningful experience around it.",
+    "summary": "<p id=\"\">Partytrick provides hosts with tools to make elevating gatherings easier, including party concepts, styled and shoppable decor, customized guidelines, with timelines and checklists curated by the pros. Founded by one of the world's most sought-after event planners, we worked as their in-house brand and product team to help define a new category, and to build-up a robust and meaningful experience around it.</p>",
+    "roles": [
+      {
+        "title": "Discover",
+        "active": false
+      },
+      {
+        "title": "Define",
+        "active": true
+      },
+      {
+        "title": "Concept",
+        "active": true
+      },
+      {
+        "title": "Design",
+        "active": true
+      },
+      {
+        "title": "Develop",
+        "active": true
+      },
+      {
+        "title": "Optimize",
+        "active": true
+      }
+    ],
+    "problem": "<p id=\"\">The founder’s vision was to bring all that she had learned from planning high-end parties into a curated experience of resources, guides and styling that anyone could leverage to throw one of a kind parties.</p>",
+    "solution": "<p id=\"\">Leveraging the deep expertise of the entire team at Shapemaker, we created a unique, timeless brand and paired it with powerful no-code and full-code tools to create and launch a product in record time that enables anyone to browse and create amazing parties.</p>",
+    "body": "<h2 id=\"\">Brand to digital</h2><p id=\"\">As the Digital Design Lead at Shapemaker, I was involved with feedback and review of early brand and strategy work that would be translated to the digital product experience. This included things like ensuring the color palette was accessible and flexible for the product, or working through early explorations of ways we could bring key brand attributes to life on the web.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" src=\"/images/cms/partytrick-63881eb32f1f34b4bb8a28c6_case-201-20--20img-201.webp\" width=\"auto\" height=\"auto\" loading=\"auto\"></div></figure><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" src=\"/images/cms/partytrick-63881eba23abc4bbd96422f2_case-201-20--20img-202.webp\" width=\"auto\" height=\"auto\" loading=\"auto\"></div></figure><h2 id=\"\">Systematic style</h2><p id=\"\">From the beginning of scoping the digital deliverables for Partytrick, we knew scalability and consistency was critical to delivering a performant and timeless product. So, we built the site from our style and layout framework that maximizes reusability and optimizes long term maintenance, while ensuring key UI components are consistent throughout the site. There were several fully custom components in the site that followed these principles and I&nbsp;also turned one into a <a id=\"\" href=\"https://webflow.com/made-in-webflow/website/cms-image-plotter\" target=\"_blank\">cloneable</a> after several people in the Webflow community asked about how it was done.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" src=\"/images/cms/partytrick-63881efb1c5ad87dd9b675b9_case-202-20--20img-201.webp\" width=\"auto\" height=\"auto\" loading=\"auto\"></div></figure><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" src=\"/images/cms/partytrick-63881f0535d848188ee77962_case-202-20--20img-202.webp\" width=\"auto\" height=\"auto\" loading=\"auto\"></div></figure><h2 id=\"\">Product design</h2><p id=\"\">Using our preferred mid-fidelity wireframe style, I collaborated with another Designer on the Shapemaker team to plan the entire UX flow and design a large variety of UI to establish a unique and consistent experience. After some iteration with the client and a few unexpected pivots in the direction of the experience, we moved into development where we continued to adjust the UI along the way as technical challenges were overcome.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" src=\"/images/cms/partytrick-63881f4bbaaa358e450bfef0_case-203-20--20img-201.webp\" width=\"auto\" height=\"auto\" loading=\"auto\"></div></figure><h2 id=\"\">Development collaboration</h2><p id=\"\">Throughout the design and development of the Partytrick site, I worked closely with our engineer, Andrew, to scope, plan and implement. After working through several iterations of the design in Figma, I built out the entire front-end experience in Webflow and custom code, while Andrew development the backend across a variety of products and services as outlined in his FigJam of the high level architecture below. Hear more about our collaboration and what we built in this <a id=\"\" href=\"https://youtu.be/NmIbKkJ3NPE\" target=\"_blank\">livestream</a>.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" src=\"/images/cms/partytrick-63881f64ce09972128bb65fe_case-204-20--20img-201.webp\" width=\"auto\" height=\"auto\" loading=\"auto\"></div></figure><h2 id=\"\">Airtable content management</h2><p id=\"\">One of the most challenging aspects of this project was curating, creating and cross referencing over 2,500 collection items for the Webflow CMS in around 1 months time ahead of launch. Once we started, it was clear we needed a more efficient and automated way to accomplish this then manually adding items directly to the Webflow CMS. So, we turned to <a id=\"\" href=\"https://airtable.com/\" target=\"_blank\">Airtable</a> as our database to manage all content, and used <a id=\"\" href=\"https://www.whalesync.com/\" target=\"_blank\">Whalesync</a> to live sync our data to the Webflow CMS. This workflow saved us countless hours of work between it being more efficient to add content, as well as use features like Airtable Scripting to run bulk image compression.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" src=\"/images/cms/partytrick-63881f7f65306f5355ada14f_case-205-20--20img-201.webp\" width=\"auto\" height=\"auto\" loading=\"auto\"></div></figure>"
+  },
+  {
+    "slug": "rango",
+    "name": "Rango",
+    "altCardTitle": null,
+    "featured": false,
+    "date": "2022-04-01T00:00:00.000Z",
+    "type": "Shapemaker",
+    "link": "https://rangowireless-backup.webflow.io/",
+    "linkExplainer": "<p>* Backup link represents site at time of this case study. The <a rel=\"noopener noreferrer\" href=\"https://www.rango.net/\" target=\"_blank\">live site</a> is now operated by the client.</p>",
+    "ogImage": "/images/cms/rango-og-rango.jpg",
+    "mainImage": "/images/cms/rango-rango.webp",
+    "mainImageAlt": null,
+    "bgColor": "#e8b500",
+    "bgType": "Dark",
+    "metaDescription": "Rango is a new internet service that is connecting rural communities with cutting-edge technology. We worked with them from a full end-to-end strategy, naming, brand and digital design to launch their services with the powers to quickly scale into the future.",
+    "summary": "<p id=\"\">Rango is a new internet service that is connecting rural communities with cutting-edge technology. We worked with them from a full end-to-end strategy, naming, brand and digital design to launch their services with the powers to quickly scale into the future.</p>",
+    "roles": [
+      {
+        "title": "Discover",
+        "active": true
+      },
+      {
+        "title": "Define",
+        "active": true
+      },
+      {
+        "title": "Concept",
+        "active": true
+      },
+      {
+        "title": "Design",
+        "active": true
+      },
+      {
+        "title": "Develop",
+        "active": true
+      },
+      {
+        "title": "Optimize",
+        "active": true
+      }
+    ],
+    "problem": "<p id=\"\">As with many startups, establishing future success is defined by maximizing capabilities and efficiencies up front. The Rango team needed a name, brand and website that were both flexible and scalable, while defining a system for communicating their services in a simplified and direct way that is best recieved by potential customers.</p>",
+    "solution": "<p id=\"\">This was one of the first projects where the full power of the team at Shapemaker was galvanized in an end-to-end solution that would truly be powerful for the new Rango brand. I offered feedback in early stages of strategy and brand, then stepped into lead the digital half of the project through a systematic Webflow build, customizations and training.</p>",
+    "body": "<h2 id=\"\">Digital brand defined</h2><p id=\"\">With any new brand, establishing a solid foundation for their digital presence is critical to ensure not just the initial site communicates the brand, but also creating styles in a way that anticipates future brand growth. I experimented and collaborated with a fellow Digital Designer on the team to refine our typography, color palette and UX patterns for optimal experience.</p><figure class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div><img src=\"/images/cms/rango-rango-brand.webp\" loading=\"lazy\"></div></figure><h2 id=\"\">Optimized service discovery</h2><p id=\"\">Knowing the primary Rango audience was less digitally savvy then a typical consumer, we worked through several iterations on how best to create an efficient and easily discovered UX flow for customers to find if Rango was offering service in their area. Our final solution landed on a zip code type ahead UX that took them directly to information and pricing for their area if it existed, or offered them an opportunity to subscribe for future updates if service wasn’t available.</p><figure class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div><img src=\"/images/cms/rango-rango-service.webp\" loading=\"lazy\"></div></figure><h2 id=\"\">Scalable data translation</h2><p id=\"\">The pricing structure defined by the team at Rango was a complex cross reference of region and bandwidth based prices that had to be translated into an SEO friendly and easily maintained CMS structure within the site. We utilized Webflow’s powerful reference fields within the CMS to organize the data in a very scalable way by dividing it into Networks, States, Regions, Cities and finally Service Areas, all of which were cross referenced to ensure there was no duplicate data and easy future editing.</p><figure class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div><img src=\"/images/cms/rango-rango-cms.webp\" loading=\"lazy\"></div></figure><h2 id=\"\">Powerful customizations</h2><p id=\"\">To best support measurement of the client’s growth goals as well as created a great experience for potential Rango customers, we implemented several unique customizations. These included site-wide Spanish translations via <a id=\"\" href=\"https://weglot.com/\" target=\"_blank\">Weglot</a>, custom referrer tracking to capture the past 2 pages a user visited before signing up, and a “We joined Rango” embed generator their acquired ISP’s could use to generate a personalized widget for their site.</p><figure class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div><img src=\"/images/cms/rango-rango-customizations.webp\" loading=\"lazy\"></div></figure>"
+  },
+  {
+    "slug": "no-code-conf",
+    "name": "No-Code Conf",
+    "altCardTitle": null,
+    "featured": false,
+    "date": "2021-11-01T00:00:00.000Z",
+    "type": "Webflow",
+    "link": "https://webflow.com/nocodeconf/2021",
+    "linkExplainer": null,
+    "ogImage": "/images/cms/no-code-conf-og-ncc.jpg",
+    "mainImage": "/images/cms/no-code-conf-no-code-conf.webp",
+    "mainImageAlt": null,
+    "bgColor": "#3d74f2",
+    "bgType": "Light",
+    "metaDescription": "No-Code Conf 2021 brought more than 18,000 no-coders together across 135+ countries — including companies like Adobe, Apple, Airtable, and Google, and more.",
+    "summary": "<p id=\"\">No-Code Conf 2021 brought more than 18,000 no-coders together across 135+ countries — including companies like Adobe, Apple, Airtable, and Google, and more. As a collective, we uncovered the future of no-code, and we’re just scratching the surface.</p>",
+    "roles": [
+      {
+        "title": "Concept",
+        "active": true
+      },
+      {
+        "title": "Define",
+        "active": true
+      },
+      {
+        "title": "Design",
+        "active": true
+      },
+      {
+        "title": "Develop",
+        "active": true
+      },
+      {
+        "title": "Discover",
+        "active": true
+      },
+      {
+        "title": "Optimize",
+        "active": true
+      }
+    ],
+    "problem": "<p id=\"\">To create an engaging, inspiring brand as an evolution for the first ever No-Code Conf that took place in 2019. The direction was to align with the product announcements and goals for the future, while establishing an easily scaled system for a variety of sub-campaigns.</p>",
+    "solution": "<p id=\"\">Through an in-depth 2 week brand exploration sprint, the entire Brand Team worked through hundreds of concepts to land on an isometric, minimal brand. From the initial direction, we continued to refine the standards across countless deliverables leading up to the event.</p>",
+    "body": "<h2 id=\"\">Teamwork makes the conf work</h2><p id=\"\">Early on, we realized how crucial it was for the entire Brand Team to be involved and aligned on the conception and execution of the conference brand that would define the direction of many deliverables to follow. From realistic 3d, to very minimal and type heavy, we scrubbed pixels together in Figma over two weeks to refine a brand evolution we were all proud of, felt aligned well with the goals, and could confidently go forth to efficiently create an inspiring event.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/no-code-conf-ncc-brand.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><h2 id=\"\">Bringing illustrations to life</h2><p id=\"\">Our final isometric illustration system, which represented the compounding effects of building with multiple no-code tools, was a prime opportunity to introduce some subtle motion to inspire delight and communicate a deeper meaning of what they were representing. I used native Webflow interactions alongside a creative approach to splitting the illustrations into pieces we could animate in an inclusive way across many different pages and campaigns. Check out this <a id=\"\" href=\"https://twitter.com/CoreyGMoen/status/1420422312361406471?s=20&t=e_W_K-tZ3jkzdlK3FJcoDA\" target=\"_blank\">tweet thread</a> for a quick breakdown of how it was done.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/no-code-conf-ncc-illos.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><h2 id=\"\">Structure matters</h2><p id=\"\">As more details about the event were launched in the months and weeks leading up to it, we were constantly updating the CMS of the site, so from the beginning it was a high priority to ensure it was all architected in a way to make updates quick and without the opportunity for human error. To do this, some of the native Webflow limitations with things like nested collections were worked around with some custom Javascript here and there, as well as aligning the schedule, speaker and session structure with the broader team that was creating it.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/no-code-conf-ncc-cms.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><h2 id=\"\">Even the phase had a phase</h2><p id=\"\">While there were around five main phases of the No-Code Conf 2021 site that were launched, we had many sub-campaigns, experiences and live stream support pages that were designed, built and launched along the way. This process was both challenging at time, but also very telling of how the brand and site development were truly resilient and scalable.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/no-code-conf-ncc-iteration.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><h2 id=\"\">Sharing is caring</h2><p id=\"\">We were incredibly proud of all that we achieved with the No-Code Conf 2021 brand and website, so we held a <a href=\"https://www.youtube.com/live/1TRZCN5Nk_k?si=4NGZjg8LuwXswmnW\" target=\"_blank\">Webflow livestream</a> for the community to get a behind the scenes look into what when into creating it. We also wanted to see what the broader web design and development thought of it so we submitted it to Awwwards and ended up winning both <a href=\"https://www.awwwards.com/sites/no-code-conf-2021\" target=\"_blank\">Site of the Date and a Dev Award</a>.</p><figure class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div><img src=\"/images/cms/no-code-conf-ncc-sharing.webp\" loading=\"lazy\"></div></figure>"
+  },
+  {
+    "slug": "webflow",
+    "name": "Webflow",
+    "altCardTitle": null,
+    "featured": true,
+    "date": "2021-06-01T00:00:00.000Z",
+    "type": "Webflow",
+    "link": null,
+    "linkExplainer": null,
+    "ogImage": "/images/cms/webflow-og-webflow.jpg",
+    "mainImage": "/images/cms/webflow-webflow.webp",
+    "mainImageAlt": null,
+    "bgColor": "#4353ff",
+    "bgType": "Light",
+    "metaDescription": "It has been one of the greatest honors of my career to collaborate with the stellar Brand and Marketing teams at Webflow. Together, we create numerous projects across webflow.com to support features, campaigns and initiatives. Below are a few specific pages and microsites I led the development of, while also collaborating closely with the rest of my team on the strategy and design.",
+    "summary": "<p id=\"\">It has been one of the greatest honors of my career to collaborate with the stellar Brand and Marketing teams at Webflow to create numerous projects across our webflow.com to support features, campaigns and initiatives. Below are a few specific pages and microsites I lead the development of, while also collaborating closely with the rest of my team on the vision and design.</p>",
+    "roles": [
+      {
+        "title": "Concept",
+        "active": true
+      },
+      {
+        "title": "Define",
+        "active": true
+      },
+      {
+        "title": "Design",
+        "active": true
+      },
+      {
+        "title": "Develop",
+        "active": true
+      },
+      {
+        "title": "Discover",
+        "active": true
+      },
+      {
+        "title": "Optimize",
+        "active": true
+      }
+    ],
+    "problem": "<p id=\"\">As the team, product and brand grew, it was an ever-evolving challenge to find ways to simplify our messaging and create development efficiencies that fostered collaboration and created opportunities for innovation.</p>",
+    "solution": "<p id=\"\">I helped to lead and drive collaboration across the team to consistently approach new projects in a systematic, strategic and future-foward way that would support the brand and it’s growth for years to come.</p>",
+    "body": "<h2 id=\"\">Boilerplate Style Framework</h2><p id=\"\">All of webflow.com is made up of 15+ separate Webflow projects that must all come together with a consistent brand, voice and experience to drive product growth and awareness. When I joined the team, we didn’t have much for a system to consistently build new pages with in order to most easily collaborate and support each others projects at any time. So, one of my most passionate initiatives was to create, implement and continue to encourage iterations on a design and development system we called the Boilerplate. </p><p id=\"\">The system consists of a set of type, color, layout and utilities styles that are intended to solve for a max amount of use cases, with the smallest amount of pre-built elements. Through thorough written documentation and team education, we began to implement this system across the various webflow.com projects, while periodically re-grouping on ways we could improve it.</p><div data-rt-embed-type='true'><p>\n<a href=\"https://webflow-brand-styles.webflow.io/\" target=\"_blank\" class=\"btn w-inline-block\">View project <span class=\"btn-arrow\">↗</span></a>\n</p></div><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/webflow-webflow-boilerplate.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><h2 id=\"\">Home Page</h2><p id=\"\">The most iterative, collaborative and complex single web page projects I have been a part of to date. I was brought in to the project post-kickoff, and played an early feedback role during initial research and design work, followed by taking more of a lead role as the project neared its final direction and moved into development. </p><p id=\"\">With this page being on of the most valuable across webflow.com in terms of traffic and conversions, I put everything I had into ensuring every aspect from aesthetics and structure, to performance and responsiveness was as optimized as possible. Several aspects of the page involved iterating upon how a component could be built multiple times, while also experimenting with the new at the time <a id=\"\" href=\"https://dotlottie.io/\" target=\"_blank\">Dot Lottie library</a> to ensure we had the most crisp and performant animations possible communicating the power of our beloved tool.</p><div data-rt-embed-type='true'><p>\n<a href=\"https://2021-webflow-homepage-backup.webflow.io/\" target=\"_blank\" class=\"btn w-inline-block\">View project <span class=\"btn-arrow\">↗</span></a>\n</p>\n<div class=\"project-link-explainer w-richtext\"><p>* Project link represents the site at time of this case study.</p></div></div><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/webflow-webflow-home.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><h2 id=\"\">Accessibility Checklist</h2><p id=\"\">Webflow’s mission is to empower everyone to create for the web, and we also have a deep internal drive to ensure anyone can do it in a responsible, inclusive and accessible way. This project was one that started as an internal initiative to create tooling for higher quality QA processes on the Brand Team, and evolved into something we were excited to share publicly with the Webflow community and beyond to further practical web accessibility education.</p><p id=\"\">We initially tested multiple modern doc and database tools like Coda, Notion, and Airtable to find the best route to generate a maintainable and repeatable checklist we could sync for every new page we build, as well as get live metrics from to check our progress along the way. After landing on using Coda, we curated, wrote and organized all task checklists, then migrated all of them to the Webflow CMS. Finally, I paired with a Senior Engineer at Webflow to write all of the custom Javascript that powers the checklist saving and sharing functionality on the final site.</p><div data-rt-embed-type='true'><p>\n<a href=\"https://webflow.com/accessibility/checklist\" target=\"_blank\" class=\"btn w-inline-block\">View project <span class=\"btn-arrow\">↗</span></a>\n</p></div><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/webflow-webflow-checklist.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><h2 id=\"\">Pitch</h2><p id=\"\">A project resulting from a no constraints internal brain storm, and ended in a great example of how you can build micro products within Webflow to drive new brand engagement channels. The goal of Webflow Pitch was to create a simple presentation builder tool that would allow anyone to generate a personalized deck link to send to a colleague to convince them why they should consider Webflow.</p><p id=\"\">Once someone enters their name and email, they can personalize the recipient name and image, as well as configure various key Webflow features they feel are most valuable for the recipient to read. Once they complete and submit the presentation, they receive an email with their custom presentation link that takes them to a CMS generated page which snap scrolls (also works with arrow keys!) so the recipient can move through the slides in a typical deck like experience. After over 1,000 decks have been generated, we continue to see new people get excited about discovering the project over a year later.</p><div data-rt-embed-type='true'><p>\n<a href=\"https://webflow.com/pitch\" target=\"_blank\" class=\"btn w-inline-block\">View project <span class=\"btn-arrow\">↗</span></a>\n</p></div><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/webflow-webflow-pitch.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><h2 id=\"\">Year in Review 2020</h2><p id=\"\">One of my very first projects at Webflow was to build a year-in-review page to celebrate and inform the world of Webflow’s role in the chaos of a year that was 2020. This turned out to be an exceptionally challenging project on both the end of consolidating final content, while also building a page that had enough “wow” factor to foster organic social sharing, while also being performant alongside its great length and size.</p><div data-rt-embed-type='true'><p>\n<a href=\"https://webflow.com/year-in-review/2020\" target=\"_blank\" class=\"btn w-inline-block\">View project <span class=\"btn-arrow\">↗</span></a>\n</p></div><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/webflow-webflow-yir.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><h2 id=\"\">Ebooks</h2><p id=\"\">An iteration focused project with a primary goal to streamline how it’s built and managed. After a light design refresh, I focused heavily on optimizing the CMS to ensure it was as efficient and intuitive as possible to add new Ebooks. The site also required a more scalable way to gate content alongside our third party marketing software that powered our lead funnel, so I worked on a custom javascript approach that was also easily scaled entirely form the CMS and dynamic in it’s approach to sending data to our external marketing tools.</p><div data-rt-embed-type='true'><p>\n<a href=\"https://ebooks.webflow.com/\" target=\"_blank\" class=\"btn w-inline-block\">View project <span class=\"btn-arrow\">↗</span></a>\n</p></div><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/webflow-webflow-ebooks.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><h2 id=\"\">Merch Store</h2><p id=\"\">Since I first discovered Webflow, I have told just about anyone that was even a little curious along the way. So, I was incredibly eager to lead the design and development of the first Webflow Merch Store, that would enable our passionate communicate to sport the Webflow brand proudly no matter where they are. The site was one of my first Ecommerce builds, that also integrated with Printful for easy on-demand printing and shipping. Although there were a few unexpected obstacles along the way, I was excited to launch the minimal and scalable site in January 2021.</p><div data-rt-embed-type='true'><p>\n<a href=\"https://store.webflow.com/\" target=\"_blank\" class=\"btn w-inline-block\">View project <span class=\"btn-arrow\">↗</span></a>\n</p></div><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/webflow-webflow-merch.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure>"
+  },
+  {
+    "slug": "aalto",
+    "name": "Aalto",
+    "altCardTitle": null,
+    "featured": false,
+    "date": "2021-04-01T00:00:00.000Z",
+    "type": "Shapemaker",
+    "link": "https://aalto-backup-2022.webflow.io/",
+    "linkExplainer": "<p id=\"\">* Backup link represents site at time of this case study. The <a id=\"\" rel=\"noopener noreferrer\" href=\"https://aalto.com/\" target=\"_blank\">live site</a> is now operated by the client.</p>",
+    "ogImage": "/images/cms/aalto-og-aalto.jpg",
+    "mainImage": "/images/cms/aalto-aalto.webp",
+    "mainImageAlt": null,
+    "bgColor": "#4a1f4f",
+    "bgType": "Light",
+    "metaDescription": "Aalto is empowering home buyers and sellers directly connect in a new, tech-enabled way that helps everyone save time, stress, and money. We created a website that would allow them to engage and grow their audience.",
+    "summary": "<p id=\"\">Aalto is empowering home buyers and sellers directly connect in a new, tech-enabled way that helps everyone save time, stress, and money. We created a website that would allow them to engage and grow their audience.</p>",
+    "roles": [
+      {
+        "title": "Discover",
+        "active": true
+      },
+      {
+        "title": "Define",
+        "active": true
+      },
+      {
+        "title": "Concept",
+        "active": true
+      },
+      {
+        "title": "Design",
+        "active": true
+      },
+      {
+        "title": "Develop",
+        "active": true
+      },
+      {
+        "title": "Optimize",
+        "active": true
+      }
+    ],
+    "problem": "<p id=\"\">The previous Aalto site was owned by their engineering team and became to a lower priority as their product demands grew. As their Marketing team had a desire to work more efficiently and experimentally to also grow their audience, they were looking to redesign the site on Webflow in a systematic and easily edited way for future growth.</p>",
+    "solution": "<p id=\"\">I collaborated with the team at <a id=\"\" href=\"https://www.shapemaker.co/\" target=\"_blank\">Shapemaker</a> and Aalto to do a full discovery and restructure of how we would best enable their future growth via content delivery and messaging experiements across their site. After defining the scope, and designing high to mid-fidelity wireframes in Figma, I&nbsp;built their new site on Webflow using our signature style framework and best practices.</p>",
+    "body": "<h2 id=\"\">Iteration superpowers</h2><p id=\"\">This was one of the most active projects I have worked on to date in terms of strategy focused iteration taking place regularly over the course of a year after the initial launch. We closely collaborated with the client to learn what was working well and identify opportunities from site anlaytics and user interviews. This led to iterating on the home page design over 4 times in 8 months, resulting in considerable improvements in conversion and retention along the way.</p><figure class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div><img src=\"/images/cms/aalto-aa-iterations.webp\" loading=\"lazy\"></div></figure><h2 id=\"\">Mobile focus</h2><p id=\"\">From the start, we knew Aalto's primary audience was most active on mobile and held the most opportunity for engagement. With each page, layout, and component created, we optimized for this mobile experience.</p><figure class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div><img src=\"/images/cms/aalto-aa-mobile.webp\" loading=\"lazy\"></div></figure><h2 id=\"\">Coded components</h2><p id=\"\">One of the ways we communicated the value and improved conversion towards sign ups on the Aalto app was through powerful, scratch coded components. These would allow users to engage with the app quickly, get a personalized message and understand how others have found value in Aalto. To share with the Webflow community, I also turned a highly requested sticky scroll component from the Aalto site into a <a id=\"\" href=\"https://webflow.com/made-in-webflow/website/sticky-scroll-feature-section\" target=\"_blank\">free cloneable</a>.</p><figure class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div><img src=\"/images/cms/aalto-aa-components.webp\" loading=\"lazy\"></div></figure><h2 id=\"\">CMS landing page builder</h2><p id=\"\">To support various initiatives, media outlets and marketing campaigns, we built a powerful landing page builder entirely within the Webflow CMS. Their team can easily create unique pages from a variety of hero options, and a section building approach that lets them define both the layout, colors and order of all sections on the page. To document and improve the setup UX, we also leveraged Loom videos and utility pages that allowed them to preview a page hero content in all available layout options, as well as search for existing body sections they could use or duplicate for a new page.</p><figure class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div><img src=\"/images/cms/aalto-aa-landings.webp\" loading=\"lazy\"></div></figure>"
+  },
+  {
+    "slug": "ziggurat",
+    "name": "Ziggurat",
+    "altCardTitle": null,
+    "featured": false,
+    "date": "2020-08-26T00:00:00.000Z",
+    "type": "Shapemaker",
+    "link": "https://www.ziggurat.games/",
+    "linkExplainer": null,
+    "ogImage": "/images/cms/ziggurat-og-ziggurat.jpg",
+    "mainImage": "/images/cms/ziggurat-ziggurat.webp",
+    "mainImageAlt": null,
+    "bgColor": "#30dd72",
+    "bgType": "Dark",
+    "metaDescription": "Ziggurat Games is heading back to the future—to remember, remaster, and re-release games from the annals of history. We created a website that would allow them to engage and grow their audience.",
+    "summary": "<p id=\"\">Ziggurat Games is heading back to the future—to remember, remaster, and re-release games from the annals of history. We created a website that would allow them to engage and grow their audience.</p>",
+    "roles": [
+      {
+        "title": "Discover",
+        "active": false
+      },
+      {
+        "title": "Define",
+        "active": true
+      },
+      {
+        "title": "Concept",
+        "active": true
+      },
+      {
+        "title": "Design",
+        "active": true
+      },
+      {
+        "title": "Develop",
+        "active": true
+      },
+      {
+        "title": "Optimize",
+        "active": true
+      }
+    ],
+    "problem": "<p id=\"\">The client needed an online presence to document and announce their growing library of games, news and impact on the industry, while being able to easily scale and manage that presence without the need for extra development.</p>",
+    "solution": "<p id=\"\">I worked closely with <a id=\"\" href=\"https://www.shapemaker.co/\" target=\"_blank\">Shapemaker</a>, to integrate their stellar brand design and creative direction for a website built in Webflow with various ways to document, feature, filter, search and promote new and existing games they release.</p>",
+    "body": "<h2 id=\"\">Mid-fidelity wireframes</h2><p id=\"\">Early iteration and exploration were crucial to define a direction for this scale of a project. I collaborated with the Creative Director at Shapemaker to design a <a id=\"\" href=\"https://www.figma.com/proto/6j7Nrp43VDGyWpN0sRMMSr/Ziggurat-Web-Mocks?node-id=55%3A0&viewport=153%2C288%2C0.06809662282466888&scaling=min-zoom\" target=\"_blank\">wireframe</a> in Figma as a means to gather feedback and refine our overall content strategy. I&nbsp;prefer to do 'mid-fidelity' wireframes like this to help guide the general layout direction alongside the content, while keeping the fidelity low enough so early client reviews can remain focused on content and functionality. This approach also allows me to move efficiently from wireframe to Webflow where Design and Development can happen in parallel to reduce overall build time and allow the Design to guide the inevitable edge cases that come along with Development.</p><figure class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div><img alt=\"__wf_reserved_inherit\" src=\"/images/cms/ziggurat-case-1---img-1.webp\" loading=\"lazy\"></div></figure><h2 id=\"\">Game library</h2><p id=\"\">Ziggurat has a large library of games they have remastered and wanted to display on the website in a way that was easy to filter and search to find games for any specific interest. I utilized the powerful search and filter capabilities of <a id=\"\" href=\"http://jetboost.io\" target=\"_blank\">Jetboost.io</a> for fast, low-code implementation that would allow the library to scale entirely from the client's updating via the Webflow Editor.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/ziggurat-case-1---img-1-0b8fdf.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><h2 id=\"\">Customization &amp; performance</h2><p id=\"\">This website involved a considerable amount of custom JS and JS libraries to power functionality like the various slider styles, metro layout, and other elements that created the dynamic, scalable and engaging experience. Due to the website also being naturally image heavy, I went through a couple of rounds of optimization and load testing to ensure it maintained first class&nbsp;performance.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div id=\"\"><img id=\"\" alt=\"\" src=\"/images/cms/ziggurat-case-1---img-1-1.webp\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure>"
+  },
+  {
+    "slug": "no-code-talk",
+    "name": "No-code Talk",
+    "altCardTitle": null,
+    "featured": false,
+    "date": "2020-05-27T00:00:00.000Z",
+    "type": "Fun",
+    "link": "https://nocode-talk.webflow.io",
+    "linkExplainer": null,
+    "ogImage": null,
+    "mainImage": "/images/cms/no-code-talk-no-code-talk.webp",
+    "mainImageAlt": null,
+    "bgColor": "#ff897d",
+    "bgType": "Dark",
+    "metaDescription": "As an official Webflow Mega-nerd, and local ambassador, I leaped at the opportunity to present about the future of No-code at our local Des Moines UX Meetup. I created this presentation in Webflow as an iteration off of my ITA Group internal presentation that recapped my experience attending the 2019 No-Code Conference.",
+    "summary": "<p id=\"\">As an official Webflow super nerd and advocate, I leaped at the opportunity to present about the future of No-code at our local Des Moines UX Meetup. I created this presentation in Webflow as an iteration off of my ITA Group internal presentation that recapped my experience attending the 2019 No-Code Conference.</p>",
+    "roles": [
+      {
+        "title": "Discover",
+        "active": true
+      },
+      {
+        "title": "Define",
+        "active": true
+      },
+      {
+        "title": "Concept",
+        "active": true
+      },
+      {
+        "title": "Design",
+        "active": true
+      },
+      {
+        "title": "Develop",
+        "active": true
+      },
+      {
+        "title": "Optimize",
+        "active": true
+      }
+    ],
+    "problem": "<p id=\"\">I&nbsp;was challenged to determine how best to create a concise, meaningful and approachable message to summarize my excitement and hope for the future after attending the <a id=\"\" href=\"https://webflow.com/nocodeconf\" target=\"_blank\">No-code Conf 2019</a>.</p>",
+    "solution": "<p id=\"\">Through a process of compiling notes, research, links and ideas mostly within Notion, I defined a general flow of content I&nbsp;wanted to present on and then iterated upon that as I&nbsp;built it out within Webflow.</p>",
+    "body": "<h2 id=\"\">Content consolidation &amp; delivery</h2><p id=\"\">To say I&nbsp;am passionate about Webflow and the entire no-code revolution is an understatement, so when it came to refining, consolidating and evaluating my piles of notes, thoughts, research and ideas into a single presentation it was a challenge to say the least. Through the magic of Notion to help me organize concepts, and some great internal rounds of feedback, I&nbsp;was able to create presentation that communicates the core ideas, while hopefully leaving the audience wanting to learn more.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:1500px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"1500px\"><div id=\"\"><img id=\"\" alt=\"Examples of notes and presentation content\" src=\"/images/cms/no-code-talk-5f5f7d1aa9227022d6fded1b_screen3.jpeg\" width=\"auto\" height=\"auto\" loading=\"auto\"></div></figure><h2 id=\"\">PowerPoint blows</h2><p id=\"\">Ok it's not that bad, but if I was giving a presentation about Webflow, it seemed crazy to not at least consider designing it IN Webflow, so that's what I did! With the addition of a little JS, I created the scroll snapping function to make each section feel like individual slides of a traditional deck. Webflow interactions were also key to adding in some subtle animations throughout.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:1500px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"1500px\"><div id=\"\"><img id=\"\" alt=\"Examples slides from presentation like the definition of Webflow, process, and quotes\" src=\"/images/cms/no-code-talk-5f5f799b8374daea487897cf_screen1.jpeg\" width=\"auto\" height=\"auto\" loading=\"auto\"></div></figure><h2 id=\"\">Sharing harmony</h2><p id=\"\">The beauty of delivering a presentation as a website is that sharing it is as easy as passing along a link, with the additional benefit of knowing I can update it at any time even after passing along said link and the recipient will always see the latest and greatest&nbsp;version!</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:1500px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"1500px\"><div id=\"\"><img id=\"\" alt=\"Examples slides from presentation like Webflow clean code and where to go from here\" src=\"/images/cms/no-code-talk-5f5f79a3be0dbba1243c1a4c_screen2.jpeg\" width=\"auto\" height=\"auto\" loading=\"auto\"></div></figure>"
+  },
+  {
+    "slug": "unite-america",
+    "name": "Unite America",
+    "altCardTitle": null,
+    "featured": false,
+    "date": "2020-01-08T00:00:00.000Z",
+    "type": "Shapemaker",
+    "link": "https://uniteamerica-v2-backup.webflow.io/",
+    "linkExplainer": "<p>* Backup link represents site at time of this case study. The <a rel=\"noopener noreferrer\" href=\"https://www.uniteamerica.org/\" target=\"_blank\">live site</a> is now operated by the client.</p>",
+    "ogImage": "/images/cms/unite-america-og-uniteamerica.jpg",
+    "mainImage": "/images/cms/unite-america-unite-america.webp",
+    "mainImageAlt": null,
+    "bgColor": "#182c4e",
+    "bgType": "Light",
+    "metaDescription": "Unite America is a bi-partisan political organization dedicated to supporting policies that will put power back in the citizens of our country.",
+    "summary": "<p id=\"\">Unite America is a bi-partisan political organization dedicated to supporting policies that will put power back in the citizens of our&nbsp;country.</p>",
+    "roles": [
+      {
+        "title": "Discover",
+        "active": false
+      },
+      {
+        "title": "Define",
+        "active": false
+      },
+      {
+        "title": "Concept",
+        "active": false
+      },
+      {
+        "title": "Design",
+        "active": true
+      },
+      {
+        "title": "Develop",
+        "active": true
+      },
+      {
+        "title": "Optimize",
+        "active": true
+      }
+    ],
+    "problem": "<p id=\"\">Modern politics in the U.S. are an extremely competitive environment where content is king, so Unite America wanted to reinvent themselves online with a powerful platform that would allow them to frequently push content and grow their following off of their core&nbsp;strategies.</p>",
+    "solution": "<p id=\"\">I was brought in to assist <a id=\"\" href=\"https://www.shapemaker.co/\" target=\"_blank\">Shapemaker</a> after the majority of the main site had already been defined and designed, in order to develop it out in Webflow in a scalable, performant and intuitive way. After the initial launch I&nbsp;helped to design, develop and optimize several other separate elements and sites outlined&nbsp;below.</p>",
+    "body": "<h2 id=\"\">Dynamic data galore</h2><p id=\"\">This was one of the most complex integrations of the Webflow CMS I have built to date. We have dynamic data integrated throughout the site, from the header/footer navigation and custom sliders, to interweaving relational data between Funds, News, Partners, Strategy's and&nbsp;Team.</p><figure class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div><img src=\"/images/cms/unite-america-case-1---img-1.webp\" loading=\"lazy\"></div></figure><h2 id=\"\">Multifaceted and informative animation</h2><p id=\"\">Webflow's powerful Interactions 2.0 feature was pushed to it's limits with this project to creatively communicate the sometimes complex ideas and strategies that Unite America supports. Pages like the <a id=\"\" href=\"https://www.uniteamerica.org/strategy\" target=\"_blank\">Our Strategy</a> page boast a dynamic hoverable chart to explain the importance of the Doom Loop, while each individual strategy pages like <a id=\"\" href=\"https://www.uniteamerica.org/strategy/independent-redistricting\" target=\"_blank\">Independent Redistricting</a>, incorporate both a masthead page load and mouse movement animation, plus interactive tab animations to explain how each strategy works. All animations were created entirely from individual SVG&nbsp;elements layered and animated with native Webflow&nbsp;Interactions.</p><figure class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div><img src=\"/images/cms/unite-america-case-1---img-1-1.webp\" loading=\"lazy\"></div></figure><h2 id=\"\">Powerful engagement iteration</h2><p id=\"\">To empower our client to get the most out of their new website, we integrated various levels of analytics, tracking, and re-engagement strategies. This included using Google Tag Manager to manage most external services, implementing custom subscriber modals and cookies to promote, but not overwhelm ongoing user engagement, and also making on-going UI adjustments based on analytics observations over the course of 6 months post&nbsp;launch.</p><figure class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div><img src=\"/images/cms/unite-america-case-1---img-1-2.webp\" loading=\"lazy\"></div></figure><h2 id=\"\">Brand guidelines</h2><p id=\"\">Unite America collaborates and promotes their brand with many external partners, so we created a built in digital brand guide that anyone can access to reference and download brand assets. <a id=\"\" href=\"https://www.uniteamerica.org/brand\" target=\"_blank\">Click here</a> to view the brand guidelines and use password&nbsp;\"brand\".</p><figure class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:3000px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"3000px\"><div><img src=\"/images/cms/unite-america-case-1---img-1-3.webp\" loading=\"lazy\"></div></figure>"
+  },
+  {
+    "slug": "cottage-grove",
+    "name": "Cottage Grove",
+    "altCardTitle": null,
+    "featured": false,
+    "date": "2019-12-18T00:00:00.000Z",
+    "type": "Freelance",
+    "link": "https://www.cottagegrovedsm.com/",
+    "linkExplainer": null,
+    "ogImage": null,
+    "mainImage": "/images/cms/cottage-grove-cottage-grove.webp",
+    "mainImageAlt": null,
+    "bgColor": "#d99952",
+    "bgType": "Dark",
+    "metaDescription": "Cottage Grove Church is a church in Des Moines, IA dedicated to proclaiming and displaying the reconciling work of Christ. As a member of the church, I was excited and thankful for the opportunity to use my passion and skills for Webflow in combination with my love for Christ and advancing his Kingdom!",
+    "summary": "<p id=\"\">Cottage Grove Church is a church in Des Moines, IA dedicated to proclaiming and displaying the reconciling work of Christ. As a member of the church, I was excited and thankful for the opportunity to use my passion and skills for Webflow in combination with my love for Christ and advancing his&nbsp;Kingdom!</p>",
+    "roles": [
+      {
+        "title": "Discover",
+        "active": true
+      },
+      {
+        "title": "Define",
+        "active": true
+      },
+      {
+        "title": "Concept",
+        "active": true
+      },
+      {
+        "title": "Design",
+        "active": true
+      },
+      {
+        "title": "Develop",
+        "active": true
+      },
+      {
+        "title": "Optimize",
+        "active": true
+      }
+    ],
+    "problem": "<p id=\"\">To create a flexible, scalable and engaging online presence for my local church that would be intuitive for them to manage, and become the sole source of information that our congregation and community could rely on for information about the Church.</p>",
+    "solution": "<p id=\"\">From initial discovery through launch and optimization I&nbsp;lead this process from end-to-end through the use of surveys, initial concepts, defining content architecture, creating a full wireframe, final design and development, as well as on-site surveying and analytics.</p>",
+    "body": "<h2 id=\"\">Discover &amp; define</h2><p id=\"\">I worked closely with the Communications Director at CGC&nbsp;to research, test and define the entire project from the perspective of our primary audiences and relevant content. We started by surveying a sizable population of current and potential church members, refining the results and then creating a content architecture based on our findings and a <a id=\"\" href=\"https://projects.invisionapp.com/d/main?origin=v7#/projects/boards/6473655\" target=\"_blank\">collection of inspiration</a>. From their I&nbsp;created a <a id=\"\" href=\"https://izzeoz.axshare.com/#id=x4f2qb&p=home\" target=\"_blank\">full site wireframe</a> within Axure RP at what I would refer to as 'mid-fidelity' in order to test and iterate within a simplified UI that still resembles the general layout and functionality intentions for the final site.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" data-rt-type=\"image\" data-rt-align=\"fullwidth\"><div id=\"\"><img id=\"\" alt=\"Preview of user surveys, website goals and wireframe\" src=\"/images/cms/cottage-grove-5f5b95caf820de51d129e332_cgc-screen3.jpeg\" width=\"auto\" height=\"auto\" loading=\"auto\"></div></figure><h2 id=\"\">CMS FTW</h2><p id=\"\">From both importing hundreds of previous sermons, to setting up new ways for the CGC staff to easily add News, Events, Blog Posts, etc. the Webflow CMS was utilized in multiple ways to ensure communication was easy and&nbsp;consistent.</p><p id=\"\">‍</p><p id=\"\">‍</p><h2 id=\"\">Unique design</h2><p id=\"\">As a young church that is hungry to grow our communities love for Christ and desire for authentic, <a id=\"\" href=\"https://www.cottagegrovedsm.com/justice\" target=\"_blank\">biblical justice</a>, we also wanted to create a design that was both modern and approachable, while being unique from the typical church website.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" style=\"max-width:1500px\" data-rt-type=\"image\" data-rt-align=\"fullwidth\" data-rt-max-width=\"1500px\"><div id=\"\"><img id=\"\" alt=\"Screenshots of Cottage Grove sermon page, lists and kids page\" src=\"/images/cms/cottage-grove-5f51a807c3c7a679250d24e7_cgc-screen1.jpeg\" width=\"auto\" height=\"auto\" loading=\"auto\"></div></figure><h2 id=\"\">Flexibility, flexibility, flexibility</h2><p id=\"\">Especially in the current state of our unpredictable world, it was essential we had a platform that was quick and easy to adjust and move in different directions. Our ability to do this was very apparent as COVID-19 shook the way we worship as a church, but we were easily able to update the site in a couple of days to support a fully virtual <a id=\"\" href=\"https://www.cottagegrovedsm.com/online\" target=\"_blank\">livestream approach</a> to worship and&nbsp;events.</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-fullwidth\" data-rt-type=\"image\" data-rt-align=\"fullwidth\"><div id=\"\"><img id=\"\" alt=\"Screenshots of Cottage Grove Live Events, promotions and event pages\" src=\"/images/cms/cottage-grove-5f51aba199bd525cdd7b3d1e_cgc-screen2.jpeg\" width=\"auto\" height=\"auto\" loading=\"auto\"></div></figure><h2 id=\"\">Memorable interactions</h2><p id=\"\">Between content, layouts and animation, we were intentional about creating memorable moments throughout the CGC&nbsp;website. One way we did this was by creating a page that creates an animated, scrolling overview of who Jesus is and, while you won't find this page linked in the main nav, it is linked from every location around the site where we mention God or&nbsp;Jesus.</p><p id=\"\">‍</p><p id=\"\">‍</p>"
+  }
+]

@@ -1,0 +1,24 @@
+---
+import ProjectCard from "@/components/site/ProjectCard.astro";
+import type { Project } from "@/utils/cms.ts";
+
+/**
+ * The work grid: three tracks, with every 4n+1 and 4n+4 card spanning two,
+ * so rows alternate wide-narrow / narrow-wide.
+ */
+interface Props {
+  projects: Project[];
+  /** Eager-load the first N screenshots — for grids at the top of a page. */
+  eagerCount?: number;
+}
+
+const { projects, eagerCount = 0 } = Astro.props;
+---
+
+<div role="list" class="projects-grid">
+  {
+    projects.map((project, index) => (
+      <ProjectCard project={project} eager={index < eagerCount} />
+    ))
+  }
+</div>

@@ -1,0 +1,51 @@
+---
+import "@/styles/global.css";
+import BaseHead from "@/components/BaseHead.astro";
+import SiteNav from "@/components/site/SiteNav.astro";
+import SiteFooter from "@/components/site/SiteFooter.astro";
+import type { SeoProps } from "@/types.ts";
+
+type Props = SeoProps & {
+  /** Hide the footer Contact button — the chat page is already the contact page. */
+  footerContactButton?: boolean;
+};
+
+const { footerContactButton = true, ...seo } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="theme-dark">
+  <head>
+    <BaseHead {...seo} />
+    <slot name="head" />
+  </head>
+  <body>
+    <SiteNav />
+    <main id="main" tabindex="-1" class="site-main">
+      <div class="footer-overlay">
+        <slot />
+      </div>
+      <SiteFooter contactButton={footerContactButton} />
+    </main>
+  </body>
+</html>
+
+<script>
+  /* Scroll reveals: anything carrying `.reveal` (or a role-line wrapper)
+     gets `.is-inview` once it approaches the viewport. */
+  const targets = document.querySelectorAll(".reveal, .work-role_wrapper");
+  if (targets.length) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-inview");
+            observer.unobserve(entry.target);
+          }
+        }
+      },
+      { rootMargin: "0px 0px -10% 0px" },
+    );
+    targets.forEach((el) => observer.observe(el));
+  }
+</script>

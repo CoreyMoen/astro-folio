@@ -1,0 +1,29 @@
+---
+import Section from "@/components/Section.astro";
+
+/**
+ * The giant uppercase page title (13vw) with its rise-in load animation,
+ * plus an optional centered intro line.
+ */
+interface Props {
+  title: string;
+  intro?: string;
+}
+
+const { title, intro } = Astro.props;
+---
+
+<Section class="cc-header" align="center" gap="0">
+  <h1 class="header-title">
+    <span class="header-title_overflow">
+      <strong class="header-title_text">{title}</strong>
+    </span>
+  </h1>
+  {
+    intro && (
+      <div class="header-intro">
+        <p class="text-style-large margin-top-6 margin-bottom-0">{intro}</p>
+      </div>
+    )
+  }
+</Section>

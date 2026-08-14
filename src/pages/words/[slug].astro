@@ -1,0 +1,80 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import Section from "@/components/Section.astro";
+import FormattedDate from "@/components/FormattedDate.astro";
+import WordCard from "@/components/site/WordCard.astro";
+import SubscribeForm from "@/components/site/SubscribeForm.astro";
+import { words, type Word } from "@/utils/cms.ts";
+
+export function getStaticPaths() {
+  return words.map((word) => ({
+    params: { slug: word.slug },
+    props: { word },
+  }));
+}
+
+interface Props {
+  word: Word;
+}
+
+const { word } = Astro.props;
+
+const more = words.filter((w) => w.slug !== word.slug).slice(0, 3);
+---
+
+<SiteLayout
+  title={word.name}
+  description={word.shortDescription ?? undefined}
+  image="/images/og-words.jpg"
+  type="article"
+>
+  <Section class="cc-header" align="center" gap="0">
+    <div class="words-title-wrapper">
+      <div class="flex-horizontal-wrap gap-2 justify-content-center">
+        <a href="/words" class="eyebrow margin-bottom-0">Words</a>
+        <div class="eyebrow margin-bottom-0">|</div>
+        <div class="eyebrow margin-bottom-0">{word.category}</div>
+        <div class="eyebrow margin-bottom-0">|</div>
+        <div class="flex-horizontal-wrap gap-2">
+          <div class="eyebrow margin-bottom-0">
+            {
+              word.date && (
+                <FormattedDate
+                  date={new Date(word.date)}
+                  format={{ month: "short", day: "numeric", year: "numeric" }}
+                />
+              )
+            }
+          </div>
+          <div class="eyebrow margin-bottom-0">/</div>
+          <div class="eyebrow margin-bottom-0">{word.readTime} min read</div>
+        </div>
+      </div>
+      <div class="margin-top-8 overflow-hidden">
+        <h1 class="words-post_title">{word.name}</h1>
+      </div>
+    </div>
+  </Section>
+
+  <Section paddingTop="none" containerClass="cc-words" gap="0">
+    {word.body && <div class="words-richtext" set:html={word.body} />}
+  </Section>
+
+  <Section paddingTop="none" containerClass="cc-words" gap="0">
+    <div class="splitter"></div>
+    <div class="padding-top-medium alignment-center width-full">
+      <h2 class="margin-bottom-4">Subscribe</h2>
+    </div>
+    <SubscribeForm />
+  </Section>
+
+  <Section paddingTop="none" containerClass="cc-words-home" gap="0">
+    <div class="splitter"></div>
+    <div class="padding-top-medium alignment-center width-full">
+      <h2 class="margin-bottom-8">More words</h2>
+    </div>
+    <div role="list" class="words-list margin-bottom-6">
+      {more.map((w) => <WordCard word={w} />)}
+    </div>
+  </Section>
+</SiteLayout>

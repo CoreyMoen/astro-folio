@@ -1,0 +1,111 @@
+---
+import { SOCIAL_LINKS } from "@/consts.ts";
+
+/**
+ * The fixed reveal footer: the page content (`.footer-overlay`) scrolls up
+ * over this section, which sits fixed at the bottom of the viewport behind a
+ * spacer of the same height.
+ */
+interface Props {
+  /** Hide the Contact button — the chat page is already the contact page. */
+  contactButton?: boolean;
+}
+
+const { contactButton = true } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<div>
+  <div class="footer-spacer"></div>
+  <section class="section cc-fixed-footer">
+    <div class="container cc-footer">
+      <div class="footer-top">
+        <div class="footer-top_copy">
+          <h2 class="text-style-h1 text-caps">Connect <br />& collab</h2>
+          <div class="footer-copy">
+            <p class="text-style-large margin-block-5">
+              I'm always open to new opportunities and connections, please don't
+              hesitate to reach out.
+            </p>
+          </div>
+          {
+            contactButton && (
+              <a href="/chat" class="button_wrap">
+                Contact
+              </a>
+            )
+          }
+        </div>
+        <div class="footer-mark">
+          <svg
+            viewBox="0 0 206 206"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              d="M103.202 3.22034C83.4672 3.22034 64.1758 9.07231 47.7671 20.0362C31.3584 31.0002 18.5694 46.5836 11.0173 64.816C3.46523 83.0483 1.48926 103.111 5.33928 122.466C9.1893 141.821 18.6924 159.6 32.6468 173.555C46.6013 187.509 64.3803 197.012 83.7357 200.862C103.091 204.712 123.153 202.736 141.386 195.184C159.618 187.632 175.202 174.843 186.165 158.435C197.129 142.026 202.981 122.735 202.981 103C202.981 76.5368 192.469 51.1574 173.757 32.4451C155.044 13.7328 129.665 3.22034 103.202 3.22034V3.22034Z"
+              stroke="currentColor"
+              stroke-width=".2em"
+              stroke-miterlimit="10"></path>
+            <path
+              d="M69.8144 139.131H45.9452V84.3771L69.8144 75.1163V139.131Z"
+              stroke="currentColor"
+              stroke-width=".2em"
+              stroke-miterlimit="10"></path>
+            <path
+              d="M115.136 139.139H91.2671V66.861C97.5976 66.861 103.669 69.3757 108.145 73.8521C112.621 78.3284 115.136 84.3996 115.136 90.7301V139.139Z"
+              stroke="currentColor"
+              stroke-width=".2em"
+              stroke-miterlimit="10"></path>
+            <path
+              d="M160.458 139.139H136.597V66.861C139.731 66.861 142.834 67.4784 145.73 68.678C148.625 69.8777 151.256 71.636 153.472 73.8525C155.688 76.0691 157.445 78.7005 158.644 81.5964C159.843 84.4923 160.459 87.596 160.458 90.7301V139.139Z"
+              stroke="currentColor"
+              stroke-width=".2em"
+              stroke-miterlimit="10"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="footer-links">
+        {
+          SOCIAL_LINKS.map((link) => (
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener"
+              class="eyebrow cc-footer-links"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+        <div class="eyebrow cc-footer-links">
+          <span class="footer-copyright-symbol">©</span>
+          <span class="copyright-year">{year}</span> COrey Moen
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  const yearEl = document.querySelector<HTMLSpanElement>(".copyright-year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear().toString();
+</script>
+
+<style is:global>
+  @layer site {
+    .footer-top {
+      display: flex;
+      flex-wrap: wrap-reverse;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-6);
+      width: 100%;
+    }
+
+    .footer-top_copy {
+      max-width: 44rem;
+    }
+  }
+</style>

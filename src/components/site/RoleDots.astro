@@ -1,0 +1,35 @@
+---
+import type { ProjectRole } from "@/utils/cms.ts";
+
+/**
+ * The "My Roles" timeline: one dot per project phase along a line that draws
+ * itself when scrolled into view. Active phases get the yellow dot.
+ */
+interface Props {
+  roles: ProjectRole[];
+}
+
+const { roles } = Astro.props;
+---
+
+<div class="work-role_wrapper">
+  <ul role="list" class="work-role_list">
+    {
+      roles.map((role) => (
+        <li class="work-role_dot">
+          <div class:list={["work-role_dot-outer", !role.active && "inactive"]}>
+            <div
+              class:list={["work-role_dot-center", !role.active && "inactive"]}
+            />
+          </div>
+          <div class:list={["work-role_name", !role.active && "inactive"]}>
+            {role.title}
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+  <div class="work-role_line">
+    <div class="work-role_line-progress"></div>
+  </div>
+</div>

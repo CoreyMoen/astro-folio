@@ -1,3 +1,26 @@
+# CoreyMoen.com on Lumos For Astro
+
+The coreymoen.com portfolio, rebuilt in Astro on top of the Lumos framework.
+The original Webflow site's design lives in `src/styles/site.css` (a `site`
+cascade layer between `components` and `utilities`), the site-specific
+components in `src/components/site/`, and the pages in `src/pages/`.
+
+## Content
+
+Content was migrated from the Webflow CMS via the Webflow MCP/API into plain
+JSON under `src/data/` (`projects.json`, `news.json`, `words.json`), with
+typed accessors in `src/utils/cms.ts`. All CMS images were downloaded to
+`public/images/cms/` and rich-text URLs rewritten to the local copies, so the
+site has no runtime dependency on Webflow. To refresh content, re-pull the
+collections from the Webflow API and regenerate those JSON files (references
+are resolved to names, `Projects.typee` → `type`, roles to
+`{ title, active }`, and items are sorted newest-first).
+
+The full HTML/CSS export of the original site is kept in `reference/` for
+comparison and is not part of the build.
+
+---
+
 # Lumos For Astro
 
 A component and styling framework for building Astro sites, designed around

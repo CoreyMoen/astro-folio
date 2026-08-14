@@ -1,27 +1,192 @@
 ---
-import Layout from '@/layouts/BaseLayout.astro';
-import Section from '@/components/Section.astro';
-import Heading from '@/components/Heading.astro';
-import Eyebrow from '@/components/Eyebrow.astro';
-import logo from '@/assets/logo.svg';
-import arrow_full from '@/assets/icons/arrow-full.svg';
-import arrow from '@/assets/icons/arrow.svg';
-import close from '@/assets/icons/close.svg';
-import pause from '@/assets/icons/pause.svg';
-import play from '@/assets/icons/play.svg';
-import Img from '@/components/Img.astro';
-import lumos_background from '@/assets/lumos-background.svg';
-import Icon from '@/components/Icon.astro';
-import logo_icon from '@/assets/logo-icon.svg';
-import ContentWrapper from '@/components/ContentWrapper.astro';
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import Section from "@/components/Section.astro";
+import ProjectsGrid from "@/components/site/ProjectsGrid.astro";
+import AboutTeaser from "@/components/site/AboutTeaser.astro";
+import { featuredProjects } from "@/utils/cms.ts";
+
+const principles = [
+  {
+    title: "Systems-first",
+    text: "Building systems for everything from design and development to scoping and documentation is at the core of how I drive results for every project.",
+  },
+  {
+    title: "Design-bred",
+    text: "My talent, education, and experience as a designer is what grounds everything I build. I don't just bring technical expertise — I bring creative direction.",
+  },
+  {
+    title: "Build-anything",
+    text: "Your website is one piece of a bigger picture. I work across platforms and tools to create systems that support multiple initiatives and teams.",
+  },
+  {
+    title: "Yes-code",
+    text: "With a foundation in front-end development, combined with modern AI tools in my workflow, I can build and extend experiences across nearly any platform.",
+  },
+];
 ---
-<Layout theme="dark">
-  <Section paddingBottom="even" containerClass="flex-grow" paddingTop="even" class="flex-grow" style="min-height: calc(100svh - var(--nav-height));">
-    <ContentWrapper class="flex-grow theme-brand" variant="card" mediaOpacity={100}>
-      <Icon src={logo_icon} variant="large" />
-      <Heading variant="display" tag="h1" class="margin-block-8">Style Guide</Heading>
-      <Eyebrow variant="tag">v0.01</Eyebrow>
-      <Img slot="column2" src={lumos_background} width={1920} height={1080} loading="eager" fetchPriority="high" />
-    </ContentWrapper>
+
+<SiteLayout
+  title="Webflow Tech Lead"
+  description="A genuine web wizard with over 15 years of experience creating high-quality digital experiences for brands of all sizes."
+  image="/images/og-home.jpg"
+>
+  <Section class="cc-header" gap="0">
+    <h1 class="header-title width-full">
+      <span class="home-title_top">
+        <strong>Design</strong><strong class="home-title_ampersand"
+          >&amp;</strong
+        >
+      </span>
+      <br />
+      <span class="home-title_btm">
+        <strong>Develop</strong>
+      </span>
+    </h1>
   </Section>
-</Layout>
+
+  <Section paddingTop="none" containerClass="home-intro_container">
+    <div class="home-intro reveal">
+      <div class="home-intro_img">
+        <div class="card">
+          <div class="about-img_aspect cc-full-page">
+            <img
+              src="/images/CoreyGrain4-square.webp"
+              loading="eager"
+              sizes="(max-width: 48rem) 100vw, 16rem"
+              srcset="/images/CoreyGrain4-square-p-500.webp 500w, /images/CoreyGrain4-square-p-800.webp 800w, /images/CoreyGrain4-square-p-1080.webp 1080w, /images/CoreyGrain4-square-p-1600.webp 1600w, /images/CoreyGrain4-square.webp 2000w"
+              alt=""
+              class="img-cover"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="home-intro_copy">
+        <h2 class="eyebrow">Corey Moen</h2>
+        <p class="text-style-large margin-bottom-0">
+          A lead Brand Designer and Web Developer building scalable, accessible,
+          and technically tuned brands on the web.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <Section paddingTop="none" paddingBottom="none" gap="0">
+    <h2 class="eyebrow margin-bottom-7">Featured work</h2>
+    <ProjectsGrid projects={featuredProjects} eagerCount={2} />
+    <div class="alignment-center width-full margin-top-8 margin-bottom-7">
+      <a href="/work" class="button_wrap">ALl Projects</a>
+    </div>
+  </Section>
+
+  <Section gap="0">
+    <div class="alignment-center width-full reveal">
+      <h2 class="eyebrow margin-bottom-7">Principles</h2>
+      <h2
+        class="home-principles_title text-style-h1 text-caps line-height-small margin-bottom-8"
+      >
+        <span class="display-inline-block overflow-hidden"
+          ><strong>Creative</strong><strong>meets</strong></span
+        ><br />
+        <span class="display-inline-block overflow-hidden"
+          ><strong>Tech Lead</strong></span
+        >
+      </h2>
+    </div>
+    <div class="home-principles">
+      <ul role="list" class="home-principles_list">
+        {
+          principles.map((principle, index) => (
+            <li class:list={[index > 0 && "margin-top-7"]}>
+              <div class="home-principle">
+                <h3 class="margin-bottom-4">{principle.title}</h3>
+                <p class="margin-bottom-0">{principle.text}</p>
+              </div>
+              {index < principles.length - 1 && (
+                <div class="splitter margin-top-7 margin-bottom-0" />
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </Section>
+
+  <Section class="overflow-hidden" gap="0">
+    <AboutTeaser />
+  </Section>
+</SiteLayout>
+
+<style is:global>
+  @layer site {
+    /* Hero: "&" hugs Design; second line pulls up into the first */
+    .home-title_ampersand {
+      margin-left: 0.05em;
+    }
+
+    /* Intro: small square portrait beside the positioning line */
+    .home-intro_container {
+      max-width: 64.375rem;
+    }
+
+    .home-intro {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: var(--site-gutter);
+      width: 100%;
+    }
+
+    .home-intro_img {
+      flex: none;
+      width: 16.67%;
+      min-width: 10rem;
+    }
+
+    .home-intro_copy {
+      max-width: 36rem;
+    }
+
+    @media (width < 48rem) {
+      .home-intro {
+        flex-direction: column-reverse;
+        align-items: stretch;
+      }
+      .home-intro_img {
+        width: 100%;
+      }
+    }
+
+    /* The compressed build strips whitespace-only text nodes, so the word
+       gap is carried in CSS instead */
+    .home-principles_title strong + strong {
+      margin-left: 0.22em;
+    }
+
+    /* Principles list: term left, definition right */
+    .home-principles {
+      width: 91.67%;
+      margin-inline: auto;
+    }
+
+    .home-principles_list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .home-principle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4) var(--site-gutter);
+    }
+
+    @media (width < 48rem) {
+      .home-principles {
+        width: 100%;
+      }
+      .home-principle {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+</style>
