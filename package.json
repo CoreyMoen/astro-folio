@@ -12,6 +12,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "sync": "node scripts/sync-webflow.mjs",
     "format": "prettier --write ."
   },
   "dependencies": {

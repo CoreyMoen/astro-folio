@@ -11,10 +11,16 @@ Content was migrated from the Webflow CMS via the Webflow MCP/API into plain
 JSON under `src/data/` (`projects.json`, `news.json`, `words.json`), with
 typed accessors in `src/utils/cms.ts`. All CMS images were downloaded to
 `public/images/cms/` and rich-text URLs rewritten to the local copies, so the
-site has no runtime dependency on Webflow. To refresh content, re-pull the
-collections from the Webflow API and regenerate those JSON files (references
-are resolved to names, `Projects.typee` → `type`, roles to
-`{ title, active }`, and items are sorted newest-first).
+site has no runtime dependency on Webflow. To refresh content, run
+
+```sh
+WEBFLOW_API_TOKEN=... npm run sync
+```
+
+with a CoreyMoen.com site token (Site settings → Apps & integrations → API
+access) that has CMS read access. The script re-pulls every collection,
+resolves references to names (`Projects.typee` → `type`, roles to
+`{ title, active }`), sorts items newest-first, and downloads any new images.
 
 The full HTML/CSS export of the original site is kept in `reference/` for
 comparison and is not part of the build.
