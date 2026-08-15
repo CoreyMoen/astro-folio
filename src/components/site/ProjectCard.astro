@@ -1,0 +1,57 @@
+---
+import { yearOf, cardTitle, type Project } from "@/utils/cms.ts";
+
+/**
+ * A work grid card: dark tile, the project screenshot peeking in from the
+ * bottom-left, and an off-white info card that settles in on hover.
+ */
+interface Props {
+  project: Project;
+  /** Eager-load the screenshot — for cards above the fold. */
+  eager?: boolean;
+}
+
+const { project, eager = false } = Astro.props;
+---
+
+<div role="listitem" class="projects-grid_item">
+  <div class="card cc-big cc-project-card">
+    <div class="projects-card_site-wrapper">
+      <div
+        class="project-card_site-bg"
+        style={project.bgColor
+          ? `background-color: ${project.bgColor};`
+          : undefined}
+      >
+      </div>
+      {
+        project.mainImage && (
+          <img
+            src={project.mainImage}
+            alt=""
+            loading={eager ? "eager" : "lazy"}
+            class="projects-card_site-img"
+          />
+        )
+      }
+      <div class="project-card_site-overlay"></div>
+    </div>
+    <div class="projects-card_aspect"></div>
+    <div class="projects-card_content">
+      <div class="card cc-project-info">
+        <div class="card-body cc-project-info">
+          <div class="projects-card_info-header">
+            <div class="eyebrow margin-bottom-0">{project.type}</div>
+            <div class="eyebrow margin-bottom-0">{yearOf(project.date)}</div>
+          </div>
+          <div class="projects-card_info-title">
+            <h3 class="margin-bottom-0">{cardTitle(project)}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href={`/work/${project.slug}`} class="u-link-overlay cc-big-card">
+      <span class="sr-only">{project.name} — open case study</span>
+    </a>
+  </div>
+</div>

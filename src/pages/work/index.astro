@@ -1,0 +1,27 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import Section from "@/components/Section.astro";
+import PageHeader from "@/components/site/PageHeader.astro";
+import ProjectsGrid from "@/components/site/ProjectsGrid.astro";
+import AboutTeaser from "@/components/site/AboutTeaser.astro";
+import { projects } from "@/utils/cms.ts";
+---
+
+<SiteLayout
+  title="Work"
+  description="A collection of some of my favorite Digital Design and Webflow Development projects from the past few years. 🤓"
+  image="/images/og-work.jpg"
+>
+  <PageHeader
+    title="Work"
+    intro="A collection of some of my favorite projects from the past few years."
+  />
+
+  <Section paddingTop="none" gap="0">
+    <ProjectsGrid projects={projects} eagerCount={2} />
+  </Section>
+
+  <Section class="overflow-hidden" gap="0">
+    <AboutTeaser />
+  </Section>
+</SiteLayout>

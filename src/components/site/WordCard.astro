@@ -1,0 +1,47 @@
+---
+import FormattedDate from "@/components/FormattedDate.astro";
+import type { Word } from "@/utils/cms.ts";
+
+/** A bordered words-list card that warms to yellow on hover. */
+interface Props {
+  word: Word;
+}
+
+const { word } = Astro.props;
+---
+
+<div role="listitem">
+  <div class="card cc-big cc-words">
+    <div class="card-body cc-big cc-words">
+      <div class="slider-card_header">
+        <div class="flex-horizontal-wrap gap-2">
+          <div class="eyebrow margin-bottom-0">{word.category}</div>
+          <div class="eyebrow margin-bottom-0">/</div>
+          <div class="eyebrow margin-bottom-0">{word.readTime} min read</div>
+        </div>
+        <div>
+          <div class="eyebrow margin-bottom-0">
+            {
+              word.date && (
+                <FormattedDate
+                  date={new Date(word.date)}
+                  format={{ month: "short", day: "numeric", year: "numeric" }}
+                />
+              )
+            }
+          </div>
+        </div>
+      </div>
+      <div class="margin-top-auto">
+        <h2
+          class="text-style-h1 text-transform-none margin-top-4 margin-bottom-0"
+        >
+          {word.name}
+        </h2>
+      </div>
+    </div>
+    <a href={`/words/${word.slug}`} class="u-link-overlay cc-big-card">
+      <span class="sr-only">{word.name} — read post</span>
+    </a>
+  </div>
+</div>

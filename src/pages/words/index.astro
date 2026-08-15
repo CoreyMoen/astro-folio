@@ -1,0 +1,45 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import Section from "@/components/Section.astro";
+import PageHeader from "@/components/site/PageHeader.astro";
+import WordCard from "@/components/site/WordCard.astro";
+import SubscribeForm from "@/components/site/SubscribeForm.astro";
+import { words } from "@/utils/cms.ts";
+---
+
+<SiteLayout
+  title="Words"
+  description="A glimpse of experiences, discoveries and beliefs I hold dear to my workflow and life. Written by me, not a robot. ✏️"
+  image="/images/og-words.jpg"
+>
+  <PageHeader
+    title="Words"
+    intro="A glimpse of experiences, curiousities and beliefs I hold dear."
+  />
+
+  <Section paddingTop="none" containerClass="cc-words-home" gap="0">
+    <div role="list" class="words-list margin-bottom-6">
+      {words.map((word) => <WordCard word={word} />)}
+    </div>
+  </Section>
+
+  <Section paddingTop="none" gap="0" containerClass="cc-words-home">
+    <div class="splitter"></div>
+    <div class="subscribe-inner">
+      <div class="padding-top-medium alignment-center">
+        <h2 class="margin-bottom-4">Subscribe</h2>
+      </div>
+      <SubscribeForm />
+    </div>
+  </Section>
+</SiteLayout>
+
+<style is:global>
+  @layer site {
+    .subscribe-inner {
+      width: 100%;
+      max-width: 55rem;
+      margin-inline: auto;
+    }
+  }
+</style>

@@ -1,0 +1,145 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import Section from "@/components/Section.astro";
+import PageHeader from "@/components/site/PageHeader.astro";
+import { WEBFLOW_FORM_ENDPOINT } from "@/consts.ts";
+
+const fields = [
+  {
+    id: "First-Name",
+    label: "First Name",
+    placeholder: "e.g. Sam",
+    type: "text",
+  },
+  {
+    id: "Last-Name",
+    label: "Last Name",
+    placeholder: "e.g. Sample",
+    type: "text",
+  },
+  {
+    id: "Company",
+    label: "Company",
+    placeholder: "e.g. Acme Co.",
+    type: "text",
+  },
+  {
+    id: "Email",
+    label: "Email",
+    placeholder: "e.g. ssample@acme.co",
+    type: "email",
+  },
+] as const;
+---
+
+<SiteLayout
+  title="Chat"
+  description="Reach out to discuss a project, ask a question, get some feedback, or to just setup a time to hang."
+  image="/images/og-home.jpg"
+  footerContactButton={false}
+>
+  <PageHeader
+    title="Chat"
+    intro="Reach out to discuss a project, ask a question, get some feedback, or to just setup a time to hang."
+  />
+
+  <Section paddingTop="none" gap="0">
+    <div class="chat-form form-wrapper" data-webflow-form>
+      <form
+        name="Project Inquiry"
+        method="post"
+        action={WEBFLOW_FORM_ENDPOINT}
+        class="form"
+        data-form-name="Project Inquiry"
+      >
+        <div class="form-grid-2">
+          {
+            fields.map((field) => (
+              <div class="input-group">
+                <label for={field.id} class="input-label">
+                  {field.label}
+                </label>
+                <input
+                  class="input"
+                  maxlength="256"
+                  name={field.label}
+                  placeholder={field.placeholder}
+                  type={field.type}
+                  id={field.id}
+                  required
+                />
+              </div>
+            ))
+          }
+        </div>
+        <div class="input-group cc-textarea">
+          <label for="Project-Details" class="input-label">Message</label>
+          <textarea
+            id="Project-Details"
+            name="Project Details"
+            maxlength="5000"
+            placeholder="What's on your mind?"
+            required
+            class="input cc-textarea"></textarea>
+        </div>
+        <div class="u-form-honeypot" aria-hidden="true">
+          <label for="work-email" class="input-label">Work Email</label>
+          <input
+            class="input"
+            maxlength="256"
+            name="work-email"
+            placeholder=""
+            type="email"
+            id="work-email"
+            tabindex="-1"
+            autocomplete="off"
+          />
+        </div>
+        <div class="chat-form_border"></div>
+        <button type="submit" class="button_wrap" data-wait="Please wait...">
+          Submit
+        </button>
+        <div class="form-required-note">All fields are required</div>
+      </form>
+      <div class="form-success">
+        <div class="card cc-big cc-chat-success">
+          <div class="card-body cc-big cc-chat-success">
+            <div class="form-success_flex">
+              <div class="form-success_icon-embed">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M9 11L11 13L15.5 8.5M11.9932 5.13581C9.9938 2.7984 6.65975 2.16964 4.15469 4.31001C1.64964 6.45038 1.29697 10.029 3.2642 12.5604C4.75009 14.4724 8.97129 18.311 10.948 20.0749C11.3114 20.3991 11.4931 20.5613 11.7058 20.6251C11.8905 20.6805 12.0958 20.6805 12.2805 20.6251C12.4932 20.5613 12.6749 20.3991 13.0383 20.0749C15.015 18.311 19.2362 14.4724 20.7221 12.5604C22.6893 10.029 22.3797 6.42787 19.8316 4.31001C17.2835 2.19216 13.9925 2.7984 11.9932 5.13581Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+                </svg>
+              </div>
+              <h2 class="text-style-h3 text-transform-none">
+                Thanks for reaching out!
+              </h2>
+              <p class="margin-bottom-0">
+                We have received your message and will follow-up soon.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-error">
+        <div>Oops! Something went wrong while submitting the form.</div>
+      </div>
+    </div>
+  </Section>
+</SiteLayout>
+
+<script>
+  import { wireWebflowForm } from "@/utils/webflow-form.ts";
+  document
+    .querySelectorAll<HTMLElement>("[data-webflow-form]")
+    .forEach(wireWebflowForm);
+</script>

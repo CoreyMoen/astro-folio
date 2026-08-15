@@ -1,0 +1,51 @@
+---
+/** The "Midwest Family man" about block shown on the home and work pages. */
+---
+
+<div class="home-about reveal">
+  <div class="home-about_img">
+    <div class="about-img_wrapper">
+      <div class="card height-full">
+        <div class="about-img_aspect">
+          <img
+            src="/images/CoreyGrain4-square.webp"
+            loading="lazy"
+            sizes="(max-width: 48rem) 100vw, 33rem"
+            srcset="/images/CoreyGrain4-square-p-500.webp 500w, /images/CoreyGrain4-square-p-800.webp 800w, /images/CoreyGrain4-square-p-1080.webp 1080w, /images/CoreyGrain4-square-p-1600.webp 1600w, /images/CoreyGrain4-square.webp 2000w"
+            alt=""
+            class="img-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="home-about_copy">
+    <h2 class="eyebrow">About</h2>
+    <h2 class="margin-bottom-4">Midwest <br />Family man</h2>
+    <p class="text-style-large margin-bottom-6">
+      A genuine web wizard with over 15 years of experience creating
+      high-quality digital experiences for brands of all sizes.
+    </p>
+    <a href="/info" class="button_wrap">Learn more</a>
+  </div>
+</div>
+
+<style is:global>
+  @layer site {
+    /* About teaser: portrait beside the pitch */
+    .home-about {
+      width: 91.67%;
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--site-gutter);
+    }
+
+    @media (width < 48rem) {
+      .home-about {
+        width: 100%;
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+</style>

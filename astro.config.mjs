@@ -6,6 +6,8 @@ import { isNoindexRoute } from "./src/utils/seo.ts";
 
 export default defineConfig({
   site: SITE_URL,
+  // The original site prefetched nav targets; hover-prefetch every link.
+  prefetch: { prefetchAll: true },
   integrations: [
     sitemap({
       filter: (page) => !isNoindexRoute(new URL(page).pathname),

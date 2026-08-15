@@ -1,0 +1,136 @@
+---
+import FormattedDate from "@/components/FormattedDate.astro";
+import { yearOf, type NewsItem } from "@/utils/cms.ts";
+
+/**
+ * The horizontal news slider from the info page. The original used Swiper;
+ * this is a dependency-free scroll-snap track with the same stacked yellow
+ * prev/next buttons pinned to the right edge.
+ */
+interface Props {
+  items: NewsItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="card-slider_wrapper" data-slider>
+  <div class="swiper-nav">
+    <button type="button" class="swiper-nav_btn" data-slider-next>
+      <span class="swiper-nav_btn-arrow">
+        <svg
+          viewBox="0 0 12 19"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            d="M1.23291 1.82764L9.19916 9.79389L1.23291 17.7601"
+            stroke="currentColor"
+            stroke-width="2"></path>
+        </svg>
+      </span>
+      <span class="sr-only">Slide right</span>
+    </button>
+    <button type="button" class="swiper-nav_btn" data-slider-prev>
+      <span class="swiper-nav_btn-arrow">
+        <svg
+          viewBox="0 0 12 19"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            d="M10.1992 1.82764L2.23297 9.79389L10.1992 17.7601"
+            stroke="currentColor"
+            stroke-width="2"></path>
+        </svg>
+      </span>
+      <span class="sr-only">Slide left</span>
+    </button>
+  </div>
+  <div role="list" class="card-slider" data-slider-track>
+    {
+      items.map((item) => (
+        <div role="listitem" class="card-slider_slide">
+          <div class="card cc-big cc-slider-card">
+            <div class="card-body cc-big">
+              <div class="slider-card_header cc-news">
+                <div class="flex-horizontal-wrap gap-2">
+                  <div class="eyebrow margin-bottom-0">{item.action}</div>
+                  <div class="eyebrow margin-bottom-0">/</div>
+                  <div class="eyebrow margin-bottom-0">{yearOf(item.date)}</div>
+                </div>
+                <div class="eyebrow margin-bottom-0">
+                  {item.date && (
+                    <FormattedDate
+                      date={new Date(item.date)}
+                      format={{ month: "short", day: "numeric" }}
+                    />
+                  )}
+                </div>
+                <div class="slider-card_header-title">
+                  <h3 class="text-style-h4 margin-bottom-0">{item.name}</h3>
+                </div>
+              </div>
+              <div class="margin-top-auto">
+                <div class="card">
+                  <div class="aspect-16x9">
+                    {item.image && (
+                      <img
+                        src={item.image}
+                        loading="lazy"
+                        alt=""
+                        class="img-cover"
+                      />
+                    )}
+                  </div>
+                </div>
+              </div>
+              {item.link && (
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener"
+                  class="u-link-overlay cc-big-card"
+                >
+                  <span class="sr-only">{item.name} — open link</span>
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-slider]").forEach((slider) => {
+    const track = slider.querySelector<HTMLElement>("[data-slider-track]");
+    const next = slider.querySelector<HTMLButtonElement>("[data-slider-next]");
+    const prev = slider.querySelector<HTMLButtonElement>("[data-slider-prev]");
+    if (!track || !next || !prev) return;
+
+    const step = () => {
+      const slide = track.querySelector<HTMLElement>(".card-slider_slide");
+      return slide ? slide.offsetWidth + 20 : track.clientWidth;
+    };
+
+    const update = () => {
+      prev.disabled = track.scrollLeft <= 4;
+      next.disabled =
+        track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
+    };
+
+    next.addEventListener("click", () =>
+      track.scrollBy({ left: step(), behavior: "smooth" }),
+    );
+    prev.addEventListener("click", () =>
+      track.scrollBy({ left: -step(), behavior: "smooth" }),
+    );
+    track.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  });
+</script>

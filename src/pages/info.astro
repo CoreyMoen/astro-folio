@@ -1,0 +1,239 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import Section from "@/components/Section.astro";
+import PageHeader from "@/components/site/PageHeader.astro";
+import NewsSlider from "@/components/site/NewsSlider.astro";
+import { news } from "@/utils/cms.ts";
+
+const career = [
+  {
+    period: "2025-Today",
+    role: "Brand Web @",
+    org: { label: "Anthropic", href: "https://www.anthropic.com/" },
+  },
+  {
+    period: "2022-Today",
+    role: "Founder @",
+    org: { label: "No-Code Supply Co.", href: "https://www.nocodesupply.co/" },
+  },
+  {
+    period: "2020-2025",
+    role: "Brand Web Lead @",
+    org: { label: "Webflow", href: "http://webflow.com/" },
+  },
+  {
+    period: "2012-2025",
+    role: "Freelance @",
+    org: { label: "Moen Design", href: "https://www.coreymoen.com/" },
+  },
+  {
+    period: "2014-2020",
+    role: "Sr. Digital Designer @",
+    org: { label: "ITA Group", href: "https://www.itagroup.com/" },
+  },
+  {
+    period: "2011-2014",
+    role: "Web & Graphic Designer @",
+    org: { label: "IDEX Corp", href: "https://www.idexcorp.com/" },
+  },
+];
+
+const social = [
+  {
+    label: "Hot Takes",
+    links: [{ label: "Twitter ( X )", href: "https://twitter.com/CoreyGMoen" }],
+  },
+  {
+    label: "Resume",
+    links: [
+      { label: "LinkedIn", href: "https://www.linkedin.com/in/coreymoen/" },
+    ],
+  },
+  {
+    label: "Projects",
+    links: [
+      { label: "Webflow", href: "https://webflow.com/@coreymoen" },
+      { label: "Github", href: "https://github.com/CoreyMoen" },
+    ],
+  },
+  {
+    label: "OLD work",
+    links: [{ label: "Dribbble", href: "https://dribbble.com/coreymoen" }],
+  },
+];
+---
+
+<SiteLayout
+  title="Info"
+  description="I'm a midwest family man with a love for design and front-end development."
+  image="/images/og-info.jpg"
+>
+  <PageHeader title="Info" intro="All(some) of your questions answered here." />
+
+  <Section paddingTop="none" gap="0">
+    <div class="info-intro">
+      <div class="info-intro_img">
+        <div class="card">
+          <div class="about-img_aspect cc-full-page">
+            <img
+              src="/images/CoreyGrain1.webp"
+              loading="eager"
+              sizes="(max-width: 48rem) 100vw, 40rem"
+              srcset="/images/CoreyGrain1-p-500.webp 500w, /images/CoreyGrain1-p-800.webp 800w, /images/CoreyGrain1-p-1080.webp 1080w, /images/CoreyGrain1-p-1600.webp 1600w, /images/CoreyGrain1.webp 2000w"
+              alt="Corey Moen"
+              class="img-cover"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="info-intro_copy">
+        <h2 class="text-style-h1 line-height-small margin-bottom-6">
+          Corey Moen
+        </h2>
+        <div class="info-intro_specs">
+          <div class="text-style-large">Designer + Nerd</div>
+          <div class="text-style-large">Since 2011</div>
+        </div>
+        <p class="text-style-large margin-top-6 margin-bottom-0">
+          I'm a midwest family man with a love for design and front-end
+          development. I have a deep desire to consistently learn from others
+          and fuel my skills to design timeless brands, then develop them into
+          reality with code and modern tools.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <Section paddingTop="none" paddingBottom="none" gap="0">
+    <div class="card cc-big bg-dark-gray width-full">
+      <div class="card-body cc-section">
+        <div class="info-career">
+          <div class="info-career_heading">
+            <h2>Career + Social</h2>
+          </div>
+          <div class="info-career_lists">
+            <ul role="list" class="about-list">
+              {
+                career.map((item) => (
+                  <li>
+                    <div class="about-list_item">
+                      <div class="about-list_spec">
+                        <div class="eyebrow margin-bottom-0">{item.period}</div>
+                      </div>
+                      <div class="text-style-large">
+                        {item.role}{" "}
+                        <a href={item.org.href} target="_blank" rel="noopener">
+                          {item.org.label}
+                        </a>
+                      </div>
+                    </div>
+                  </li>
+                ))
+              }
+            </ul>
+            <div class="splitter margin-top-6"></div>
+            <ul role="list" class="about-list margin-top-6">
+              {
+                social.map((item) => (
+                  <li>
+                    <div class="about-list_item">
+                      <div class="about-list_spec">
+                        <div class="eyebrow margin-bottom-0">{item.label}</div>
+                      </div>
+                      <div class="text-style-large flex-horizontal-wrap gap-2">
+                        {item.links.map((link, i) => (
+                          <>
+                            {i > 0 && <span> / </span>}
+                            <a href={link.href} target="_blank" rel="noopener">
+                              {link.label}
+                            </a>
+                          </>
+                        ))}
+                      </div>
+                    </div>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section class="overflow-hidden" gap="0">
+    <div class="info-news width-full">
+      <div class="info-news_header">
+        <div>
+          <h2 class="margin-bottom-0">News</h2>
+        </div>
+        <div>
+          <p class="margin-bottom-0 margin-top-4">
+            A few times when I have shared my perspective on design, code, and
+            life with the community.
+          </p>
+        </div>
+      </div>
+      <NewsSlider items={news} />
+    </div>
+  </Section>
+</SiteLayout>
+
+<style is:global>
+  @layer site {
+    .info-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+      gap: var(--space-6) calc(var(--site-gutter) * 2);
+      align-items: end;
+      width: 100%;
+    }
+
+    .info-intro_specs {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-4);
+    }
+
+    @media (width < 48rem) {
+      .info-intro {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .info-career {
+      width: 91.67%;
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+      gap: var(--space-6) calc(var(--site-gutter) * 2);
+    }
+
+    @media (width < 62rem) {
+      .info-career {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .info-news {
+      width: 91.67%;
+      margin-inline: auto;
+    }
+
+    .info-news_header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4) var(--site-gutter);
+      align-items: end;
+      margin-bottom: var(--space-8);
+    }
+
+    @media (width < 48rem) {
+      .info-news,
+      .info-news_header {
+        width: 100%;
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+</style>

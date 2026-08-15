@@ -1,0 +1,70 @@
+---
+import { WEBFLOW_FORM_ENDPOINT } from "@/consts.ts";
+
+/** The words Subscribe form, posting to the original Webflow form inbox. */
+---
+
+<div class="words-form form-wrapper" data-webflow-form>
+  <form
+    name="Subscribe"
+    method="post"
+    action={WEBFLOW_FORM_ENDPOINT}
+    class="form"
+    data-form-name="Subscribe"
+  >
+    <div class="subscribe-wrap">
+      <div class="input-group cc-subscribe">
+        <label for="subscribe-email" class="input-label">Email</label>
+        <input
+          class="input"
+          maxlength="256"
+          name="Email"
+          placeholder="e.g. ssample@acme.co"
+          type="email"
+          id="subscribe-email"
+          required
+        />
+      </div>
+    </div>
+    <button type="submit" class="button_wrap" data-wait="Please wait...">
+      Subcribe
+    </button>
+  </form>
+  <div class="form-success">
+    <div class="card cc-big cc-subscribe-success">
+      <div class="card-body cc-big cc-chat-success">
+        <div class="form-success_flex">
+          <div class="form-success_icon-embed cc-subscribe">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M9 11L11 13L15.5 8.5M11.9932 5.13581C9.9938 2.7984 6.65975 2.16964 4.15469 4.31001C1.64964 6.45038 1.29697 10.029 3.2642 12.5604C4.75009 14.4724 8.97129 18.311 10.948 20.0749C11.3114 20.3991 11.4931 20.5613 11.7058 20.6251C11.8905 20.6805 12.0958 20.6805 12.2805 20.6251C12.4932 20.5613 12.6749 20.3991 13.0383 20.0749C15.015 18.311 19.2362 14.4724 20.7221 12.5604C22.6893 10.029 22.3797 6.42787 19.8316 4.31001C17.2835 2.19216 13.9925 2.7984 11.9932 5.13581Z"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <h2 class="text-style-h3 text-transform-none">
+            Honored you're into it
+          </h2>
+          <p class="margin-bottom-0">TBD on a newsletter, etc.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-error">
+    <div>Oops! Something went wrong while submitting the form.</div>
+  </div>
+</div>
+
+<script>
+  import { wireWebflowForm } from "@/utils/webflow-form.ts";
+  document
+    .querySelectorAll<HTMLElement>("[data-webflow-form]")
+    .forEach(wireWebflowForm);
+</script>
